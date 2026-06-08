@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://duxbvplv6d4r7"]
+
+[ext_resource type="PackedScene" uid="uid://cxqvbxwc4eu0y" path="res://Screen/NumberBlock.tscn" id="1_34l0q"]
+[ext_resource type="Script" uid="uid://dq30ihf83e2kv" path="res://Scripts/game_manager.gd" id="1_jlffx"]
+[ext_resource type="PackedScene" uid="uid://c7d2p864e5ld2" path="res://Screen/OperatorBlock.tscn" id="2_jlffx"]
+[ext_resource type="PackedScene" uid="uid://bhgipd07tg5dr" path="res://Screen/TransformBlock.tscn" id="4_b8wkq"]
+
+[node name="Game" type="Node2D" unique_id=743338457]
+
+[node name="GameManager" type="Node" parent="." unique_id=290767332]
+script = ExtResource("1_jlffx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=91644427]
+
+[node name="NumberBlockContainer" type="Node2D" parent="CanvasLayer" unique_id=812479098]
+
+[node name="Nb" parent="CanvasLayer/NumberBlockContainer" unique_id=1888613354 instance=ExtResource("1_34l0q")]
+position = Vector2(684, 58)
+value = 5.0
+
+[node name="Nb2" parent="CanvasLayer/NumberBlockContainer" unique_id=9571002 instance=ExtResource("1_34l0q")]
+position = Vector2(762, 58)
+value = 4.0
+
+[node name="Nb3" parent="CanvasLayer/NumberBlockContainer" unique_id=423094686 instance=ExtResource("1_34l0q")]
+position = Vector2(985, 58)
+value = 10.0
+
+[node name="Nb4" parent="CanvasLayer/NumberBlockContainer" unique_id=826600935 instance=ExtResource("1_34l0q")]
+position = Vector2(910, 58)
+
+[node name="Nb5" parent="CanvasLayer/NumberBlockContainer" unique_id=2076865618 instance=ExtResource("1_34l0q")]
+position = Vector2(836, 58)
+value = -3.0
+
+[node name="OperatorBlockContainer" type="Node2D" parent="CanvasLayer" unique_id=111626236]
+
+[node name="Ob" parent="CanvasLayer/OperatorBlockContainer" unique_id=2103194165 instance=ExtResource("2_jlffx")]
+z_index = 1
+position = Vector2(145, 154)
+
+[node name="Ob2" parent="CanvasLayer/OperatorBlockContainer" unique_id=1565709001 instance=ExtResource("2_jlffx")]
+position = Vector2(145, 454)
+op_type = "-"
+
+[node name="Ob3" parent="CanvasLayer/OperatorBlockContainer" unique_id=1075491637 instance=ExtResource("2_jlffx")]
+position = Vector2(456, 454)
+op_type = "*"
+
+[node name="Area2D" parent="." unique_id=1918372112 instance=ExtResource("4_b8wkq")]
+position = Vector2(894, 392)

@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://cxqvbxwc4eu0y"]
+
+[ext_resource type="Script" uid="uid://br4y0ieyjliec" path="res://Scripts/NumberBlock.gd" id="1_5e1gs"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5aov"]
+size = Vector2(64, 64)
+
+[sub_resource type="Gradient" id="Gradient_uphjk"]
+offsets = PackedFloat32Array(0.62349397, 1)
+colors = PackedColorArray(0.654902, 0.4117647, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5e1gs"]
+gradient = SubResource("Gradient_uphjk")
+fill_from = Vector2(1, 0)
+
+[node name="Area2D" type="Area2D" unique_id=1888613354 groups=["NumberArea"]]
+z_index = 1
+script = ExtResource("1_5e1gs")
+BlockType = "Number"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1949165847]
+shape = SubResource("RectangleShape2D_a5aov")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=183256590]
+texture = SubResource("GradientTexture2D_5e1gs")
+
+[node name="NumRichTextLabel" type="RichTextLabel" parent="." unique_id=270067750]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+pivot_offset = Vector2(20, 20)
+mouse_filter = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

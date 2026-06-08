@@ -1,0 +1,57 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[accessibility]
+
+general/accessibility_support=1
+general/updates_per_second=100
+
+[application]
+
+config/name="24PointGame"
+run/main_scene="uid://duxbvplv6d4r7"
+config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/bg_color=Color(0.5689727, 0.56897277, 0.5689727, 1)
+config/icon="res://icon.svg"
+
+[autoload]
+
+GAMEMANAGER="*uid://dq30ihf83e2kv"
+
+[display]
+
+window/stretch/mode="canvas_items"
+
+[global_group]
+
+OperandArea=""
+OperatorArea=""
+TransformArea=""
+NumberArea=""
+
+[input]
+
+MOUSE_BUTTON_LEFT={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(721, 37),"global_position":Vector2(740, 133),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+
+[layer_names]
+
+2d_render/layer_1="DraggingBlock"
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"

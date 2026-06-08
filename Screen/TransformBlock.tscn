@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://bhgipd07tg5dr"]
+
+[ext_resource type="Script" uid="uid://pus3a404htcq" path="res://Scripts/TransformBlock.gd" id="1_qoy4r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bxt5k"]
+size = Vector2(300, 300)
+
+[sub_resource type="Gradient" id="Gradient_bxt5k"]
+offsets = PackedFloat32Array(0.54545456)
+colors = PackedColorArray(0.09803922, 0.1882353, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qoy4r"]
+gradient = SubResource("Gradient_bxt5k")
+width = 300
+height = 300
+fill_from = Vector2(1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qoy4r"]
+size = Vector2(256, 256)
+
+[sub_resource type="Gradient" id="Gradient_wqv1i"]
+offsets = PackedFloat32Array(0.6484848)
+colors = PackedColorArray(0.047648147, 0.1081456, 1.2032688e-08, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_add87"]
+gradient = SubResource("Gradient_wqv1i")
+width = 256
+height = 256
+fill_from = Vector2(1, 0)
+
+[node name="Area2D" type="Area2D" unique_id=1918372112 groups=["Transform"]]
+script = ExtResource("1_qoy4r")
+BlockType = "Transform"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1594444592]
+shape = SubResource("RectangleShape2D_bxt5k")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=197619330]
+texture = SubResource("GradientTexture2D_qoy4r")
+
+[node name="OperatorBlock" type="Area2D" parent="Sprite2D" unique_id=390526526]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/OperatorBlock" unique_id=279753605]
+shape = SubResource("RectangleShape2D_qoy4r")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/OperatorBlock" unique_id=89823283]
+texture = SubResource("GradientTexture2D_add87")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="area_entered" from="Sprite2D/OperatorBlock" to="." method="_on_operator_block_area_entered"]
+[connection signal="area_exited" from="Sprite2D/OperatorBlock" to="." method="_on_operator_block_area_exited"]
