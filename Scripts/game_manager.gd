@@ -19,6 +19,16 @@ func bring_to_front() -> void:
 			if current_dragging.input_b:
 				z_index += 1
 				current_dragging.input_b.z_index = z_index
+		if current_dragging.BlockType == "Transform":
+			if current_dragging.operator_block:
+				z_index += 1
+				current_dragging.operator_block.z_index = z_index
+				if current_dragging.operator_block.input_a:
+					z_index += 1
+					current_dragging.operator_block.input_a.z_index = z_index
+				if current_dragging.operator_block.input_b:
+					z_index += 1
+					current_dragging.operator_block.input_b.z_index = z_index
 
 func detect_top_block() -> void:
 	var max_z_index = -999

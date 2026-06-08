@@ -47,14 +47,12 @@ material = SubResource("ShaderMaterial_add87")
 texture = SubResource("GradientTexture2D_qoy4r")
 
 [node name="OperatorBlock" type="Area2D" parent="Sprite2D" unique_id=390526526]
-position = Vector2(-6, -9)
+position = Vector2(-21, -21)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/OperatorBlock" unique_id=279753605]
-position = Vector2(-19, -17)
 shape = SubResource("RectangleShape2D_qoy4r")
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D/OperatorBlock" unique_id=89823283]
-position = Vector2(-19, -17)
 texture = SubResource("GradientTexture2D_add87")
 
 [node name="Button" type="Button" parent="." unique_id=972987877]

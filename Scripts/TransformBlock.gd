@@ -14,12 +14,19 @@ func _process(delta: float) -> void:
 			global_position = lerp(global_position, get_global_mouse_position(), 20 * delta)
 			if operator_block:
 				operator_block.global_position = target_operator_block.global_position
+				if operator_block.input_a:
+					operator_block.input_a.global_position = operator_block.operand_a.global_position
+				if operator_block.input_b:
+					operator_block.input_b.global_position = operator_block.operand_b.global_position
 		if GAMEMANAGER.current_dragging == operator_block:
 			operator_block = null
 	
 	if Input.is_action_just_released("MOUSE_BUTTON_LEFT"):
 		if target_operator_block.has_overlapping_areas() and temp_operator_block != null and target_operator_block.global_position.distance_to(temp_operator_block.global_position) < (target_operator_block.get_child(0).shape.size.x * 0.7):
-			temp_operator_block.global_position = target_operator_block.global_position
+			var tween = create_tween()
+			tween.set_trans(Tween.TRANS_BACK)
+			tween.set_ease(Tween.EASE_OUT)
+			tween.tween_property(temp_operator_block, "global_position", target_operator_block.global_position, 0.1)
 			operator_block = temp_operator_block
 
 func output_NumberBlock() -> void:
@@ -43,7 +50,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 				GAMEMANAGER.current_dragging = null
 
 func _on_operator_block_area_entered(area: Area2D) -> void:
-	if area.is_in_group("OperatorArea") and operator_block != null and area.is_dragging:
+	if area.is_in_group("OperatorArea") and operator_block == null and area.is_dragging:
 		temp_operator_block = area
 
 func _on_operator_block_area_exited(area: Area2D) -> void:
