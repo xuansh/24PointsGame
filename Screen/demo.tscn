@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cxqvbxwc4eu0y" path="res://Screen/NumberBlock.tscn" id="1_34l0q"]
 [ext_resource type="Script" uid="uid://dq30ihf83e2kv" path="res://Scripts/game_manager.gd" id="1_jlffx"]
 [ext_resource type="PackedScene" uid="uid://c7d2p864e5ld2" path="res://Screen/OperatorBlock.tscn" id="2_jlffx"]
+[ext_resource type="PackedScene" uid="uid://bhgipd07tg5dr" path="res://Screen/TransformBlock.tscn" id="4_b8wkq"]
 
 [node name="Game" type="Node2D" unique_id=743338457]
 
@@ -10,6 +11,7 @@
 script = ExtResource("1_jlffx")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=693566276]
+zoom = Vector2(0.7, 0.7)
 
 [node name="OperatorBlockContainer" type="Node2D" parent="Camera2D" unique_id=111626236]
 
@@ -45,3 +47,8 @@ position = Vector2(438, -257)
 [node name="Nb5" parent="Camera2D/NumberBlockContainer" unique_id=2076865618 instance=ExtResource("1_34l0q")]
 position = Vector2(363, -257)
 value = -3.0
+
+[node name="TransformBlockContainer" type="Node2D" parent="Camera2D" unique_id=2030178264]
+
+[node name="TB" parent="Camera2D/TransformBlockContainer" unique_id=1918372112 instance=ExtResource("4_b8wkq")]
+position = Vector2(323, 94)

@@ -4,7 +4,6 @@ var operator_block : Area2D = null
 var temp_operator_block : Area2D = null
 
 @onready var target_operator_block : Area2D = $Sprite2D/OperatorBlock
-const NUMBER_BLOCK = preload("uid://cxqvbxwc4eu0y")
 
 func _ready() -> void:
 	pass
@@ -31,10 +30,14 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
 			if event.pressed and GAMEMANAGER.current_dragging == null:
-				is_dragging = true
-				GAMEMANAGER.current_dragging = self
-				GAMEMANAGER.bring_to_front()
-				print("Transform")
+				GAMEMANAGER.block_in_mouse_area.clear()
+				await get_tree().process_frame
+				GAMEMANAGER.block_in_mouse_area.append(self)
+				GAMEMANAGER.detect_top_block()
+				if GAMEMANAGER.on_top_block == self:
+					is_dragging = true
+					GAMEMANAGER.current_dragging = self
+					GAMEMANAGER.bring_to_front()
 			else:
 				is_dragging = false
 				GAMEMANAGER.current_dragging = null
