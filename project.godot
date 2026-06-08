@@ -18,7 +18,6 @@ general/updates_per_second=100
 config/name="24PointGame"
 run/main_scene="uid://duxbvplv6d4r7"
 config/features=PackedStringArray("4.6", "Forward Plus")
-boot_splash/bg_color=Color(0.5689727, 0.56897277, 0.5689727, 1)
 config/icon="res://icon.svg"
 
 [autoload]

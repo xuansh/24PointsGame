@@ -1,25 +1,41 @@
 [gd_scene format=3 uid="uid://c7d2p864e5ld2"]
 
 [ext_resource type="Script" uid="uid://bdb0b411hva2n" path="res://Scripts/OperatorBlock.gd" id="1_8x3vv"]
+[ext_resource type="Shader" uid="uid://87mvxsilk1rf" path="res://Shaders/Block.gdshader" id="2_rclpd"]
+[ext_resource type="FontFile" uid="uid://bdptysj6ngk46" path="res://Fonts/Frick0.3-Regular-3.otf" id="3_sed4m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8x3vv"]
-size = Vector2(256, 256)
+size = Vector2(200, 200)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sed4m"]
+shader = ExtResource("2_rclpd")
+shader_parameter/border = 0.03
+shader_parameter/bg_color = Color(0.9529412, 0.31764707, 0.20784314, 1)
+shader_parameter/border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_0oc77"]
-colors = PackedColorArray(0.82942677, 0.39519998, 0.5786834, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.83137256, 0.39607844, 0.5803922, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_8x3vv"]
 gradient = SubResource("Gradient_0oc77")
-width = 256
-height = 256
+width = 200
+height = 200
 fill_from = Vector2(1, 0)
+fill_to = Vector2(0.06768559, 0.941048)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0oc77"]
 size = Vector2(64, 64)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rclpd"]
+shader = ExtResource("2_rclpd")
+shader_parameter/border = 0.05
+shader_parameter/bg_color = Color(0.99215686, 0.654902, 0.31764707, 1)
+shader_parameter/border_color = Color(0, 0, 0, 1)
+
 [sub_resource type="Gradient" id="Gradient_8x3vv"]
-offsets = PackedFloat32Array(0.49096385, 1)
-colors = PackedColorArray(0.6455514, 1.8289685e-06, 3.3691526e-07, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0.49096385)
+colors = PackedColorArray(0.64705884, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_rclpd"]
 gradient = SubResource("Gradient_8x3vv")
@@ -27,6 +43,12 @@ fill_from = Vector2(1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sed4m"]
 size = Vector2(64, 64)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8lnsa"]
+shader = ExtResource("2_rclpd")
+shader_parameter/border = 0.05
+shader_parameter/bg_color = Color(0.99215686, 0.654902, 0.31764707, 1)
+shader_parameter/border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_sed4m"]
 gradient = SubResource("Gradient_8x3vv")
@@ -42,44 +64,54 @@ BlockType = "Operator"
 shape = SubResource("RectangleShape2D_8x3vv")
 
 [node name="OperatorBlock" type="Sprite2D" parent="." unique_id=1852805685]
+material = SubResource("ShaderMaterial_sed4m")
 texture = SubResource("GradientTexture2D_8x3vv")
 
 [node name="Operand_A" type="Area2D" parent="OperatorBlock" unique_id=1731434944 groups=["OperandArea"]]
-position = Vector2(-52, 0)
+position = Vector2(-54, 54)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OperatorBlock/Operand_A" unique_id=353888619]
 shape = SubResource("RectangleShape2D_0oc77")
 
 [node name="Sprite2D" type="Sprite2D" parent="OperatorBlock/Operand_A" unique_id=769501990]
+material = SubResource("ShaderMaterial_rclpd")
 texture = SubResource("GradientTexture2D_rclpd")
 
 [node name="Operand_B" type="Area2D" parent="OperatorBlock" unique_id=227661052 groups=["OperandArea"]]
-position = Vector2(52, 0)
+position = Vector2(54, 54)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OperatorBlock/Operand_B" unique_id=1064593297]
 shape = SubResource("RectangleShape2D_sed4m")
 
 [node name="Sprite2D" type="Sprite2D" parent="OperatorBlock/Operand_B" unique_id=1584716170]
+material = SubResource("ShaderMaterial_8lnsa")
 texture = SubResource("GradientTexture2D_sed4m")
 
 [node name="OperatorRichTextLabel" type="RichTextLabel" parent="." unique_id=846408634]
 offset_left = -20.0
-offset_top = -20.0
+offset_top = 32.0
 offset_right = 20.0
-offset_bottom = 20.0
+offset_bottom = 72.0
 pivot_offset = Vector2(20, 20)
 mouse_filter = 2
-theme_override_font_sizes/normal_font_size = 29
+theme_override_colors/default_color = Color(0.29803923, 0.10980392, 0.25490198, 1)
+theme_override_constants/paragraph_separation = -10
+theme_override_fonts/normal_font = ExtResource("3_sed4m")
+theme_override_font_sizes/normal_font_size = 40
+text = "+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="OutputRichTextLabel" type="RichTextLabel" parent="." unique_id=160258461]
-offset_left = -125.0
-offset_top = -125.0
-offset_right = 126.0
-offset_bottom = -85.0
-pivot_offset = Vector2(40, 0)
+offset_left = -90.0
+offset_top = -87.0
+offset_right = 91.0
+pivot_offset = Vector2(181, 0)
 mouse_filter = 2
+theme_override_colors/default_color = Color(0.29803923, 0.10980392, 0.25490198, 1)
+theme_override_fonts/normal_font = ExtResource("3_sed4m")
+theme_override_font_sizes/normal_font_size = 48
+text = "0.0"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 2

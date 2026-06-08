@@ -1,18 +1,24 @@
 [gd_scene format=3 uid="uid://bhgipd07tg5dr"]
 
 [ext_resource type="Script" uid="uid://pus3a404htcq" path="res://Scripts/TransformBlock.gd" id="1_qoy4r"]
+[ext_resource type="Shader" uid="uid://87mvxsilk1rf" path="res://Shaders/Block.gdshader" id="2_wqv1i"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bxt5k"]
 size = Vector2(300, 300)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_add87"]
+shader = ExtResource("2_wqv1i")
+shader_parameter/border = 0.03
+shader_parameter/bg_color = Color(0.3137255, 0.5882353, 0, 1)
+
 [sub_resource type="Gradient" id="Gradient_bxt5k"]
 offsets = PackedFloat32Array(0.54545456)
-colors = PackedColorArray(0.09803922, 0.1882353, 0, 1)
+colors = PackedColorArray(0.09803922, 0.1882353, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_qoy4r"]
 gradient = SubResource("Gradient_bxt5k")
-width = 300
-height = 300
+width = 350
+height = 350
 fill_from = Vector2(1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qoy4r"]
@@ -36,15 +42,25 @@ BlockType = "Transform"
 shape = SubResource("RectangleShape2D_bxt5k")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=197619330]
+material = SubResource("ShaderMaterial_add87")
 texture = SubResource("GradientTexture2D_qoy4r")
 
 [node name="OperatorBlock" type="Area2D" parent="Sprite2D" unique_id=390526526]
+position = Vector2(-25, -26)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/OperatorBlock" unique_id=279753605]
 shape = SubResource("RectangleShape2D_qoy4r")
 
 [node name="Sprite2D" type="Sprite2D" parent="Sprite2D/OperatorBlock" unique_id=89823283]
 texture = SubResource("GradientTexture2D_add87")
+
+[node name="Button" type="Button" parent="." unique_id=972987877]
+custom_minimum_size = Vector2(30, 30)
+offset_left = 106.0
+offset_top = 107.0
+offset_right = 158.0
+offset_bottom = 138.0
+text = "Trans"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="area_entered" from="Sprite2D/OperatorBlock" to="." method="_on_operator_block_area_entered"]

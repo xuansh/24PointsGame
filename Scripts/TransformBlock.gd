@@ -9,7 +9,7 @@ const NUMBER_BLOCK = preload("uid://cxqvbxwc4eu0y")
 func _ready() -> void:
 	pass
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	if Input.is_action_pressed("MOUSE_BUTTON_LEFT"):
 		if GAMEMANAGER.current_dragging == self:
 			global_position = lerp(global_position, get_global_mouse_position(), 20 * delta)

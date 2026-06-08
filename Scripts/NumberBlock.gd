@@ -5,11 +5,14 @@ extends Block
 @onready var num_rich_text_label: RichTextLabel = $NumRichTextLabel
 
 func _ready() -> void:
-	num_rich_text_label.text = str(get_value())
+	if get_value() == int(get_value()):
+		num_rich_text_label.text = str(int(get_value()))
+	else:
+		num_rich_text_label.text = str(get_value())
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	if is_dragging:
-		global_position = get_global_mouse_position()
+		global_position = lerp(global_position, get_global_mouse_position(), 20 * delta)
 
 func get_value() -> float:
 	return value

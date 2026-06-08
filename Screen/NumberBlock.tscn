@@ -1,13 +1,21 @@
 [gd_scene format=3 uid="uid://cxqvbxwc4eu0y"]
 
 [ext_resource type="Script" uid="uid://br4y0ieyjliec" path="res://Scripts/NumberBlock.gd" id="1_5e1gs"]
+[ext_resource type="Shader" uid="uid://87mvxsilk1rf" path="res://Shaders/Block.gdshader" id="2_a5aov"]
+[ext_resource type="FontFile" uid="uid://bdptysj6ngk46" path="res://Fonts/Frick0.3-Regular-3.otf" id="3_q4gel"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a5aov"]
 size = Vector2(64, 64)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q4gel"]
+shader = ExtResource("2_a5aov")
+shader_parameter/border = 0.05
+shader_parameter/bg_color = Color(0.99215686, 0.6627451, 0.13725491, 1)
+shader_parameter/border_color = Color(0, 0, 0, 1)
+
 [sub_resource type="Gradient" id="Gradient_uphjk"]
-offsets = PackedFloat32Array(0.62349397, 1)
-colors = PackedColorArray(0.654902, 0.4117647, 0, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0.62349397)
+colors = PackedColorArray(0.654902, 0.4117647, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_5e1gs"]
 gradient = SubResource("Gradient_uphjk")
@@ -22,15 +30,22 @@ BlockType = "Number"
 shape = SubResource("RectangleShape2D_a5aov")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=183256590]
+material = SubResource("ShaderMaterial_q4gel")
 texture = SubResource("GradientTexture2D_5e1gs")
 
 [node name="NumRichTextLabel" type="RichTextLabel" parent="." unique_id=270067750]
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
+offset_left = -29.0
+offset_top = -29.0
+offset_right = 29.0
+offset_bottom = 29.0
 pivot_offset = Vector2(20, 20)
 mouse_filter = 2
+theme_override_colors/default_color = Color(0.3882353, 0.02745098, 0.15294118, 1)
+theme_override_constants/paragraph_separation = -8
+theme_override_fonts/normal_font = ExtResource("3_q4gel")
+theme_override_font_sizes/normal_font_size = 38
+bbcode_enabled = true
+scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
 

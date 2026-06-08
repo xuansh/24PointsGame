@@ -17,7 +17,7 @@ func _ready() -> void:
 	update_rich_text_label(operator_rich_text_label, op_type)
 	update_rich_text_label(output_rich_text_label, str(output))
 
-func _physics_process(delta: float) -> void:
+func _process(delta: float) -> void:
 	if Input.is_action_pressed("MOUSE_BUTTON_LEFT"):
 		if GAMEMANAGER.current_dragging == self:
 			global_position = lerp(global_position, get_global_mouse_position(), 20 * delta)
