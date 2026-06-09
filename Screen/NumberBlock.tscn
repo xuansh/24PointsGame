@@ -9,7 +9,7 @@ size = Vector2(64, 64)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q4gel"]
 shader = ExtResource("2_a5aov")
-shader_parameter/border = 0.05
+shader_parameter/border_pixels = 3.0
 shader_parameter/bg_color = Color(0.99215686, 0.6627451, 0.13725491, 1)
 shader_parameter/border_color = Color(0, 0, 0, 1)
 

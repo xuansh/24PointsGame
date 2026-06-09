@@ -1,24 +1,21 @@
 shader_type canvas_item;
-uniform float border = 0.05;
-uniform 	vec4 bg_color : source_color;
+uniform float border_pixels = 5.0;  // 使用像素单位
+uniform vec4 bg_color : source_color;
 uniform vec4 border_color : source_color = vec4(0., 0., 0., 1.);
 
-
-void vertex() {
-	// Called for every vertex the material is visible on.
-}
-
 void fragment() {
+	// 获取每个像素在UV空间中的大小
+	vec2 pixel_size = TEXTURE_PIXEL_SIZE;
 	
-	if (UV.x < border || UV.x > 1.0 - border || UV.y < border || UV.y > 1.0 - border){
+	// 将border从像素转换为UV空间
+	float border_uv_x = border_pixels * pixel_size.x;
+	float border_uv_y = border_pixels * pixel_size.y;
+	
+	if (UV.x < border_uv_x || UV.x > 1.0 - border_uv_x || 
+	    UV.y < border_uv_y || UV.y > 1.0 - border_uv_y){
 		COLOR = border_color;
 	}
 	else{
 		COLOR = bg_color;
 	}
 }
-
-//void light() {
-//	// Called for every pixel for every light affecting the CanvasItem.
-//	// Uncomment to replace the default light processing function with this one.
-//}

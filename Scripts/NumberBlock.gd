@@ -1,18 +1,25 @@
 extends Block
 
+class_name NumberBlock
+
+@export var root : Node2D = null
 @export var value : float
 
 @onready var num_rich_text_label: RichTextLabel = $NumRichTextLabel
 
+
+# only on Debug
 func _ready() -> void:
-	if get_value() == int(get_value()):
-		num_rich_text_label.text = str(int(get_value()))
-	else:
-		num_rich_text_label.text = str(get_value())
+	update_value_label()
 
 func _process(delta: float) -> void:
 	if is_dragging:
 		global_position = lerp(global_position, get_global_mouse_position(), 20 * delta)
+
+func __init(_value : float, _block_type : String, _position : Vector2) -> void:
+	self.value = _value
+	self.BlockType = _block_type
+	self.position = _position
 
 func get_value() -> float:
 	return value
@@ -34,3 +41,9 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 				is_dragging = false	
 				if GAMEMANAGER.current_dragging == self:
 					GAMEMANAGER.current_dragging = null
+
+func update_value_label():
+	if get_value() == int(get_value()):
+		num_rich_text_label.text = str(int(get_value()))
+	else:
+		num_rich_text_label.text = str(get_value())

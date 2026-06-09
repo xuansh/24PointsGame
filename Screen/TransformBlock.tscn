@@ -8,7 +8,7 @@ size = Vector2(300, 300)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_add87"]
 shader = ExtResource("2_wqv1i")
-shader_parameter/border = 0.03
+shader_parameter/border_pixels = 5.0
 shader_parameter/bg_color = Color(0.3137255, 0.5882353, 0, 1)
 shader_parameter/border_color = Color(0, 0, 0, 1)
 
@@ -66,3 +66,4 @@ text = "Trans"
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="area_entered" from="Sprite2D/OperatorBlock" to="." method="_on_operator_block_area_entered"]
 [connection signal="area_exited" from="Sprite2D/OperatorBlock" to="." method="_on_operator_block_area_exited"]
+[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]

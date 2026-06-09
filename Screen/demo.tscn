@@ -1,19 +1,20 @@
 [gd_scene format=3 uid="uid://duxbvplv6d4r7"]
 
+[ext_resource type="Script" uid="uid://yw5k0qqf566x" path="res://Scripts/Container/operator_block_container.gd" id="1_1or8l"]
 [ext_resource type="PackedScene" uid="uid://cxqvbxwc4eu0y" path="res://Screen/NumberBlock.tscn" id="1_34l0q"]
-[ext_resource type="Script" uid="uid://dq30ihf83e2kv" path="res://Scripts/game_manager.gd" id="1_jlffx"]
+[ext_resource type="Script" uid="uid://b2o3nr53jl0gq" path="res://Scripts/Container/number_block_container.gd" id="2_b8wkq"]
 [ext_resource type="PackedScene" uid="uid://c7d2p864e5ld2" path="res://Screen/OperatorBlock.tscn" id="2_jlffx"]
 [ext_resource type="PackedScene" uid="uid://bhgipd07tg5dr" path="res://Screen/TransformBlock.tscn" id="4_b8wkq"]
+[ext_resource type="Script" uid="uid://dtr7ygc03in5a" path="res://Scripts/Container/transform_block_container.gd" id="5_5af0k"]
+[ext_resource type="PackedScene" uid="uid://yn6ve42dfa63" path="res://Screen/ConditionBlock.tscn" id="7_6rebq"]
 
 [node name="Game" type="Node2D" unique_id=743338457]
-
-[node name="GameManager" type="Node" parent="." unique_id=290767332]
-script = ExtResource("1_jlffx")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=693566276]
 zoom = Vector2(0.7, 0.7)
 
 [node name="OperatorBlockContainer" type="Node2D" parent="Camera2D" unique_id=111626236]
+script = ExtResource("1_1or8l")
 
 [node name="Ob" parent="Camera2D/OperatorBlockContainer" unique_id=2103194165 instance=ExtResource("2_jlffx")]
 z_index = 1
@@ -28,27 +29,41 @@ position = Vector2(-122, 138)
 op_type = "*"
 
 [node name="NumberBlockContainer" type="Node2D" parent="Camera2D" unique_id=812479098]
+script = ExtResource("2_b8wkq")
 
-[node name="Nb" parent="Camera2D/NumberBlockContainer" unique_id=1888613354 instance=ExtResource("1_34l0q")]
+[node name="Nb" parent="Camera2D/NumberBlockContainer" unique_id=1888613354 node_paths=PackedStringArray("root") instance=ExtResource("1_34l0q")]
 position = Vector2(211, -257)
-value = 5.0
+root = NodePath("..")
+value = 2.0
 
-[node name="Nb2" parent="Camera2D/NumberBlockContainer" unique_id=9571002 instance=ExtResource("1_34l0q")]
+[node name="Nb2" parent="Camera2D/NumberBlockContainer" unique_id=9571002 node_paths=PackedStringArray("root") instance=ExtResource("1_34l0q")]
 position = Vector2(289, -257)
-value = 4.0
+root = NodePath("..")
+value = 8.0
 
-[node name="Nb3" parent="Camera2D/NumberBlockContainer" unique_id=423094686 instance=ExtResource("1_34l0q")]
+[node name="Nb3" parent="Camera2D/NumberBlockContainer" unique_id=423094686 node_paths=PackedStringArray("root") instance=ExtResource("1_34l0q")]
 position = Vector2(512, -257)
-value = 10.0
+root = NodePath("..")
+value = 20.0
 
-[node name="Nb4" parent="Camera2D/NumberBlockContainer" unique_id=826600935 instance=ExtResource("1_34l0q")]
+[node name="Nb4" parent="Camera2D/NumberBlockContainer" unique_id=826600935 node_paths=PackedStringArray("root") instance=ExtResource("1_34l0q")]
 position = Vector2(438, -257)
+root = NodePath("..")
+value = -5.0
 
-[node name="Nb5" parent="Camera2D/NumberBlockContainer" unique_id=2076865618 instance=ExtResource("1_34l0q")]
+[node name="Nb5" parent="Camera2D/NumberBlockContainer" unique_id=2076865618 node_paths=PackedStringArray("root") instance=ExtResource("1_34l0q")]
 position = Vector2(363, -257)
-value = -3.0
+root = NodePath("..")
+value = 2.0
 
 [node name="TransformBlockContainer" type="Node2D" parent="Camera2D" unique_id=2030178264]
+script = ExtResource("5_5af0k")
 
-[node name="TB" parent="Camera2D/TransformBlockContainer" unique_id=1918372112 instance=ExtResource("4_b8wkq")]
-position = Vector2(323, 94)
+[node name="TB" parent="Camera2D/TransformBlockContainer" unique_id=1918372112 node_paths=PackedStringArray("root") instance=ExtResource("4_b8wkq")]
+position = Vector2(310, 192)
+root = NodePath("..")
+
+[node name="ConditionBlockContain" type="Node2D" parent="Camera2D" unique_id=1909199166]
+
+[node name="CB" parent="Camera2D/ConditionBlockContain" unique_id=1520528625 instance=ExtResource("7_6rebq")]
+position = Vector2(260, -90)

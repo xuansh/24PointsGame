@@ -1,7 +1,11 @@
 extends Block
 
-var operator_block : Area2D = null
+class_name TransformBlock
+
+var operator_block : OperatorBlock = null
 var temp_operator_block : Area2D = null
+
+@export var root : Node2D = null
 
 @onready var target_operator_block : Area2D = $Sprite2D/OperatorBlock
 
@@ -56,3 +60,10 @@ func _on_operator_block_area_entered(area: Area2D) -> void:
 func _on_operator_block_area_exited(area: Area2D) -> void:
 	if area == operator_block:
 		operator_block = null
+
+
+func _on_button_button_up() -> void:
+	if operator_block:
+		if operator_block.BlockType == 'Operator':
+			GAMEMANAGER.spawn_a_NumberBlock(operator_block.get_value(), "Number", self)
+			operator_block._queue_free_two_input()

@@ -9,7 +9,7 @@ size = Vector2(200, 200)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sed4m"]
 shader = ExtResource("2_rclpd")
-shader_parameter/border = 0.03
+shader_parameter/border_pixels = 5.0
 shader_parameter/bg_color = Color(0.9529412, 0.31764707, 0.20784314, 1)
 shader_parameter/border_color = Color(0, 0, 0, 1)
 
@@ -29,7 +29,7 @@ size = Vector2(64, 64)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rclpd"]
 shader = ExtResource("2_rclpd")
-shader_parameter/border = 0.05
+shader_parameter/border_pixels = 3.0
 shader_parameter/bg_color = Color(0.99215686, 0.654902, 0.31764707, 1)
 shader_parameter/border_color = Color(0, 0, 0, 1)
 
@@ -46,7 +46,7 @@ size = Vector2(64, 64)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8lnsa"]
 shader = ExtResource("2_rclpd")
-shader_parameter/border = 0.05
+shader_parameter/border_pixels = 3.0
 shader_parameter/bg_color = Color(0.99215686, 0.654902, 0.31764707, 1)
 shader_parameter/border_color = Color(0, 0, 0, 1)
 

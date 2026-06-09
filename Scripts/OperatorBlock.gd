@@ -1,5 +1,7 @@
 extends Block
 
+class_name OperatorBlock
+
 @export var op_type : String
 var input_a : Area2D = null
 var input_b : Area2D = null
@@ -17,14 +19,32 @@ func _ready() -> void:
 	update_rich_text_label(operator_rich_text_label, op_type)
 	update_rich_text_label(output_rich_text_label, str(output))
 
+func _physics_process(delta: float) -> void:
+	if input_a:
+		input_a.global_position = operand_a.global_position
+	if input_b:
+		input_b.global_position = operand_b.global_position
+
+func _on_quene_free() -> void:
+	if input_a:
+		input_a.queue_free()
+	if input_b:
+		input_b.queue_free()
+		
+func _queue_free_two_input() -> void:
+	if input_a:
+		input_a.queue_free()
+		input_a = null
+	if input_b:
+		input_b.queue_free()
+		input_b = null
+	update_result()
+
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("MOUSE_BUTTON_LEFT"):
 		if GAMEMANAGER.current_dragging == self:
 			global_position = lerp(global_position, get_global_mouse_position(), 20 * delta)
-			if input_a:
-				input_a.global_position = operand_a.global_position
-			if input_b:
-				input_b.global_position = operand_b.global_position
+			#using Tween may be fitable to input.position 
 		if GAMEMANAGER.current_dragging == input_a:
 			input_a = null
 			update_result()
