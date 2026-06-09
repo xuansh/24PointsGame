@@ -29,6 +29,7 @@ func bring_to_front() -> void:
 				if current_dragging.operator_block.input_b:
 					z_index += 1
 					current_dragging.operator_block.input_b.z_index = z_index
+					
 
 func detect_top_block() -> void:
 	var max_z_index = -999
