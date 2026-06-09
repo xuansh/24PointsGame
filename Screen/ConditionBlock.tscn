@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://yn6ve42dfa63"]
+
+[ext_resource type="Shader" uid="uid://87mvxsilk1rf" path="res://Shaders/Block.gdshader" id="1_8qr1n"]
+[ext_resource type="Script" uid="uid://cantn4abdjhvm" path="res://Scripts/ConditionBlock.gd" id="1_d1jty"]
+[ext_resource type="FontFile" uid="uid://b4o4vsl1jl7hq" path="res://Fonts/umbasoft-altbold-2.otf" id="2_h2s07"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6xcx0"]
+size = Vector2(200, 99)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h2s07"]
+shader = ExtResource("1_8qr1n")
+shader_parameter/border_pixels = 5.0
+shader_parameter/bg_color = Color(0.8862745, 0.19607843, 0.29803923, 1)
+shader_parameter/border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_d1jty"]
+offsets = PackedFloat32Array(0.56078434)
+colors = PackedColorArray(0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1xru5"]
+gradient = SubResource("Gradient_d1jty")
+width = 230
+height = 130
+fill_from = Vector2(0.60470086, 0.20299146)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8qr1n"]
+size = Vector2(64, 64)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d1jty"]
+shader = ExtResource("1_8qr1n")
+shader_parameter/border_pixels = 3.0
+shader_parameter/bg_color = Color(0.22745098, 0.46666667, 0.62352943, 1)
+shader_parameter/border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_1xru5"]
+offsets = PackedFloat32Array(0.6862745)
+colors = PackedColorArray(0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_f6h14"]
+gradient = SubResource("Gradient_1xru5")
+fill_from = Vector2(0.51282054, 0.20940171)
+
+[node name="Area2D" type="Area2D" unique_id=1520528625 groups=["ConditionArea"]]
+script = ExtResource("1_d1jty")
+BlockType = "Condition"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1175635274]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_6xcx0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=831548364]
+material = SubResource("ShaderMaterial_h2s07")
+texture = SubResource("GradientTexture2D_1xru5")
+
+[node name="Number_a" type="Area2D" parent="Sprite2D" unique_id=886035302]
+position = Vector2(-50, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Number_a" unique_id=57120021]
+shape = SubResource("RectangleShape2D_8qr1n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Number_a" unique_id=1480595488]
+material = SubResource("ShaderMaterial_d1jty")
+texture = SubResource("GradientTexture2D_f6h14")
+
+[node name="Number_b" type="Area2D" parent="Sprite2D" unique_id=1992104361]
+position = Vector2(50, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Number_b" unique_id=1792340785]
+shape = SubResource("RectangleShape2D_8qr1n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Sprite2D/Number_b" unique_id=145243620]
+material = SubResource("ShaderMaterial_d1jty")
+texture = SubResource("GradientTexture2D_f6h14")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Sprite2D" unique_id=637679837]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+pivot_offset = Vector2(20, 20)
+theme_override_constants/paragraph_separation = -1
+theme_override_fonts/normal_font = ExtResource("2_h2s07")
+theme_override_font_sizes/normal_font_size = 40
+text = "="
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="area_entered" from="Sprite2D/Number_a" to="." method="_on_number_a_area_entered"]
+[connection signal="area_exited" from="Sprite2D/Number_a" to="." method="_on_number_a_area_exited"]
+[connection signal="area_entered" from="Sprite2D/Number_b" to="." method="_on_number_b_area_entered"]
+[connection signal="area_exited" from="Sprite2D/Number_b" to="." method="_on_number_b_area_exited"]
