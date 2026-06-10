@@ -2,10 +2,12 @@ extends Block
 
 class_name NumberBlock
 
+@onready var num_rich_text_label: RichTextLabel = $NumRichTextLabel
+
 @export var root : Node2D = null
 @export var value : float
+@export var is_dragable : bool = true
 
-@onready var num_rich_text_label: RichTextLabel = $NumRichTextLabel
 
 
 # only on Debug
@@ -13,20 +15,20 @@ func _ready() -> void:
 	update_value_label()
 
 func _process(delta: float) -> void:
-	if is_dragging:
+	if is_dragging and is_dragable:
 		global_position = lerp(global_position, get_global_mouse_position(), 20 * delta)
 
-func __init(_value : float, _block_type : String, _position : Vector2) -> void:
+func __init(_value : float, _position : Vector2) -> void:
 	self.value = _value
-	self.BlockType = _block_type
 	self.position = _position
+	#update_value_label()
 
 func get_value() -> float:
 	return value
 
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and is_dragable:
 		if event.button_index == MouseButton.MOUSE_BUTTON_LEFT:
 			if event.pressed and GAMEMANAGER.current_dragging == null:
 				GAMEMANAGER.block_in_mouse_area.clear()

@@ -7,12 +7,25 @@ var number_a : NumberBlock = null
 var temp_number_a : NumberBlock = null
 var number_b : NumberBlock = null
 var temp_number_b : NumberBlock = null
+var is_level_condition : bool = false
 
 @onready var target_number_a: Area2D = $Sprite2D/Number_a
 @onready var target_number_b: Area2D = $Sprite2D/Number_b
 
 @onready var bg_sprite_2d: Sprite2D = $Sprite2D
 
+func _ready() -> void:
+	pass
+
+func __init(num : NumberBlock, _pos : Vector2) -> void:
+	if NumberBlock:
+		self.number_a = num
+		self.is_level_condition = true
+		number_a.global_position = self.target_number_a.global_position
+		number_a.z_index = self.z_index + 1
+		number_a.is_dragable = false
+		GAMEMANAGER.NumberBlockContainer.add_child(num)
+	self.position = _pos
 
 func _physics_process(delta: float) -> void:
 	if number_a:
@@ -57,6 +70,9 @@ func update_result():
 		var number_b_value = number_b.get_value()
 		if number_a_value == number_b_value:
 			value = true
+			if is_level_condition:
+				print("Congratulation!")
+				
 		else: value = false
 	update_bgcolor()
 		

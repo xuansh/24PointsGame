@@ -57,7 +57,6 @@ fill_from = Vector2(1, 0)
 [node name="Area2D" type="Area2D" unique_id=2103194165 groups=["OperatorArea"]]
 monitoring = false
 script = ExtResource("1_8x3vv")
-op_type = "+"
 BlockType = "Operator"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1065494755]

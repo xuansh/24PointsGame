@@ -5,11 +5,18 @@ var tmp_dragging : Block = null
 var z_index : int = 1
 var on_top_block : Block = null
 var block_in_mouse_area : Array[Block]
+
 var NumberBlockContainer : Node2D = null
 var OperatorBlockContainer : Node2D = null
 var TransformBlockContainer : Node2D = null
+var ConditionBlockContainer : Node2D = null
+var MainCamera : Camera2D = null
 
-const NUMBER_BLOCK = preload("res://Screen/NumberBlock.tscn")
+const NUMBER_BLOCK = preload("uid://cxqvbxwc4eu0y")
+const CONDITION_BLOCK = preload("uid://yn6ve42dfa63")
+const OPERATOR_BLOCK = preload("uid://c7d2p864e5ld2")
+const TRANSFORM_BLOCK = preload("uid://bhgipd07tg5dr")
+
 
 
 func bring_to_front() -> void:
@@ -59,7 +66,7 @@ func _input(event: InputEvent) -> void:
 
 func spawn_a_NumberBlock(value : float, BlockType : String, WHO : Block = null) -> void:
 	var block : NumberBlock = NUMBER_BLOCK.instantiate()
-	block.__init(value, "Number", Vector2(WHO.position.x + 117, WHO.position.y + 190))
+	block.__init(value, Vector2(WHO.position.x + 117, WHO.position.y + 190))
 	NumberBlockContainer.add_child(block)
 
 func destory_a_Block(dest_block : Block):

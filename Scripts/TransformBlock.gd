@@ -12,6 +12,9 @@ var temp_operator_block : Area2D = null
 func _ready() -> void:
 	pass
 
+func __init(_pos : Vector2) -> void:
+	self.position = _pos
+
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("MOUSE_BUTTON_LEFT"):
 		if GAMEMANAGER.current_dragging == self:

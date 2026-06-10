@@ -19,6 +19,12 @@ func _ready() -> void:
 	update_rich_text_label(operator_rich_text_label, op_type)
 	update_rich_text_label(output_rich_text_label, str(output))
 
+func __init(_op_type : String, _position : Vector2):
+	self.op_type = _op_type
+	self.position = _position
+	update_rich_text_label(operator_rich_text_label, op_type)
+	update_rich_text_label(output_rich_text_label, str(output))
+
 func _physics_process(delta: float) -> void:
 	if input_a:
 		input_a.global_position = operand_a.global_position

@@ -16,13 +16,14 @@ general/updates_per_second=100
 [application]
 
 config/name="24PointGame"
-run/main_scene="uid://duxbvplv6d4r7"
+run/main_scene="uid://n0ecnkla7n02"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GAMEMANAGER="*uid://dq30ihf83e2kv"
+MAPINSANTIATE="*uid://b7vm05gnlj0da"
 
 [display]
 
