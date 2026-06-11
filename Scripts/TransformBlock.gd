@@ -70,5 +70,6 @@ func _on_operator_block_area_exited(area: Area2D) -> void:
 func _on_button_button_up() -> void:
 	if operator_block:
 		if operator_block.BlockType == 'Operator':
-			GAMEMANAGER.spawn_a_NumberBlock(operator_block.get_value(), "Number", self)
-			operator_block._queue_free_two_input()
+			if !is_nan(operator_block.get_value()):
+				GAMEMANAGER.spawn_a_NumberBlock(operator_block.get_value(), "Number", self)
+				operator_block._queue_free_two_input()

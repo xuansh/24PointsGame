@@ -5,15 +5,12 @@ extends Node
 var count = 0
 
 func load_level(l : int) -> void:
-	match l:
-		1:
-			var level = "uid://h63eni0jqevq"
-			get_tree().change_scene_to_packed(scn)
-			while GAMEMANAGER.OperatorBlockContainer == null:
-				await get_tree().process_frame
-			decrypt_csv(level)
-		_:
-			pass
+	var path = "res://Maps/" + str(l) + ".txt"
+	get_tree().change_scene_to_packed(scn)
+	while GAMEMANAGER.OperatorBlockContainer == null:
+		await get_tree().process_frame
+	decrypt_csv(path)
+
 
 func decrypt_csv(level : String):
 	var file = FileAccess.open(level, FileAccess.READ)
@@ -23,7 +20,7 @@ func decrypt_csv(level : String):
 		print(count)
 		instantiate_map(line)
 
-func instantiate_map(line  : PackedStringArray):
+func instantiate_map(line : PackedStringArray):
 	match line[0]:
 		"OperatorBlock":
 			var OB : OperatorBlock = GAMEMANAGER.OPERATOR_BLOCK.instantiate()

@@ -1,5 +1,0 @@
-OperatorBlock,+,"(-350,-230)",
-NumberBlock,15,"(0,-300)",
-NumberBlock,5,"(100,-300)",
-TransformBlock,"(-300,80)",
-ConditionBlock,t,20,"(170,0)"

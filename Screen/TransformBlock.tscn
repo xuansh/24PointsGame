@@ -36,6 +36,21 @@ width = 200
 height = 200
 fill_from = Vector2(1, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fnthp"]
+shader = ExtResource("2_wqv1i")
+shader_parameter/border_pixels = 2.0
+shader_parameter/bg_color = Color(0.28011748, 0.49281985, 0.98908323, 1)
+shader_parameter/border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_4dpdb"]
+offsets = PackedFloat32Array(0.3254717)
+colors = PackedColorArray(0, 0, 0.8450385, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3tncj"]
+gradient = SubResource("Gradient_4dpdb")
+width = 16
+height = 16
+
 [node name="Area2D" type="Area2D" unique_id=1918372112 groups=["Transform"]]
 script = ExtResource("1_qoy4r")
 BlockType = "Transform"
@@ -66,6 +81,17 @@ text = "Trans"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=588804708]
 stream = ExtResource("3_add87")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=562035217]
+offset_left = 104.0
+offset_top = -121.0
+offset_right = 113.0
+offset_bottom = 79.0
+
+[node name="Sprite2D" type="Sprite2D" parent="ColorRect" unique_id=414140488]
+material = SubResource("ShaderMaterial_fnthp")
+position = Vector2(5, 3)
+texture = SubResource("GradientTexture2D_3tncj")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="area_entered" from="Sprite2D/OperatorBlock" to="." method="_on_operator_block_area_entered"]

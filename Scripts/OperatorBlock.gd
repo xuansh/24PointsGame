@@ -7,7 +7,7 @@ var input_a : Area2D = null
 var input_b : Area2D = null
 var temp_input_a : Area2D = null
 var temp_input_b : Area2D = null
-var output : float = 0
+var output : float = NAN if self.op_type == "/" else 0.0
 
 
 @onready var operand_a: Area2D = $OperatorBlock/Operand_A
@@ -17,14 +17,13 @@ var output : float = 0
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready() -> void:
-	update_rich_text_label(operator_rich_text_label, op_type)
-	update_rich_text_label(output_rich_text_label, str(output))
+	pass
 
 func __init(_op_type : String, _position : Vector2):
 	self.op_type = _op_type
 	self.position = _position
 	update_rich_text_label(operator_rich_text_label, op_type)
-	update_rich_text_label(output_rich_text_label, str(output))
+	update_rich_text_label(output_rich_text_label, "NAN" if self.op_type == '/' else str(output))
 
 func _physics_process(delta: float) -> void:
 	if input_a:
@@ -85,7 +84,7 @@ func update_result():
 		'+':	output = a_value + b_value
 		'-':	output = a_value - b_value
 		'*':	output = a_value * b_value
-		# '/':	output = input_a.value - input_b.value
+		'/':	output = NAN if b_value == 0 else a_value / b_value
 
 	update_rich_text_label(output_rich_text_label, str(output))
 
@@ -126,6 +125,8 @@ func _on_operand_a_area_exited(area: Area2D) -> void:
 
 func _on_operand_b_area_entered(area: Area2D) -> void:
 	if area.is_in_group("NumberArea") and input_b == null and area.is_dragging:
+		if self.op_type == '/' and area.value == 0:
+			return
 		temp_input_b = area
 
 func _on_operand_b_area_exited(area: Area2D) -> void:
