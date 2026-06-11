@@ -8,6 +8,7 @@ var temp_operator_block : Area2D = null
 @export var root : Node2D = null
 
 @onready var target_operator_block : Area2D = $Sprite2D/OperatorBlock
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready() -> void:
 	pass
@@ -52,6 +53,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 					is_dragging = true
 					GAMEMANAGER.current_dragging = self
 					GAMEMANAGER.bring_to_front()
+					#audio_stream_player_2d.play()
 			else:
 				is_dragging = false
 				GAMEMANAGER.current_dragging = null

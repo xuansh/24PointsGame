@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bdb0b411hva2n" path="res://Scripts/OperatorBlock.gd" id="1_8x3vv"]
 [ext_resource type="Shader" uid="uid://87mvxsilk1rf" path="res://Shaders/Block.gdshader" id="2_rclpd"]
 [ext_resource type="FontFile" uid="uid://bdptysj6ngk46" path="res://Fonts/Frick0.3-Regular-3.otf" id="3_sed4m"]
+[ext_resource type="AudioStream" uid="uid://n858v7olafo8" path="res://SoundEffects/die-throw-3.ogg" id="4_8lnsa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8x3vv"]
 size = Vector2(200, 200)
@@ -100,6 +101,7 @@ theme_override_font_sizes/normal_font_size = 40
 text = "+"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="OutputRichTextLabel" type="RichTextLabel" parent="." unique_id=160258461]
 offset_left = -90.0
@@ -114,6 +116,9 @@ text = "0.0"
 fit_content = true
 scroll_active = false
 horizontal_alignment = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=411059200]
+stream = ExtResource("4_8lnsa")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="area_entered" from="OperatorBlock/Operand_A" to="." method="_on_operand_a_area_entered"]

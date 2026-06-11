@@ -11,8 +11,8 @@ var is_level_condition : bool = false
 
 @onready var target_number_a: Area2D = $Sprite2D/Number_a
 @onready var target_number_b: Area2D = $Sprite2D/Number_b
-
 @onready var bg_sprite_2d: Sprite2D = $Sprite2D
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready() -> void:
 	pass
@@ -89,6 +89,8 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 					is_dragging = true
 					GAMEMANAGER.current_dragging = self
 					GAMEMANAGER.bring_to_front()
+					#audio_stream_player_2d.play()
+
 			else:
 				is_dragging = false	
 				if GAMEMANAGER.current_dragging == self:

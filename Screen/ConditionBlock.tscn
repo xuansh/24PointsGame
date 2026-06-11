@@ -3,6 +3,7 @@
 [ext_resource type="Shader" uid="uid://87mvxsilk1rf" path="res://Shaders/Block.gdshader" id="1_8qr1n"]
 [ext_resource type="Script" uid="uid://cantn4abdjhvm" path="res://Scripts/ConditionBlock.gd" id="1_d1jty"]
 [ext_resource type="FontFile" uid="uid://b4o4vsl1jl7hq" path="res://Fonts/umbasoft-altbold-2.otf" id="2_h2s07"]
+[ext_resource type="AudioStream" uid="uid://n858v7olafo8" path="res://SoundEffects/die-throw-3.ogg" id="4_1xru5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6xcx0"]
 size = Vector2(200, 99)
@@ -84,6 +85,9 @@ theme_override_font_sizes/normal_font_size = 40
 text = "="
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1054808586]
+stream = ExtResource("4_1xru5")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="area_entered" from="Sprite2D/Number_a" to="." method="_on_number_a_area_entered"]

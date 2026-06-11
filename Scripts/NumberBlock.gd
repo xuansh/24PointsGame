@@ -3,6 +3,7 @@ extends Block
 class_name NumberBlock
 
 @onready var num_rich_text_label: RichTextLabel = $NumRichTextLabel
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @export var root : Node2D = null
 @export var value : float
@@ -39,6 +40,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 					is_dragging = true
 					GAMEMANAGER.current_dragging = self
 					GAMEMANAGER.bring_to_front()
+					#audio_stream_player_2d.play()
 			else:
 				is_dragging = false	
 				if GAMEMANAGER.current_dragging == self:

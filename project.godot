@@ -18,6 +18,7 @@ general/updates_per_second=100
 config/name="24PointGame"
 run/main_scene="uid://n0ecnkla7n02"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/bg_color=Color(0.9490196, 0.94509804, 0.93333334, 1)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -28,6 +29,7 @@ MAPINSANTIATE="*uid://b7vm05gnlj0da"
 [display]
 
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [global_group]
 
@@ -58,3 +60,4 @@ common/max_physics_steps_per_frame=16
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0.9490196, 0.94509804, 0.93333334, 1)

@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://pus3a404htcq" path="res://Scripts/TransformBlock.gd" id="1_qoy4r"]
 [ext_resource type="Shader" uid="uid://87mvxsilk1rf" path="res://Shaders/Block.gdshader" id="2_wqv1i"]
+[ext_resource type="AudioStream" uid="uid://n858v7olafo8" path="res://SoundEffects/die-throw-3.ogg" id="3_add87"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bxt5k"]
 size = Vector2(300, 300)
@@ -62,6 +63,9 @@ offset_top = 97.0
 offset_right = 131.0
 offset_bottom = 128.0
 text = "Trans"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=588804708]
+stream = ExtResource("3_add87")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="area_entered" from="Sprite2D/OperatorBlock" to="." method="_on_operator_block_area_entered"]

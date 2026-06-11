@@ -14,6 +14,7 @@ var output : float = 0
 @onready var operand_b: Area2D = $OperatorBlock/Operand_B
 @onready var operator_rich_text_label: RichTextLabel = $OperatorRichTextLabel
 @onready var output_rich_text_label: RichTextLabel = $OutputRichTextLabel
+@onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready() -> void:
 	update_rich_text_label(operator_rich_text_label, op_type)
@@ -100,6 +101,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 					is_dragging = true
 					GAMEMANAGER.current_dragging = self
 					GAMEMANAGER.bring_to_front()
+					#audio_stream_player_2d.play()
 			else:
 				is_dragging = false
 				GAMEMANAGER.current_dragging = null

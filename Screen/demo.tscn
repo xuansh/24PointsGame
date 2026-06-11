@@ -7,16 +7,23 @@
 
 [node name="Game" type="Node2D" unique_id=743338457]
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=693566276]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=275298757]
 
-[node name="OperatorBlockContainer" type="Node2D" parent="Camera2D" unique_id=111626236]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=856760330]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.5132329, 0.5132329, 0.5132329, 1)
+
+[node name="World" type="Node2D" parent="." unique_id=1375740735]
+
+[node name="OperatorBlockContainer" type="Node2D" parent="World" unique_id=111626236]
 script = ExtResource("1_1or8l")
 
-[node name="NumberBlockContainer" type="Node2D" parent="Camera2D" unique_id=812479098]
+[node name="NumberBlockContainer" type="Node2D" parent="World" unique_id=812479098]
 script = ExtResource("2_b8wkq")
 
-[node name="TransformBlockContainer" type="Node2D" parent="Camera2D" unique_id=2030178264]
+[node name="TransformBlockContainer" type="Node2D" parent="World" unique_id=2030178264]
 script = ExtResource("5_5af0k")
 
-[node name="ConditionBlockContain" type="Node2D" parent="Camera2D" unique_id=1909199166]
+[node name="ConditionBlockContain" type="Node2D" parent="World" unique_id=1909199166]
 script = ExtResource("4_b8wkq")

@@ -5,19 +5,46 @@
 [ext_resource type="Script" uid="uid://c5du8eq62ykqq" path="res://Scripts/Container/condition_block_contain.gd" id="4_b8wkq"]
 [ext_resource type="Script" uid="uid://dtr7ygc03in5a" path="res://Scripts/Container/transform_block_container.gd" id="5_5af0k"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c542h"]
+bg_color = Color(0, 0, 0, 1)
+draw_center = false
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 45
+corner_radius_top_right = 45
+corner_radius_bottom_right = 45
+corner_radius_bottom_left = 45
+
 [node name="Game" type="Node2D" unique_id=743338457]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=693566276]
-zoom = Vector2(0.7, 0.7)
+zoom = Vector2(0.85, 0.85)
 
-[node name="OperatorBlockContainer" type="Node2D" parent="Camera2D" unique_id=111626236]
+[node name="World" type="Node2D" parent="." unique_id=1681044871]
+
+[node name="OperatorBlockContainer" type="Node2D" parent="World" unique_id=111626236]
 script = ExtResource("1_1or8l")
 
-[node name="NumberBlockContainer" type="Node2D" parent="Camera2D" unique_id=812479098]
+[node name="NumberBlockContainer" type="Node2D" parent="World" unique_id=812479098]
 script = ExtResource("2_b8wkq")
 
-[node name="TransformBlockContainer" type="Node2D" parent="Camera2D" unique_id=2030178264]
+[node name="TransformBlockContainer" type="Node2D" parent="World" unique_id=2030178264]
 script = ExtResource("5_5af0k")
 
-[node name="ConditionBlockContain" type="Node2D" parent="Camera2D" unique_id=1909199166]
+[node name="ConditionBlockContain" type="Node2D" parent="World" unique_id=1909199166]
 script = ExtResource("4_b8wkq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1077564784]
+visible = false
+
+[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=656843758]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_c542h")
