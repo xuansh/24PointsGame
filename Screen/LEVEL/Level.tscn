@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://duxbvplv6d4r7"]
 
 [ext_resource type="Script" uid="uid://yw5k0qqf566x" path="res://Scripts/Container/operator_block_container.gd" id="1_1or8l"]
+[ext_resource type="Script" uid="uid://bdlkci2aya03i" path="res://Scripts/main_camera.gd" id="1_7uvh1"]
 [ext_resource type="Script" uid="uid://b2o3nr53jl0gq" path="res://Scripts/Container/number_block_container.gd" id="2_b8wkq"]
 [ext_resource type="Script" uid="uid://c5du8eq62ykqq" path="res://Scripts/Container/condition_block_contain.gd" id="4_b8wkq"]
 [ext_resource type="Script" uid="uid://dtr7ygc03in5a" path="res://Scripts/Container/transform_block_container.gd" id="5_5af0k"]
@@ -22,6 +23,7 @@ corner_radius_bottom_left = 45
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=693566276]
 zoom = Vector2(0.85, 0.85)
+script = ExtResource("1_7uvh1")
 
 [node name="World" type="Node2D" parent="." unique_id=1681044871]
 

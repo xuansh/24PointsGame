@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://n858v7olafo8" path="res://SoundEffects/die-throw-3.ogg" id="4_1xru5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6xcx0"]
-size = Vector2(200, 99)
+size = Vector2(230, 131)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h2s07"]
 shader = ExtResource("1_8qr1n")

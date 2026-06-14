@@ -64,6 +64,7 @@ func _input(event: InputEvent) -> void:
 			else:
 				block_in_mouse_area = []
 
+
 func spawn_a_NumberBlock(value : float, BlockType : String, WHO : Block = null) -> void:
 	var block : NumberBlock = NUMBER_BLOCK.instantiate()
 	block.__init(value, Vector2(WHO.position.x + 117, WHO.position.y + 190))

@@ -36,6 +36,12 @@ width = 200
 height = 200
 fill_from = Vector2(1, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4dpdb"]
+shader = ExtResource("2_wqv1i")
+shader_parameter/border_pixels = 0.05
+shader_parameter/bg_color = Color(0.8084242, 0.1448409, 0.98864335, 1)
+shader_parameter/border_color = Color(0.17701465, 0.34974465, 0, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fnthp"]
 shader = ExtResource("2_wqv1i")
 shader_parameter/border_pixels = 2.0
@@ -72,17 +78,28 @@ shape = SubResource("RectangleShape2D_qoy4r")
 texture = SubResource("GradientTexture2D_add87")
 
 [node name="Button" type="Button" parent="." unique_id=972987877]
+material = SubResource("ShaderMaterial_4dpdb")
 custom_minimum_size = Vector2(30, 30)
-offset_left = 79.0
-offset_top = 97.0
+offset_left = 91.0
+offset_top = 93.0
 offset_right = 131.0
-offset_bottom = 128.0
+offset_bottom = 132.0
+icon_alignment = 1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Button" unique_id=218812711]
+visible = false
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 32.0
 text = "Trans"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=588804708]
 stream = ExtResource("3_add87")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=562035217]
+visible = false
 offset_left = 104.0
 offset_top = -121.0
 offset_right = 113.0
