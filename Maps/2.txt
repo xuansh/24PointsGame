@@ -1,0 +1,6 @@
+ConditionBlock,t,24,"(170,0)",
+OperatorBlock,*,"(-350,-230)",
+NumberBlock,4,"(0,-300)",
+NumberBlock,2,"(100,-300)",
+NumberBlock,3,"(200,-300)",
+TransformBlock,"(-300,80)"
