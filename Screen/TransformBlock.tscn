@@ -38,9 +38,9 @@ fill_from = Vector2(1, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4dpdb"]
 shader = ExtResource("2_wqv1i")
-shader_parameter/border_pixels = 0.05
-shader_parameter/bg_color = Color(0.8084242, 0.1448409, 0.98864335, 1)
-shader_parameter/border_color = Color(0.17701465, 0.34974465, 0, 1)
+shader_parameter/border_pixels = 0.1
+shader_parameter/bg_color = Color(0.0512, 0.16, 0.0512, 1)
+shader_parameter/border_color = Color(0.036996327, 0.10774139, 6.016344e-09, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fnthp"]
 shader = ExtResource("2_wqv1i")

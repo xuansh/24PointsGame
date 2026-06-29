@@ -135,3 +135,11 @@ func _on_operand_b_area_exited(area: Area2D) -> void:
 
 func update_rich_text_label(label : RichTextLabel, text : String):
 	label.text = text
+
+func able_to_output_num() -> bool:
+	if op_type == '*':
+		if input_a or input_b:
+			return true
+	elif input_a and input_b:
+		return true
+	return false

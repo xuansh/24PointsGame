@@ -9,6 +9,7 @@ var temp_operator_block : Area2D = null
 
 @onready var target_operator_block : Area2D = $Sprite2D/OperatorBlock
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@onready var transform_button: Button = $Button
 
 func _ready() -> void:
 	pass
@@ -28,14 +29,26 @@ func _process(delta: float) -> void:
 					operator_block.input_b.global_position = operator_block.operand_b.global_position
 		if GAMEMANAGER.current_dragging == operator_block:
 			operator_block = null
+			update_transform_color(Color(0.078, 0.16, 0.051, 1.0))
+			
 	
 	if Input.is_action_just_released("MOUSE_BUTTON_LEFT"):
+		if operator_block:
+			if not operator_block.able_to_output_num():
+				update_transform_color(Color(0.078, 0.16, 0.051, 1.0))
 		if target_operator_block.has_overlapping_areas() and temp_operator_block != null and target_operator_block.global_position.distance_to(temp_operator_block.global_position) < (target_operator_block.get_child(0).shape.size.x * 0.7):
 			var tween = create_tween()
 			tween.set_trans(Tween.TRANS_BACK)
 			tween.set_ease(Tween.EASE_OUT)
 			tween.tween_property(temp_operator_block, "global_position", target_operator_block.global_position, 0.1)
 			operator_block = temp_operator_block
+			if operator_block.able_to_output_num():
+				update_transform_color(Color(0.569, 1.0, 0.427, 1.0))
+		
+
+func update_transform_color(color : Color):
+	var mat = transform_button.material as ShaderMaterial
+	mat.set_shader_parameter("bg_color", color)
 
 func output_NumberBlock() -> void:
 	if operator_block:
@@ -70,6 +83,8 @@ func _on_operator_block_area_exited(area: Area2D) -> void:
 func _on_button_button_up() -> void:
 	if operator_block:
 		if operator_block.BlockType == 'Operator':
-			if !is_nan(operator_block.get_value()):
-				GAMEMANAGER.spawn_a_NumberBlock(operator_block.get_value(), "Number", self)
-				operator_block._queue_free_two_input()
+			if operator_block.able_to_output_num():
+				if !is_nan(operator_block.get_value()):
+					GAMEMANAGER.spawn_a_NumberBlock(operator_block.get_value(), "Number", self)
+					operator_block._queue_free_two_input()
+					update_transform_color(Color(0.078, 0.16, 0.051, 1.0))

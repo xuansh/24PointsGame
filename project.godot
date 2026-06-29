@@ -17,7 +17,7 @@ general/updates_per_second=100
 
 config/name="24PointGame"
 run/main_scene="uid://n0ecnkla7n02"
-config/features=PackedStringArray("4.6", "Forward Plus")
+config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
