@@ -17,6 +17,7 @@ const CONDITION_BLOCK = preload("uid://yn6ve42dfa63")
 const OPERATOR_BLOCK = preload("uid://c7d2p864e5ld2")
 const TRANSFORM_BLOCK = preload("uid://bhgipd07tg5dr")
 
+const LevelSelection = preload("uid://bx16mv5li33al")
 
 
 func bring_to_front() -> void:
@@ -75,4 +76,5 @@ func destory_a_Block(dest_block : Block):
 	dest_block.queue_free()
 	
 
-	
+func change_to_level_selection_scene():
+	get_tree().change_scene_to_packed(LevelSelection)

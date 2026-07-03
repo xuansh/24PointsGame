@@ -59,3 +59,17 @@ func instantiate_map(line : PackedStringArray):
 func string_to_vector2(_str):
 	var stri = _str.strip_edges().trim_prefix("(").trim_suffix(")").split(",")
 	return Vector2(float(stri[0]), float(stri[1]))
+	
+
+func return_all_map_list() -> Array[String]:
+	var filepath_arr : Array[String] = []
+	var path : String = "res://Maps"
+	var dir := DirAccess.open(path)
+	if dir:
+		dir.list_dir_begin()
+		var filename = dir.get_next()
+		while filename != "":
+			print_rich("[color=green]find: %s[/color]" %filename)
+			filepath_arr.append(filename)
+			filename = dir.get_next()
+	return filepath_arr

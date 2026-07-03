@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://yn6ve42dfa63"]
 
-[ext_resource type="Shader" uid="uid://87mvxsilk1rf" path="res://Shaders/Block.gdshader" id="1_8qr1n"]
-[ext_resource type="Script" uid="uid://cantn4abdjhvm" path="res://Scripts/ConditionBlock.gd" id="1_d1jty"]
-[ext_resource type="FontFile" uid="uid://b4o4vsl1jl7hq" path="res://Fonts/umbasoft-altbold-2.otf" id="2_h2s07"]
-[ext_resource type="AudioStream" uid="uid://n858v7olafo8" path="res://SoundEffects/die-throw-3.ogg" id="4_1xru5"]
+[ext_resource type="Script" uid="uid://cantn4abdjhvm" path="res://Scene/Block/ConditionBlock.gd" id="1_07irj"]
+[ext_resource type="Shader" uid="uid://blh3mvn8utuvu" path="res://Shaders/Block.gdshader" id="2_vkfrj"]
+[ext_resource type="FontFile" uid="uid://b4o4vsl1jl7hq" path="res://Fonts/umbasoft-altbold-2.otf" id="3_cpjl4"]
+[ext_resource type="AudioStream" uid="uid://n858v7olafo8" path="res://SoundEffects/die-throw-3.ogg" id="4_lkwyn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6xcx0"]
 size = Vector2(230, 131)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_h2s07"]
-shader = ExtResource("1_8qr1n")
+shader = ExtResource("2_vkfrj")
 shader_parameter/border_pixels = 5.0
 shader_parameter/bg_color = Color(0.8862745, 0.19607843, 0.29803923, 1)
 shader_parameter/border_color = Color(0, 0, 0, 1)
@@ -28,7 +28,7 @@ fill_from = Vector2(0.60470086, 0.20299146)
 size = Vector2(64, 64)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d1jty"]
-shader = ExtResource("1_8qr1n")
+shader = ExtResource("2_vkfrj")
 shader_parameter/border_pixels = 3.0
 shader_parameter/bg_color = Color(0.22745098, 0.46666667, 0.62352943, 1)
 shader_parameter/border_color = Color(0, 0, 0, 1)
@@ -42,7 +42,7 @@ gradient = SubResource("Gradient_1xru5")
 fill_from = Vector2(0.51282054, 0.20940171)
 
 [node name="Area2D" type="Area2D" unique_id=1520528625 groups=["ConditionArea"]]
-script = ExtResource("1_d1jty")
+script = ExtResource("1_07irj")
 BlockType = "Condition"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1175635274]
@@ -80,14 +80,14 @@ offset_right = 20.0
 offset_bottom = 20.0
 pivot_offset = Vector2(20, 20)
 theme_override_constants/paragraph_separation = -1
-theme_override_fonts/normal_font = ExtResource("2_h2s07")
+theme_override_fonts/normal_font = ExtResource("3_cpjl4")
 theme_override_font_sizes/normal_font_size = 40
 text = "="
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1054808586]
-stream = ExtResource("4_1xru5")
+stream = ExtResource("4_lkwyn")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="area_entered" from="Sprite2D/Number_a" to="." method="_on_number_a_area_entered"]

@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://c7d2p864e5ld2"]
 
-[ext_resource type="Script" uid="uid://bdb0b411hva2n" path="res://Scripts/OperatorBlock.gd" id="1_8x3vv"]
-[ext_resource type="Shader" uid="uid://87mvxsilk1rf" path="res://Shaders/Block.gdshader" id="2_rclpd"]
-[ext_resource type="FontFile" uid="uid://bdptysj6ngk46" path="res://Fonts/Frick0.3-Regular-3.otf" id="3_sed4m"]
-[ext_resource type="AudioStream" uid="uid://n858v7olafo8" path="res://SoundEffects/die-throw-3.ogg" id="4_8lnsa"]
+[ext_resource type="Script" uid="uid://bp5hxyglxepci" path="res://Scene/Block/OperatorBlock.gd" id="1_elnie"]
+[ext_resource type="Shader" uid="uid://blh3mvn8utuvu" path="res://Shaders/Block.gdshader" id="2_ufdj0"]
+[ext_resource type="FontFile" uid="uid://bdptysj6ngk46" path="res://Fonts/Frick0.3-Regular-3.otf" id="3_huvw1"]
+[ext_resource type="AudioStream" uid="uid://n858v7olafo8" path="res://SoundEffects/die-throw-3.ogg" id="4_mhlx0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8x3vv"]
 size = Vector2(200, 200)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sed4m"]
-shader = ExtResource("2_rclpd")
+shader = ExtResource("2_ufdj0")
 shader_parameter/border_pixels = 5.0
 shader_parameter/bg_color = Color(0.9529412, 0.31764707, 0.20784314, 1)
 shader_parameter/border_color = Color(0, 0, 0, 1)
@@ -29,7 +29,7 @@ fill_to = Vector2(0.06768559, 0.941048)
 size = Vector2(64, 64)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rclpd"]
-shader = ExtResource("2_rclpd")
+shader = ExtResource("2_ufdj0")
 shader_parameter/border_pixels = 3.0
 shader_parameter/bg_color = Color(0.99215686, 0.654902, 0.31764707, 1)
 shader_parameter/border_color = Color(0, 0, 0, 1)
@@ -46,7 +46,7 @@ fill_from = Vector2(1, 0)
 size = Vector2(64, 64)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8lnsa"]
-shader = ExtResource("2_rclpd")
+shader = ExtResource("2_ufdj0")
 shader_parameter/border_pixels = 3.0
 shader_parameter/bg_color = Color(0.99215686, 0.654902, 0.31764707, 1)
 shader_parameter/border_color = Color(0, 0, 0, 1)
@@ -57,7 +57,7 @@ fill_from = Vector2(1, 0)
 
 [node name="Area2D" type="Area2D" unique_id=2103194165 groups=["OperatorArea"]]
 monitoring = false
-script = ExtResource("1_8x3vv")
+script = ExtResource("1_elnie")
 BlockType = "Operator"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1065494755]
@@ -96,7 +96,7 @@ pivot_offset = Vector2(20, 20)
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.29803923, 0.10980392, 0.25490198, 1)
 theme_override_constants/paragraph_separation = -10
-theme_override_fonts/normal_font = ExtResource("3_sed4m")
+theme_override_fonts/normal_font = ExtResource("3_huvw1")
 theme_override_font_sizes/normal_font_size = 40
 text = "+"
 horizontal_alignment = 1
@@ -110,14 +110,14 @@ offset_right = 91.0
 pivot_offset = Vector2(181, 0)
 mouse_filter = 2
 theme_override_colors/default_color = Color(0.29803923, 0.10980392, 0.25490198, 1)
-theme_override_fonts/normal_font = ExtResource("3_sed4m")
+theme_override_fonts/normal_font = ExtResource("3_huvw1")
 theme_override_font_sizes/normal_font_size = 48
 fit_content = true
 scroll_active = false
 horizontal_alignment = 2
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=411059200]
-stream = ExtResource("4_8lnsa")
+stream = ExtResource("4_mhlx0")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="area_entered" from="OperatorBlock/Operand_A" to="." method="_on_operand_a_area_entered"]

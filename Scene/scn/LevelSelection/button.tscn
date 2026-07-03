@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://b0khynwj31ywl"]
+
+[ext_resource type="FontFile" uid="uid://bdptysj6ngk46" path="res://Fonts/Frick0.3-Regular-3.otf" id="1_lgeku"]
+[ext_resource type="Script" uid="uid://dm3rlumkmnuqr" path="res://Scene/scn/LevelSelection/button.gd" id="2_p5k58"]
+
+[node name="Button" type="Button" unique_id=2146440515]
+custom_minimum_size = Vector2(300, 160)
+theme_override_fonts/font = ExtResource("1_lgeku")
+theme_override_font_sizes/font_size = 48
+script = ExtResource("2_p5k58")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

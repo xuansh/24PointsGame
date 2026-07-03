@@ -16,14 +16,14 @@ general/updates_per_second=100
 [application]
 
 config/name="24PointGame"
-run/main_scene="uid://n0ecnkla7n02"
+run/main_scene="uid://c5ndcdlfhb8qn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-GAMEMANAGER="*uid://dq30ihf83e2kv"
 MAPINSANTIATE="*uid://b7vm05gnlj0da"
+GAMEMANAGER="*uid://dq30ihf83e2kv"
 
 [display]
 
@@ -47,6 +47,10 @@ MOUSE_BUTTON_LEFT={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(721, 37),"global_position":Vector2(740, 133),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/locale_filter_mode=0
 
 [layer_names]
 

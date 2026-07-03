@@ -1,14 +1,14 @@
 [gd_scene format=3 uid="uid://bhgipd07tg5dr"]
 
-[ext_resource type="Script" uid="uid://pus3a404htcq" path="res://Scripts/TransformBlock.gd" id="1_qoy4r"]
-[ext_resource type="Shader" uid="uid://87mvxsilk1rf" path="res://Shaders/Block.gdshader" id="2_wqv1i"]
-[ext_resource type="AudioStream" uid="uid://n858v7olafo8" path="res://SoundEffects/die-throw-3.ogg" id="3_add87"]
+[ext_resource type="Script" uid="uid://baclr3lks6xqd" path="res://Scene/Block/TransformBlock.gd" id="1_jnaro"]
+[ext_resource type="Shader" uid="uid://blh3mvn8utuvu" path="res://Shaders/Block.gdshader" id="2_w4rjl"]
+[ext_resource type="AudioStream" uid="uid://n858v7olafo8" path="res://SoundEffects/die-throw-3.ogg" id="3_07pj6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bxt5k"]
 size = Vector2(300, 300)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_add87"]
-shader = ExtResource("2_wqv1i")
+shader = ExtResource("2_w4rjl")
 shader_parameter/border_pixels = 5.0
 shader_parameter/bg_color = Color(0.3137255, 0.5882353, 0, 1)
 shader_parameter/border_color = Color(0, 0, 0, 1)
@@ -37,13 +37,13 @@ height = 200
 fill_from = Vector2(1, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4dpdb"]
-shader = ExtResource("2_wqv1i")
+shader = ExtResource("2_w4rjl")
 shader_parameter/border_pixels = 0.1
 shader_parameter/bg_color = Color(0.0512, 0.16, 0.0512, 1)
 shader_parameter/border_color = Color(0.036996327, 0.10774139, 6.016344e-09, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fnthp"]
-shader = ExtResource("2_wqv1i")
+shader = ExtResource("2_w4rjl")
 shader_parameter/border_pixels = 2.0
 shader_parameter/bg_color = Color(0.28011748, 0.49281985, 0.98908323, 1)
 shader_parameter/border_color = Color(0, 0, 0, 1)
@@ -58,7 +58,7 @@ width = 16
 height = 16
 
 [node name="Area2D" type="Area2D" unique_id=1918372112 groups=["Transform"]]
-script = ExtResource("1_qoy4r")
+script = ExtResource("1_jnaro")
 BlockType = "Transform"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1594444592]
@@ -96,7 +96,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=588804708]
-stream = ExtResource("3_add87")
+stream = ExtResource("3_07pj6")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=562035217]
 visible = false
