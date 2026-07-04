@@ -7,5 +7,5 @@ func _enter_tree() -> void:
 		text = str(level_id)
 
 func _on_pressed() -> void:
-	MAPINSANTIATE.load_level(level_id)
+	MAPINSTANTIATE.load_level(level_id)
 	

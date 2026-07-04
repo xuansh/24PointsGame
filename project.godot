@@ -22,8 +22,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-MAPINSANTIATE="*uid://b7vm05gnlj0da"
-GAMEMANAGER="*uid://dq30ihf83e2kv"
+GAMEMANAGER="*uid://o7lctix8j2v3"
+MAPINSTANTIATE="*uid://8ci5t57bi6sn"
 
 [display]
 

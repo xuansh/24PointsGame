@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c5ndcdlfhb8qn"]
 
-[ext_resource type="Script" uid="uid://kheqb28as1kp" path="res://Scene/scn/Welcome/welcome_screen.gd" id="1_wqw80"]
+[ext_resource type="Script" uid="uid://rjg3mgnl8821" path="res://Scene/scn/Welcome/welcome_screen.gd" id="1_wqw80"]
 [ext_resource type="FontFile" uid="uid://bdptysj6ngk46" path="res://Fonts/Frick0.3-Regular-3.otf" id="2_er1ri"]
 
 [node name="Welcome" type="Control" unique_id=2146573409]

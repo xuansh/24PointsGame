@@ -4,7 +4,7 @@ var BUTTON = preload("uid://b0khynwj31ywl")
 @onready var grid_container: GridContainer = $Panel/ScrollContainer/GridContainer
 
 func _ready() -> void:
-	var list : Array[String] = MAPINSANTIATE.return_all_map_list()
+	var list : Array[String] = MAPINSTANTIATE.return_all_map_list()
 	for i in list.size():
 		var filename_noextension = list[i].split('.')[0]
 		if filename_noextension == str(i + 1):
