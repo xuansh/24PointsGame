@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cxqvbxwc4eu0y"]
 
-[ext_resource type="Script" uid="uid://br4y0ieyjliec" path="res://Scene/Block/NumberBlock.gd" id="1_xrsuq"]
+[ext_resource type="Script" uid="uid://ixb78eahh6gp" path="res://Scene/Block/NumberBlock.gd" id="1_xrsuq"]
 [ext_resource type="Shader" uid="uid://blh3mvn8utuvu" path="res://Shaders/Block.gdshader" id="2_c0rc6"]
 [ext_resource type="FontFile" uid="uid://bdptysj6ngk46" path="res://Fonts/Frick0.3-Regular-3.otf" id="3_rjpjj"]
 [ext_resource type="AudioStream" uid="uid://n858v7olafo8" path="res://SoundEffects/die-throw-3.ogg" id="4_8bwy4"]
@@ -10,8 +10,8 @@ size = Vector2(64, 64)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q4gel"]
 shader = ExtResource("2_c0rc6")
-shader_parameter/border_pixels = 3.0
-shader_parameter/bg_color = Color(0.99215686, 0.6627451, 0.13725491, 1)
+shader_parameter/border_pixels = 5.0
+shader_parameter/bg_color = Color(1, 0.6666667, 0.23921569, 1)
 shader_parameter/border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_uphjk"]
@@ -41,11 +41,14 @@ offset_right = 29.0
 offset_bottom = 29.0
 pivot_offset = Vector2(20, 20)
 mouse_filter = 2
-theme_override_colors/default_color = Color(0.3882353, 0.02745098, 0.15294118, 1)
+theme_override_colors/default_color = Color(0.23137255, 0.14117648, 0.07450981, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/paragraph_separation = -8
+theme_override_constants/outline_size = 10
 theme_override_fonts/normal_font = ExtResource("3_rjpjj")
 theme_override_font_sizes/normal_font_size = 38
 bbcode_enabled = true
+text = "16"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -22,7 +22,6 @@ corner_radius_bottom_left = 45
 [node name="Game" type="Node2D" unique_id=743338457]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=693566276]
-zoom = Vector2(0.85, 0.85)
 script = ExtResource("1_xfpj2")
 
 [node name="World" type="Node2D" parent="." unique_id=1681044871]

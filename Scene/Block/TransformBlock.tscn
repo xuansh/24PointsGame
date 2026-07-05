@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bhgipd07tg5dr"]
 
-[ext_resource type="Script" uid="uid://baclr3lks6xqd" path="res://Scene/Block/TransformBlock.gd" id="1_jnaro"]
+[ext_resource type="Script" uid="uid://b6a1tcbqa0kdw" path="res://Scene/Block/TransformBlock.gd" id="1_jnaro"]
 [ext_resource type="Shader" uid="uid://blh3mvn8utuvu" path="res://Shaders/Block.gdshader" id="2_w4rjl"]
 [ext_resource type="AudioStream" uid="uid://n858v7olafo8" path="res://SoundEffects/die-throw-3.ogg" id="3_07pj6"]
 
@@ -10,7 +10,7 @@ size = Vector2(300, 300)
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_add87"]
 shader = ExtResource("2_w4rjl")
 shader_parameter/border_pixels = 5.0
-shader_parameter/bg_color = Color(0.3137255, 0.5882353, 0, 1)
+shader_parameter/bg_color = Color(0.3529412, 0.60784316, 0.09411765, 1)
 shader_parameter/border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_bxt5k"]
