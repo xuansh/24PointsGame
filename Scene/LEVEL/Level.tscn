@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://duxbvplv6d4r7"]
 
-[ext_resource type="Script" uid="uid://bdlkci2aya03i" path="res://Scene/LEVEL/main_camera.gd" id="1_xfpj2"]
-[ext_resource type="Script" uid="uid://yw5k0qqf566x" path="res://Scene/LEVEL/Container/operator_block_container.gd" id="2_xfpj2"]
-[ext_resource type="Script" uid="uid://b2o3nr53jl0gq" path="res://Scene/LEVEL/Container/number_block_container.gd" id="3_fdw5n"]
-[ext_resource type="Script" uid="uid://dtr7ygc03in5a" path="res://Scene/LEVEL/Container/transform_block_container.gd" id="4_yjdbb"]
-[ext_resource type="Script" uid="uid://c5du8eq62ykqq" path="res://Scene/LEVEL/Container/condition_block_contain.gd" id="5_5my81"]
+[ext_resource type="Script" uid="uid://dt67i73s3lguj" path="res://Scene/LEVEL/main_camera.gd" id="1_xfpj2"]
+[ext_resource type="Script" uid="uid://bm2ewmr4ae6vd" path="res://Scene/LEVEL/Container/operator_block_container.gd" id="2_xfpj2"]
+[ext_resource type="Script" uid="uid://dxitjg1n2n2jc" path="res://Scene/LEVEL/Container/number_block_container.gd" id="3_fdw5n"]
+[ext_resource type="Script" uid="uid://cs86i1xphtbug" path="res://Scene/LEVEL/Container/transform_block_container.gd" id="4_yjdbb"]
+[ext_resource type="Script" uid="uid://dp0k4wqeaj13i" path="res://Scene/LEVEL/Container/condition_block_contain.gd" id="5_5my81"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c542h"]
 bg_color = Color(0, 0, 0, 1)

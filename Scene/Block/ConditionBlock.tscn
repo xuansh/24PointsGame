@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://yn6ve42dfa63"]
 
-[ext_resource type="Script" uid="uid://cantn4abdjhvm" path="res://Scene/Block/ConditionBlock.gd" id="1_07irj"]
+[ext_resource type="Script" uid="uid://bf3o7rhdwolu3" path="res://Scene/Block/ConditionBlock.gd" id="1_07irj"]
 [ext_resource type="Shader" uid="uid://blh3mvn8utuvu" path="res://Shaders/Block.gdshader" id="2_vkfrj"]
 [ext_resource type="FontFile" uid="uid://b4o4vsl1jl7hq" path="res://Fonts/umbasoft-altbold-2.otf" id="3_cpjl4"]
 [ext_resource type="AudioStream" uid="uid://n858v7olafo8" path="res://SoundEffects/die-throw-3.ogg" id="4_lkwyn"]

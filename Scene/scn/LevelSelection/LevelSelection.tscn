@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bx16mv5li33al"]
 
-[ext_resource type="Script" uid="uid://dfyqec8ytrv2" path="res://Scene/scn/LevelSelection/level_selection.gd" id="1_f2nhq"]
-[ext_resource type="FontFile" uid="uid://bdptysj6ngk46" path="res://Fonts/Frick0.3-Regular-3.otf" id="2_m14qb"]
+[ext_resource type="Script" uid="uid://ivs20pnd168n" path="res://Scene/scn/LevelSelection/level_selection.gd" id="1_f2nhq"]
+[ext_resource type="FontFile" uid="uid://51j4iinsif4s" path="res://Fonts/DenkOne-Regular.ttf" id="2_f2nhq"]
 
 [node name="LevelSelection" type="Control" unique_id=1641298793]
 layout_mode = 3
@@ -29,13 +29,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -207.0
-offset_top = -371.0
+offset_top = -352.0
 offset_right = 207.0
-offset_bottom = -214.0
+offset_bottom = -195.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_m14qb")
-theme_override_font_sizes/font_size = 70
+theme_override_fonts/font = ExtResource("2_f2nhq")
+theme_override_font_sizes/font_size = 80
 text = "LEVEL"
 horizontal_alignment = 1
 vertical_alignment = 1

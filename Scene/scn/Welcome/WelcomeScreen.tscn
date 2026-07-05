@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c5ndcdlfhb8qn"]
 
 [ext_resource type="Script" uid="uid://rjg3mgnl8821" path="res://Scene/scn/Welcome/welcome_screen.gd" id="1_wqw80"]
-[ext_resource type="FontFile" uid="uid://bdptysj6ngk46" path="res://Fonts/Frick0.3-Regular-3.otf" id="2_er1ri"]
+[ext_resource type="FontFile" uid="uid://51j4iinsif4s" path="res://Fonts/DenkOne-Regular.ttf" id="2_wqw80"]
 
 [node name="Welcome" type="Control" unique_id=2146573409]
 layout_mode = 3
@@ -31,7 +31,7 @@ offset_right = 613.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/normal_font = ExtResource("2_er1ri")
+theme_override_fonts/normal_font = ExtResource("2_wqw80")
 theme_override_font_sizes/normal_font_size = 150
 text = "24PointGame"
 horizontal_alignment = 1
@@ -51,7 +51,7 @@ offset_bottom = 148.0
 grow_horizontal = 2
 grow_vertical = 2
 offset_transform_enabled = true
-theme_override_fonts/font = ExtResource("2_er1ri")
+theme_override_fonts/font = ExtResource("2_wqw80")
 theme_override_font_sizes/font_size = 60
 text = "START"
 language = "en"

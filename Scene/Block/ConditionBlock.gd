@@ -26,6 +26,7 @@ func __init(num : NumberBlock, _pos : Vector2) -> void:
 		number_a.is_dragable = false
 		GAMEMANAGER.NumberBlockContainer.add_child(num)
 	self.position = _pos
+	update_bgcolor()
 
 func _physics_process(delta: float) -> void:
 	if number_a:
@@ -71,6 +72,7 @@ func update_result():
 		if number_a_value == number_b_value:
 			value = true
 			if is_level_condition:
+				MAPINSTANTIATE.load_level(2)
 				print("Congratulation!")
 				
 		else: value = false

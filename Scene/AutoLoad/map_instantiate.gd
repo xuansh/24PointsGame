@@ -1,23 +1,36 @@
 extends Node
 
-@export var level : String = ""
-@onready var scn = preload("uid://duxbvplv6d4r7")
+#@export var level : String = ""
+var path = ""
+var scn_path : String = "res://Scene/LEVEL/Level.tscn"
 var count = 0
 
-func load_level(l : int) -> void:
-	var path = "res://Maps/" + str(l) + ".txt"
-	get_tree().change_scene_to_packed(scn)
-	while GAMEMANAGER.OperatorBlockContainer == null:
-		await get_tree().process_frame
-	decrypt_csv(path)
 
+func _process(delta: float) -> void:
+	var process = []
+	if path:
+		var loaded_status = ResourceLoader.load_threaded_get_status(scn_path, process)
+		print(loaded_status)
+		if loaded_status == ResourceLoader.ThreadLoadStatus.THREAD_LOAD_LOADED:
+			var loaded_scene : PackedScene = ResourceLoader.load_threaded_get(scn_path)
+			get_tree().change_scene_to_packed(loaded_scene)
+			await get_tree().process_frame
+			decrypt_csv(path)
+			path = ""
+		
+
+func load_level(l : int) -> void:
+	path = "res://Maps/" + str(l) + ".txt"
+	print(path)
+	ResourceLoader.load_threaded_request(scn_path, "")
+	
 
 func decrypt_csv(level : String):
 	var file = FileAccess.open(level, FileAccess.READ)
 	while !file.eof_reached():
 		var line = file.get_csv_line()
 		count += 1
-		print(count)
+		#print(count)
 		instantiate_map(line)
 
 func instantiate_map(line : PackedStringArray):
@@ -50,7 +63,8 @@ func instantiate_map(line : PackedStringArray):
 				var _value = float(line[2])
 				NB.__init(_value, Vector2.ZERO)
 			var _pos = string_to_vector2(line[3])
-			GAMEMANAGER.ConditionBlockContainer.add_child(CB)
+			if GAMEMANAGER.ConditionBlockContainer:
+				GAMEMANAGER.ConditionBlockContainer.add_child(CB)
 			CB.__init(NB, _pos)
 			
 		_:
@@ -61,15 +75,10 @@ func string_to_vector2(_str):
 	return Vector2(float(stri[0]), float(stri[1]))
 	
 
-func return_all_map_list() -> Array[String]:
+func return_all_map_list() -> PackedStringArray:
 	var filepath_arr : Array[String] = []
 	var path : String = "res://Maps"
 	var dir := DirAccess.open(path)
 	if dir:
-		dir.list_dir_begin()
-		var filename = dir.get_next()
-		while filename != "":
-			print_rich("[color=green]find: %s[/color]" %filename)
-			filepath_arr.append(filename)
-			filename = dir.get_next()
-	return filepath_arr
+		return (dir.get_files())
+	return []
