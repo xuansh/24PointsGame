@@ -10,5 +10,4 @@ func _ready() -> void:
 		if filename_noextension == str(i + 1):
 			var b = BUTTON.instantiate()
 			b.level_id = filename_noextension
-			GAMEMANAGER.next_scene = "res://Maps/" + str(b.level_id)
 			grid_container.add_child(b)

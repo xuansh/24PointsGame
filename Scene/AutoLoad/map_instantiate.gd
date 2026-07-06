@@ -4,13 +4,14 @@ extends Node
 var path = ""
 var scn_path : String = "res://Scene/LEVEL/Level.tscn"
 var count = 0
+var tmp_level_id : int
+const THX_4_PLAYING = preload("uid://dahth4l13n4ip")
 
 
 func _process(delta: float) -> void:
 	var process = []
 	if path:
 		var loaded_status = ResourceLoader.load_threaded_get_status(scn_path, process)
-		print(loaded_status)
 		if loaded_status == ResourceLoader.ThreadLoadStatus.THREAD_LOAD_LOADED:
 			var loaded_scene : PackedScene = ResourceLoader.load_threaded_get(scn_path)
 			get_tree().change_scene_to_packed(loaded_scene)
@@ -21,17 +22,21 @@ func _process(delta: float) -> void:
 
 func load_level(l : int) -> void:
 	path = "res://Maps/" + str(l) + ".txt"
-	print(path)
+	tmp_level_id = l
 	ResourceLoader.load_threaded_request(scn_path, "")
 	
 
 func decrypt_csv(level : String):
 	var file = FileAccess.open(level, FileAccess.READ)
-	while !file.eof_reached():
-		var line = file.get_csv_line()
-		count += 1
-		#print(count)
-		instantiate_map(line)
+	if file:
+		GAMEMANAGER.level_id = tmp_level_id
+		while !file.eof_reached():
+			var line = file.get_csv_line()
+			count += 1
+			instantiate_map(line)
+	else:
+		get_tree().change_scene_to_packed(THX_4_PLAYING)
+		await get_tree().process_frame
 
 func instantiate_map(line : PackedStringArray):
 	match line[0]:

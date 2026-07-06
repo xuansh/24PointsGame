@@ -12,7 +12,7 @@ size = Vector2(200, 200)
 shader = ExtResource("2_ufdj0")
 shader_parameter/border_pixels = 5.0
 shader_parameter/bg_color = Color(0.6627451, 0.015686275, 0.03529412, 1)
-shader_parameter/border_color = Color(0, 0, 0, 1)
+shader_parameter/border_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
 
 [sub_resource type="Gradient" id="Gradient_0oc77"]
 offsets = PackedFloat32Array(0)
@@ -32,7 +32,7 @@ size = Vector2(64, 64)
 shader = ExtResource("2_ufdj0")
 shader_parameter/border_pixels = 3.0
 shader_parameter/bg_color = Color(0.99215686, 0.654902, 0.31764707, 1)
-shader_parameter/border_color = Color(0, 0, 0, 1)
+shader_parameter/border_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
 
 [sub_resource type="Gradient" id="Gradient_8x3vv"]
 offsets = PackedFloat32Array(0.49096385)
@@ -49,7 +49,7 @@ size = Vector2(64, 64)
 shader = ExtResource("2_ufdj0")
 shader_parameter/border_pixels = 3.0
 shader_parameter/bg_color = Color(0.99215686, 0.654902, 0.31764707, 1)
-shader_parameter/border_color = Color(0, 0, 0, 1)
+shader_parameter/border_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_sed4m"]
 gradient = SubResource("Gradient_8x3vv")

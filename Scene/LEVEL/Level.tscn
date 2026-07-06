@@ -5,19 +5,14 @@
 [ext_resource type="Script" uid="uid://dxitjg1n2n2jc" path="res://Scene/LEVEL/Container/number_block_container.gd" id="3_fdw5n"]
 [ext_resource type="Script" uid="uid://cs86i1xphtbug" path="res://Scene/LEVEL/Container/transform_block_container.gd" id="4_yjdbb"]
 [ext_resource type="Script" uid="uid://dp0k4wqeaj13i" path="res://Scene/LEVEL/Container/condition_block_contain.gd" id="5_5my81"]
+[ext_resource type="Shader" uid="uid://dmqw306ngjr5w" path="res://Shaders/bg.gdshader" id="6_fdw5n"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c542h"]
-bg_color = Color(0, 0, 0, 1)
-draw_center = false
-border_width_left = 10
-border_width_top = 10
-border_width_right = 10
-border_width_bottom = 10
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 45
-corner_radius_top_right = 45
-corner_radius_bottom_right = 45
-corner_radius_bottom_left = 45
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xfpj2"]
+shader = ExtResource("6_fdw5n")
+shader_parameter/bg_color = Color(0.34, 0.34, 0.34, 1)
+shader_parameter/grid_color = Color(1, 1, 1, 0.035)
+shader_parameter/grid_size = 64.0
+shader_parameter/line_width = 6.0
 
 [node name="Game" type="Node2D" unique_id=743338457]
 
@@ -39,13 +34,15 @@ script = ExtResource("4_yjdbb")
 script = ExtResource("5_5my81")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1077564784]
-visible = false
+layer = -1
 
-[node name="Panel" type="Panel" parent="CanvasLayer" unique_id=656843758]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=967417286]
+z_index = 2
+material = SubResource("ShaderMaterial_xfpj2")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_c542h")
+color = Color(0.34901962, 0.3372549, 0.32156864, 1)

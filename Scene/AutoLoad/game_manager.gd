@@ -5,7 +5,7 @@ var tmp_dragging : Block = null
 var z_index : int = 1
 var on_top_block : Block = null
 var block_in_mouse_area : Array[Block]
-var next_scene : String
+var level_id : int
 var is_completed : bool = false
 
 var NumberBlockContainer : Node2D = null

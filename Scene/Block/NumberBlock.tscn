@@ -5,23 +5,6 @@
 [ext_resource type="FontFile" uid="uid://bdptysj6ngk46" path="res://Fonts/Frick0.3-Regular-3.otf" id="3_rjpjj"]
 [ext_resource type="AudioStream" uid="uid://n858v7olafo8" path="res://SoundEffects/die-throw-3.ogg" id="4_8bwy4"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5aov"]
-size = Vector2(64, 64)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q4gel"]
-shader = ExtResource("2_c0rc6")
-shader_parameter/border_pixels = 5.0
-shader_parameter/bg_color = Color(1, 0.6666667, 0.23921569, 1)
-shader_parameter/border_color = Color(0, 0, 0, 1)
-
-[sub_resource type="Gradient" id="Gradient_uphjk"]
-offsets = PackedFloat32Array(0.62349397)
-colors = PackedColorArray(0.654902, 0.4117647, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_5e1gs"]
-gradient = SubResource("Gradient_uphjk")
-fill_from = Vector2(1, 0)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xrsuq"]
 shader = ExtResource("2_c0rc6")
 shader_parameter/border_pixels = 5.0
@@ -36,10 +19,33 @@ colors = PackedColorArray(1, 1, 1, 0)
 gradient = SubResource("Gradient_xrsuq")
 fill_from = Vector2(0.3653846, 0.63247865)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5aov"]
+size = Vector2(64, 64)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q4gel"]
+shader = ExtResource("2_c0rc6")
+shader_parameter/border_pixels = 5.0
+shader_parameter/bg_color = Color(1, 0.6666667, 0.23921569, 1)
+shader_parameter/border_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
+
+[sub_resource type="Gradient" id="Gradient_uphjk"]
+offsets = PackedFloat32Array(0.62349397)
+colors = PackedColorArray(0.654902, 0.4117647, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5e1gs"]
+gradient = SubResource("Gradient_uphjk")
+fill_from = Vector2(1, 0)
+
 [node name="Area2D" type="Area2D" unique_id=1888613354 groups=["NumberArea"]]
 z_index = 1
 script = ExtResource("1_xrsuq")
 BlockType = "Number"
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=205353335]
+z_index = -1
+material = SubResource("ShaderMaterial_xrsuq")
+position = Vector2(4, 4)
+texture = SubResource("GradientTexture2D_rjpjj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1949165847]
 shape = SubResource("RectangleShape2D_a5aov")
@@ -67,11 +73,5 @@ vertical_alignment = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=936740176]
 stream = ExtResource("4_8bwy4")
-
-[node name="Shadow" type="Sprite2D" parent="." unique_id=205353335]
-z_index = -1
-material = SubResource("ShaderMaterial_xrsuq")
-position = Vector2(4, 4)
-texture = SubResource("GradientTexture2D_rjpjj")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

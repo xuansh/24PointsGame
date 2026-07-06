@@ -72,7 +72,7 @@ func update_result():
 		if number_a_value == number_b_value:
 			value = true
 			if is_level_condition:
-				MAPINSTANTIATE.load_level(2)
+				MAPINSTANTIATE.load_level(GAMEMANAGER.level_id + 1)
 				print("Congratulation!")
 				
 		else: value = false
