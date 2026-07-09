@@ -8,4 +8,4 @@ func _enter_tree() -> void:
 
 func _on_pressed() -> void:
 	MAPINSTANTIATE.load_level(level_id)
-	
+	#N
