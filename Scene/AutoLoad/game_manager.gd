@@ -14,6 +14,8 @@ var TransformBlockContainer : Node2D = null
 var ConditionBlockContainer : Node2D = null
 var MainCamera : Camera2D = null
 
+const MAX_PRESS_SCALE = Vector2(1.2, 1.2)
+const MIN_PRESS_SCALE = Vector2(1.0, 1.0)
 const NUMBER_BLOCK = preload("uid://cxqvbxwc4eu0y")
 const CONDITION_BLOCK = preload("uid://yn6ve42dfa63")
 const OPERATOR_BLOCK = preload("uid://c7d2p864e5ld2")

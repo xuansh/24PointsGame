@@ -30,7 +30,8 @@ func _physics_process(delta: float) -> void:
 		input_a.global_position = operand_a.global_position
 	if input_b:
 		input_b.global_position = operand_b.global_position
-
+	#if U dont use physics_process instead of just '_process', the NumberBlock cant may be adsorb 
+	
 func _on_quene_free() -> void:
 	if input_a:
 		input_a.queue_free()
@@ -51,6 +52,12 @@ func _process(delta: float) -> void:
 		if GAMEMANAGER.current_dragging == self:
 			global_position = lerp(global_position, get_global_mouse_position(), 20 * delta)
 			#using Tween may be fitable to input.position 
+			self.scale = lerp(self.scale, GAMEMANAGER.MAX_PRESS_SCALE, 0.5) #按压缩放
+			if input_a:
+				input_a.scale = lerp(input_a.scale, GAMEMANAGER.MAX_PRESS_SCALE, 0.5)
+			if input_b:
+				input_b.scale = lerp(input_b.scale, GAMEMANAGER.MAX_PRESS_SCALE, 0.5)
+		
 		if GAMEMANAGER.current_dragging == input_a:
 			input_a = null
 			update_result()
@@ -59,6 +66,15 @@ func _process(delta: float) -> void:
 			update_result()
 
 	if Input.is_action_just_released("MOUSE_BUTTON_LEFT"):
+		self.scale = lerp(self.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5) #按压缩放
+		var scale_tween = create_tween()
+		scale_tween.set_trans(Tween.TRANS_BACK)
+		scale_tween.set_ease(Tween.EASE_OUT)
+		if input_a:
+			input_a.scale = lerp(input_a.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)
+		if input_b:
+			input_b.scale = lerp(input_b.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)
+	
 		if operand_a.has_overlapping_areas() and temp_input_a != null and operand_a.global_position.distance_to(temp_input_a.global_position) < (operand_a.get_child(0).shape.size.x * 0.7):
 			var tween = create_tween()
 			tween.set_trans(Tween.TRANS_BACK)
@@ -66,7 +82,7 @@ func _process(delta: float) -> void:
 			tween.tween_property(temp_input_a, "global_position", operand_a.global_position, 0.1)
 			input_a = temp_input_a
 			update_result()
-
+		
 		if operand_b.has_overlapping_areas() and temp_input_b != null and operand_b.global_position.distance_to(temp_input_b.global_position) < (operand_b.get_child(0).shape.size.x * 0.7):
 			var tween = create_tween()
 			tween.set_trans(Tween.TRANS_BACK)
@@ -74,6 +90,7 @@ func _process(delta: float) -> void:
 			tween.tween_property(temp_input_b, "global_position", operand_b.global_position, 0.1)
 			input_b = temp_input_b
 			update_result()
+		
 
 
 func update_result():

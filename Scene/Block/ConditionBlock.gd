@@ -38,7 +38,12 @@ func _process(delta: float) -> void:
 	if Input.is_action_pressed("MOUSE_BUTTON_LEFT"):
 		if GAMEMANAGER.current_dragging == self:
 			global_position = lerp(global_position, get_global_mouse_position(), 20 * delta)
+			self.scale = lerp(self.scale, GAMEMANAGER.MAX_PRESS_SCALE, 0.5)
 			#using Tween may be fitable to input.position 
+			if number_a:
+				number_a.scale = lerp(number_a.scale, GAMEMANAGER.MAX_PRESS_SCALE, 0.5)
+			if number_b:
+				number_b.scale = lerp(number_b.scale, GAMEMANAGER.MAX_PRESS_SCALE, 0.5)
 		if GAMEMANAGER.current_dragging == number_a:
 			number_a = null
 			update_result()
@@ -47,6 +52,11 @@ func _process(delta: float) -> void:
 			update_result() #**更新Block的值文本函数**
 
 	if Input.is_action_just_released("MOUSE_BUTTON_LEFT"):
+		self.scale = lerp(self.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)
+		if number_a:
+			number_a.scale = lerp(number_a.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)
+		if number_b:
+			number_b.scale = lerp(number_b.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)
 		if target_number_a.has_overlapping_areas() and temp_number_a != null and target_number_a.global_position.distance_to(temp_number_a.global_position) < (target_number_a.get_child(0).shape.size.x * 0.7):
 			var tween = create_tween()
 			tween.set_trans(Tween.TRANS_BACK)
