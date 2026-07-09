@@ -29,10 +29,18 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
+				block_in_mouse_area.clear()
 				await get_tree().process_frame
 				detect_top_block()
+				if on_top_block:
+					on_top_block.is_dragging = true
+					current_dragging = on_top_block
+					bring_to_front()
 			else:
-				block_in_mouse_area = []
+				if current_dragging:
+					current_dragging.is_dragging = false
+					current_dragging = null
+				block_in_mouse_area.clear()
 
 func bring_to_front() -> void:
 	if current_dragging:
@@ -64,6 +72,7 @@ func bring_to_front() -> void:
 				current_dragging.number_b.z_index = z_index
 
 func detect_top_block() -> void:
+	on_top_block = null
 	var max_z_index = -999
 	for stack_block in block_in_mouse_area:
 		if stack_block.z_index > max_z_index:

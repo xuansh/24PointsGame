@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://bf3o7rhdwolu3" path="res://Scene/Block/ConditionBlock.gd" id="1_07irj"]
 [ext_resource type="Shader" uid="uid://blh3mvn8utuvu" path="res://Shaders/Block.gdshader" id="2_vkfrj"]
 [ext_resource type="FontFile" uid="uid://b4o4vsl1jl7hq" path="res://Fonts/umbasoft-altbold-2.otf" id="3_cpjl4"]
-[ext_resource type="AudioStream" uid="uid://n858v7olafo8" path="res://SoundEffects/die-throw-3.ogg" id="4_lkwyn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_07irj"]
 shader = ExtResource("2_vkfrj")
@@ -107,7 +106,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1054808586]
-stream = ExtResource("4_lkwyn")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="area_entered" from="Sprite2D/Number_a" to="." method="_on_number_a_area_entered"]

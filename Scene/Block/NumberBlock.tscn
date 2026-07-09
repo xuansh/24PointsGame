@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://ixb78eahh6gp" path="res://Scene/Block/NumberBlock.gd" id="1_xrsuq"]
 [ext_resource type="Shader" uid="uid://blh3mvn8utuvu" path="res://Shaders/Block.gdshader" id="2_c0rc6"]
 [ext_resource type="FontFile" uid="uid://bdptysj6ngk46" path="res://Fonts/Frick0.3-Regular-3.otf" id="3_rjpjj"]
-[ext_resource type="AudioStream" uid="uid://n858v7olafo8" path="res://SoundEffects/die-throw-3.ogg" id="4_8bwy4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xrsuq"]
 shader = ExtResource("2_c0rc6")
@@ -70,8 +69,5 @@ text = "16"
 scroll_active = false
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=936740176]
-stream = ExtResource("4_8bwy4")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
