@@ -21,7 +21,7 @@ const CONDITION_BLOCK = preload("uid://yn6ve42dfa63")
 const OPERATOR_BLOCK = preload("uid://c7d2p864e5ld2")
 const TRANSFORM_BLOCK = preload("uid://bhgipd07tg5dr")
 
-const LevelSelection = preload("uid://bx16mv5li33al")
+const LevelSelection = preload("res://Scene/scn/LevelSelection/LevelSelection.tscn")
 
 func _process(delta: float) -> void:
 	var process = []

@@ -20,20 +20,30 @@ func __init(_pos : Vector2) -> void:
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("MOUSE_BUTTON_LEFT"):
 		if GAMEMANAGER.current_dragging == self:
-			global_position = lerp(global_position, get_global_mouse_position(), 20 * delta)
+			self.global_position = lerp(global_position, get_global_mouse_position(), 20 * delta)
+			self.scale = lerp(self.scale, GAMEMANAGER.MAX_PRESS_SCALE, 0.5)
 			if operator_block:
 				operator_block.global_position = target_operator_block.global_position
+				operator_block.scale = lerp(operator_block.scale, GAMEMANAGER.MAX_PRESS_SCALE, 0.5)
 				if operator_block.input_a:
 					operator_block.input_a.global_position = operator_block.operand_a.global_position
+					operator_block.input_a.scale = lerp(operator_block.input_a.scale, GAMEMANAGER.MAX_PRESS_SCALE, 0.5)
 				if operator_block.input_b:
 					operator_block.input_b.global_position = operator_block.operand_b.global_position
+					operator_block.input_b.scale = lerp(operator_block.input_b.scale, GAMEMANAGER.MAX_PRESS_SCALE, 0.5)
 		if GAMEMANAGER.current_dragging == operator_block:
 			operator_block = null
 			update_transform_color(Color(0.078, 0.16, 0.051, 1.0))
 			
 	
-	if Input.is_action_just_released("MOUSE_BUTTON_LEFT"):
+	else:
+		self.scale = lerp(self.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)
 		if operator_block:
+			operator_block.scale = lerp(operator_block.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)
+			if operator_block.input_a:
+				operator_block.input_a.scale = lerp(operator_block.input_a.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)
+			if operator_block.input_b:
+				operator_block.input_b.scale = lerp(operator_block.input_b.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)
 			if not operator_block.able_to_output_num():
 				update_transform_color(Color(0.078, 0.16, 0.051, 1.0))
 		if target_operator_block.has_overlapping_areas() and temp_operator_block != null and target_operator_block.global_position.distance_to(temp_operator_block.global_position) < (target_operator_block.get_child(0).shape.size.x * 0.7):

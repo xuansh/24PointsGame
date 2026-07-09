@@ -22,7 +22,7 @@ func _process(delta: float) -> void:
 			#using Tween may be fitable to input.position 
 			self.scale = lerp(self.scale, GAMEMANAGER.MAX_PRESS_SCALE, 0.5) #**按压缩放**
 
-	if Input.is_action_just_released("MOUSE_BUTTON_LEFT"):
+	else:
 		self.scale = lerp(self.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)
 
 func __init(_value : float, _position : Vector2) -> void:

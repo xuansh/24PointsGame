@@ -51,7 +51,7 @@ func _process(delta: float) -> void:
 			number_b = null
 			update_result() #**更新Block的值文本函数**
 
-	if Input.is_action_just_released("MOUSE_BUTTON_LEFT"):
+	else:
 		self.scale = lerp(self.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)
 		if number_a:
 			number_a.scale = lerp(number_a.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)

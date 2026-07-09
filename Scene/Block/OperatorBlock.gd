@@ -65,7 +65,7 @@ func _process(delta: float) -> void:
 			input_b = null
 			update_result()
 
-	if Input.is_action_just_released("MOUSE_BUTTON_LEFT"):
+	else:
 		self.scale = lerp(self.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5) #按压缩放
 		var scale_tween = create_tween()
 		scale_tween.set_trans(Tween.TRANS_BACK)
