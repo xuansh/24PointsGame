@@ -4,6 +4,20 @@
 [ext_resource type="Shader" uid="uid://blh3mvn8utuvu" path="res://Shaders/Block.gdshader" id="2_ufdj0"]
 [ext_resource type="FontFile" uid="uid://bdptysj6ngk46" path="res://Fonts/Frick0.3-Regular-3.otf" id="3_huvw1"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_elnie"]
+shader = ExtResource("2_ufdj0")
+shader_parameter/border_pixels = 5.0
+shader_parameter/bg_color = Color(0, 0, 0, 0.33333334)
+shader_parameter/border_color = Color(0, 0, 0, 0.33333334)
+
+[sub_resource type="Gradient" id="Gradient_ufdj0"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kldih"]
+gradient = SubResource("Gradient_ufdj0")
+fill_from = Vector2(0.4636752, 0.48290598)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8x3vv"]
 size = Vector2(200, 200)
 
@@ -54,24 +68,17 @@ shader_parameter/border_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
 gradient = SubResource("Gradient_8x3vv")
 fill_from = Vector2(1, 0)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_elnie"]
-shader = ExtResource("2_ufdj0")
-shader_parameter/border_pixels = 5.0
-shader_parameter/bg_color = Color(0, 0, 0, 0.33333334)
-shader_parameter/border_color = Color(0, 0, 0, 0.33333334)
-
-[sub_resource type="Gradient" id="Gradient_ufdj0"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_kldih"]
-gradient = SubResource("Gradient_ufdj0")
-fill_from = Vector2(0.4636752, 0.48290598)
-
 [node name="Area2D" type="Area2D" unique_id=2103194165 groups=["OperatorArea"]]
 monitoring = false
 script = ExtResource("1_elnie")
 BlockType = "Operator"
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=1693133570]
+z_index = -1
+material = SubResource("ShaderMaterial_elnie")
+position = Vector2(4, 4)
+scale = Vector2(3.125, 3.125)
+texture = SubResource("GradientTexture2D_kldih")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1065494755]
 shape = SubResource("RectangleShape2D_8x3vv")
@@ -132,13 +139,6 @@ horizontal_alignment = 1
 vertical_alignment = 2
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=411059200]
-
-[node name="Shadow" type="Sprite2D" parent="." unique_id=1693133570]
-z_index = -1
-material = SubResource("ShaderMaterial_elnie")
-position = Vector2(4, 4)
-scale = Vector2(3.125, 3.125)
-texture = SubResource("GradientTexture2D_kldih")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="area_entered" from="OperatorBlock/Operand_A" to="." method="_on_operand_a_area_entered"]

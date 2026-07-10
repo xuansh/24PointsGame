@@ -8,6 +8,7 @@ var input_b : Area2D = null
 var temp_input_a : Area2D = null
 var temp_input_b : Area2D = null
 var output : float = NAN if self.op_type == "/" else 0.0
+var is_frangible : bool = false
 
 
 @onready var operand_a: Area2D = $OperatorBlock/Operand_A
@@ -17,11 +18,16 @@ var output : float = NAN if self.op_type == "/" else 0.0
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 func _ready() -> void:
+	print("ready")
 	pass
 
-func __init(_op_type : String, _position : Vector2):
+func __init(_op_type : String, _position : Vector2, _is_frangible : bool):
+	print("__init")
 	self.op_type = _op_type
 	self.position = _position
+	self.is_frangible = _is_frangible
+	if _is_frangible:
+		pass
 	update_rich_text_label(operator_rich_text_label, op_type)
 	update_rich_text_label(output_rich_text_label, "NAN" if self.op_type == '/' else str(output))
 

@@ -44,8 +44,12 @@ func instantiate_map(line : PackedStringArray):
 			var OB : OperatorBlock = GAMEMANAGER.OPERATOR_BLOCK.instantiate()
 			var _op_type : String = line[1]
 			var _pos = string_to_vector2(line[2])
+			var _is_frangible : bool = false
+			if line[3]:
+				if line[3] == 'is_frangible':
+					_is_frangible = true
 			GAMEMANAGER.OperatorBlockContainer.add_child(OB)
-			OB.__init(_op_type, _pos)
+			OB.__init(_op_type, _pos, _is_frangible)
 		
 		"NumberBlock":
 			var NB : NumberBlock = GAMEMANAGER.NUMBER_BLOCK.instantiate()
