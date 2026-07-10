@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://cs86i1xphtbug" path="res://Scene/LEVEL/Container/transform_block_container.gd" id="4_yjdbb"]
 [ext_resource type="Script" uid="uid://dp0k4wqeaj13i" path="res://Scene/LEVEL/Container/condition_block_contain.gd" id="5_5my81"]
 [ext_resource type="Shader" uid="uid://dmqw306ngjr5w" path="res://Shaders/bg.gdshader" id="6_fdw5n"]
+[ext_resource type="Script" uid="uid://duvk7t1jg0h10" path="res://Scene/LEVEL/Container/function_block_container.gd" id="6_yjdbb"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xfpj2"]
 shader = ExtResource("6_fdw5n")
@@ -30,8 +31,11 @@ script = ExtResource("3_fdw5n")
 [node name="TransformBlockContainer" type="Node2D" parent="World" unique_id=2030178264]
 script = ExtResource("4_yjdbb")
 
-[node name="ConditionBlockContain" type="Node2D" parent="World" unique_id=1909199166]
+[node name="ConditionBlockContainer" type="Node2D" parent="World" unique_id=1909199166]
 script = ExtResource("5_5my81")
+
+[node name="FunctionBlockContainer" type="Node2D" parent="World" unique_id=416723268]
+script = ExtResource("6_yjdbb")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1077564784]
 layer = -1

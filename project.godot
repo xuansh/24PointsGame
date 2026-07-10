@@ -39,6 +39,7 @@ OperatorArea=""
 TransformArea=""
 NumberArea=""
 ConditionArea=""
+FunctionArea=""
 
 [input]
 

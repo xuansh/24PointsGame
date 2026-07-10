@@ -18,7 +18,7 @@ func _ready() -> void:
 	pass
 
 func __init(num : NumberBlock, _pos : Vector2) -> void:
-	if NumberBlock:
+	if num:
 		self.number_a = num
 		self.is_level_condition = true
 		number_a.global_position = self.target_number_a.global_position

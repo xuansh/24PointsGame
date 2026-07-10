@@ -1,9 +1,24 @@
 [gd_scene format=3 uid="uid://dk5xsi8llo1xe"]
 
 [ext_resource type="Shader" uid="uid://blh3mvn8utuvu" path="res://Shaders/Block.gdshader" id="1_0yy1k"]
+[ext_resource type="Script" uid="uid://fdcbxsii681p" path="res://Scene/Block/FunctionBlock.gd" id="1_1hs6t"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0dh0w"]
+shader = ExtResource("1_0yy1k")
+shader_parameter/border_pixels = 5.0
+shader_parameter/bg_color = Color(0, 0, 0, 0.33333334)
+shader_parameter/border_color = Color(0, 0, 0, 0.33333334)
+
+[sub_resource type="Gradient" id="Gradient_xrsuq"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kby77"]
+gradient = SubResource("Gradient_xrsuq")
+fill_from = Vector2(0.3653846, 0.63247865)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1k6te"]
-size = Vector2(100, 141.25)
+size = Vector2(200, 281.25)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0yy1k"]
 shader = ExtResource("1_0yy1k")
@@ -50,10 +65,19 @@ colors = PackedColorArray(1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ow6qw"]
 gradient = SubResource("Gradient_max8e")
-width = 140
+width = 144
 height = 60
 
-[node name="FunctionBlock" type="Area2D" unique_id=678922914]
+[node name="FunctionBlock" type="Area2D" unique_id=678922914 groups=["FunctionArea"]]
+script = ExtResource("1_1hs6t")
+BlockType = "Function"
+
+[node name="Shadow" type="Sprite2D" parent="." unique_id=949553189]
+z_index = -1
+material = SubResource("ShaderMaterial_0dh0w")
+position = Vector2(5.000001, 6.0000005)
+scale = Vector2(3.125, 4.4375)
+texture = SubResource("GradientTexture2D_kby77")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=930911277]
 position = Vector2(0, 0.625)
@@ -65,18 +89,48 @@ position = Vector2(0, 1)
 scale = Vector2(1, 1.0142857)
 texture = SubResource("GradientTexture2D_1k6te")
 
-[node name="Area2D" type="Area2D" parent="X_sprite" unique_id=1753125094]
-position = Vector2(48, 8.8732395)
+[node name="A" type="Area2D" parent="X_sprite" unique_id=1753125094 groups=["OperandArea"]]
+position = Vector2(-40, -0.9859153)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="X_sprite/Area2D" unique_id=191775274]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="X_sprite/A" unique_id=191775274]
 position = Vector2(0, 2.3841858e-07)
 shape = SubResource("RectangleShape2D_kldih")
 
-[node name="Sprite2D" type="Sprite2D" parent="X_sprite/Area2D" unique_id=458000712]
+[node name="Sprite2D" type="Sprite2D" parent="X_sprite/A" unique_id=458000712]
+material = SubResource("ShaderMaterial_max8e")
+texture = SubResource("GradientTexture2D_pymvc")
+
+[node name="X" type="Area2D" parent="X_sprite" unique_id=793049194 groups=["OperandArea"]]
+position = Vector2(40, -0.9859153)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="X_sprite/X" unique_id=641383099]
+position = Vector2(0, 2.3841858e-07)
+shape = SubResource("RectangleShape2D_kldih")
+
+[node name="Sprite2D" type="Sprite2D" parent="X_sprite/X" unique_id=1652385745]
+material = SubResource("ShaderMaterial_max8e")
+texture = SubResource("GradientTexture2D_pymvc")
+
+[node name="B" type="Area2D" parent="X_sprite" unique_id=775704339 groups=["OperandArea"]]
+position = Vector2(40, 70.98591)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="X_sprite/B" unique_id=582845286]
+position = Vector2(0, 2.3841858e-07)
+shape = SubResource("RectangleShape2D_kldih")
+
+[node name="Sprite2D" type="Sprite2D" parent="X_sprite/B" unique_id=195094285]
 material = SubResource("ShaderMaterial_max8e")
 texture = SubResource("GradientTexture2D_pymvc")
 
 [node name="Y_sprite" type="Sprite2D" parent="." unique_id=1508834301]
 material = SubResource("ShaderMaterial_1hs6t")
-position = Vector2(0, -89)
+position = Vector2(0, -71)
 texture = SubResource("GradientTexture2D_ow6qw")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="area_entered" from="X_sprite/A" to="." method="_on_a_area_entered"]
+[connection signal="area_exited" from="X_sprite/A" to="." method="_on_a_area_exited"]
+[connection signal="area_entered" from="X_sprite/X" to="." method="_on_x_area_entered"]
+[connection signal="area_exited" from="X_sprite/X" to="." method="_on_x_area_exited"]
+[connection signal="area_entered" from="X_sprite/B" to="." method="_on_b_area_entered"]
+[connection signal="area_exited" from="X_sprite/B" to="." method="_on_b_area_exited"]
