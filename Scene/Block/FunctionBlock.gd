@@ -16,18 +16,22 @@ var temp_x : NumberBlock = null
 var temp_b : NumberBlock = null
 
 func __init(num_a : NumberBlock, num_b : NumberBlock, _pos : Vector2):
-	self.a = num_a
-	self.b = num_b
-	a.global_position = target_a.global_position
-	b.global_position = target_b.global_position
-	a.z_index = self.z_index + 1
-	b.z_index = self.z_index + 1
-	a.is_dragable = false
-	b.is_dragable = false
-	GAMEMANAGER.NumberBlockContainer.add_child(num_a)
-	GAMEMANAGER.NumberBlockContainer.add_child(num_b)
 	self.global_position = _pos
+	if num_a and num_b:
+		self.a = num_a
+		self.b = num_b
+		a.global_position = target_a.global_position
+		b.global_position = target_b.global_position
+		a.z_index = self.z_index + 1
+		b.z_index = self.z_index + 1
+		a.is_dragable = false
+		b.is_dragable = false
+		GAMEMANAGER.NumberBlockContainer.add_child(num_a)
+		GAMEMANAGER.NumberBlockContainer.add_child(num_b)
 	
+func _physics_process(delta: float) -> void:
+	if x:
+		x.global_position = target_a.global_position
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("MOUSE_BUTTON_LEFT"):
@@ -38,7 +42,6 @@ func _process(delta: float) -> void:
 				a.global_position = target_a.global_position
 				a.scale = lerp(a.scale, GAMEMANAGER.MAX_PRESS_SCALE, 0.5)
 			if x:
-				x.global_position = target_x.global_position
 				x.scale = lerp(x.scale, GAMEMANAGER.MAX_PRESS_SCALE, 0.5)
 			if b:
 				b.global_position = target_b.global_position
@@ -52,10 +55,13 @@ func _process(delta: float) -> void:
 	else:
 		self.scale = lerp(self.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)
 		if a:
+			a.global_position = target_a.global_position
 			a.scale = lerp(a.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)
 		if x:
+			x.global_position = target_x.global_position
 			x.scale = lerp(x.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)
 		if b:
+			b.global_position = target_b.global_position
 			b.scale = lerp(b.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)
 		if target_a.has_overlapping_areas() and temp_a != null and target_a.global_position.distance_to(temp_a.global_position) < (target_a.get_child(0).shape.size.x * 0.7):
 			var tween = create_tween()
@@ -94,10 +100,8 @@ func get_value() -> float:
 #region target signal
 
 func _on_a_area_entered(area: Area2D) -> void:
-	if area.is_in_group("NumberArea"):
-		if a == null:
-			if area.is_dragging:
-				temp_a = area
+	if area.is_in_group("NumberArea") and a == null and area.is_dragging:
+		temp_a = area
 
 func _on_a_area_exited(area: Area2D) -> void:
 	if area == a:

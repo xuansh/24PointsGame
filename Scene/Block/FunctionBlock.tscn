@@ -27,7 +27,7 @@ shader_parameter/bg_color = Color(0.39139307, 0.0018829713, 0.7014826, 1)
 shader_parameter/border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Gradient" id="Gradient_1hs6t"]
-offsets = PackedFloat32Array(1)
+offsets = PackedFloat32Array(0.5120482)
 colors = PackedColorArray(1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_1k6te"]
@@ -75,7 +75,7 @@ BlockType = "Function"
 [node name="Shadow" type="Sprite2D" parent="." unique_id=949553189]
 z_index = -1
 material = SubResource("ShaderMaterial_0dh0w")
-position = Vector2(5.000001, 6.0000005)
+position = Vector2(5.000001, 5)
 scale = Vector2(3.125, 4.4375)
 texture = SubResource("GradientTexture2D_kby77")
 
@@ -85,20 +85,8 @@ shape = SubResource("RectangleShape2D_1k6te")
 
 [node name="X_sprite" type="Sprite2D" parent="." unique_id=143412295]
 material = SubResource("ShaderMaterial_0yy1k")
-position = Vector2(0, 1)
 scale = Vector2(1, 1.0142857)
 texture = SubResource("GradientTexture2D_1k6te")
-
-[node name="A" type="Area2D" parent="X_sprite" unique_id=1753125094 groups=["OperandArea"]]
-position = Vector2(-40, -0.9859153)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="X_sprite/A" unique_id=191775274]
-position = Vector2(0, 2.3841858e-07)
-shape = SubResource("RectangleShape2D_kldih")
-
-[node name="Sprite2D" type="Sprite2D" parent="X_sprite/A" unique_id=458000712]
-material = SubResource("ShaderMaterial_max8e")
-texture = SubResource("GradientTexture2D_pymvc")
 
 [node name="X" type="Area2D" parent="X_sprite" unique_id=793049194 groups=["OperandArea"]]
 position = Vector2(40, -0.9859153)
@@ -122,14 +110,23 @@ shape = SubResource("RectangleShape2D_kldih")
 material = SubResource("ShaderMaterial_max8e")
 texture = SubResource("GradientTexture2D_pymvc")
 
+[node name="A" type="Area2D" parent="X_sprite" unique_id=1964020159 groups=["OperandArea"]]
+position = Vector2(-40, -0.9859153)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="X_sprite/A" unique_id=1257983239]
+position = Vector2(0, 2.3841858e-07)
+shape = SubResource("RectangleShape2D_kldih")
+
+[node name="Sprite2D" type="Sprite2D" parent="X_sprite/A" unique_id=554319676]
+material = SubResource("ShaderMaterial_max8e")
+texture = SubResource("GradientTexture2D_pymvc")
+
 [node name="Y_sprite" type="Sprite2D" parent="." unique_id=1508834301]
 material = SubResource("ShaderMaterial_1hs6t")
 position = Vector2(0, -71)
 texture = SubResource("GradientTexture2D_ow6qw")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
-[connection signal="area_entered" from="X_sprite/A" to="." method="_on_a_area_entered"]
-[connection signal="area_exited" from="X_sprite/A" to="." method="_on_a_area_exited"]
 [connection signal="area_entered" from="X_sprite/X" to="." method="_on_x_area_entered"]
 [connection signal="area_exited" from="X_sprite/X" to="." method="_on_x_area_exited"]
 [connection signal="area_entered" from="X_sprite/B" to="." method="_on_b_area_entered"]

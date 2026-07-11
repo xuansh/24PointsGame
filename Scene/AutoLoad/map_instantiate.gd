@@ -80,14 +80,12 @@ func instantiate_map(line : PackedStringArray):
 			var FB : FunctionBlock = GAMEMANAGER.FUNCTION_BLOCK.instantiate()
 			var NB_a : NumberBlock = GAMEMANAGER.NUMBER_BLOCK.instantiate()
 			var NB_b : NumberBlock = GAMEMANAGER.NUMBER_BLOCK.instantiate()
-			if NB_a:
-				NB_a.__init(float(line[1]), Vector2.ZERO)
-			if NB_b:
-				NB_b.__init(float(line[2]), Vector2.ZERO)
+			NB_a.__init(float(line[1]), Vector2.ZERO)
+			NB_b.__init(float(line[2]), Vector2.ZERO)
 			var _pos = string_to_vector2(line[3])
 			if GAMEMANAGER.FunctionBlockContainer:
 				GAMEMANAGER.FunctionBlockContainer.add_child(FB)
-			FB.__init(NB_a, NB_b, _pos)
+			FB.__init(NB_a, NB_b, _pos) #ALERT 
 		_:
 			pass
 
