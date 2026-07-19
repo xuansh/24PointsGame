@@ -5,6 +5,7 @@ class_name FunctionBlock
 @onready var target_a : Area2D = $X_sprite/A
 @onready var target_x : Area2D = $X_sprite/X
 @onready var target_b : Area2D = $X_sprite/B
+@onready var label: Label = $Label
 
 @export var value : float
 
@@ -28,10 +29,8 @@ func __init(num_a : NumberBlock, num_b : NumberBlock, _pos : Vector2):
 		b.is_dragable = false
 		GAMEMANAGER.NumberBlockContainer.add_child(num_a)
 		GAMEMANAGER.NumberBlockContainer.add_child(num_b)
+		update_label()
 	
-func _physics_process(delta: float) -> void:
-	if x:
-		x.global_position = target_a.global_position
 
 func _process(delta: float) -> void:
 	if Input.is_action_pressed("MOUSE_BUTTON_LEFT"):
@@ -42,6 +41,7 @@ func _process(delta: float) -> void:
 				a.global_position = target_a.global_position
 				a.scale = lerp(a.scale, GAMEMANAGER.MAX_PRESS_SCALE, 0.5)
 			if x:
+				x.global_position = target_x.global_position
 				x.scale = lerp(x.scale, GAMEMANAGER.MAX_PRESS_SCALE, 0.5)
 			if b:
 				b.global_position = target_b.global_position
@@ -58,17 +58,18 @@ func _process(delta: float) -> void:
 			a.global_position = target_a.global_position
 			a.scale = lerp(a.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)
 		if x:
-			x.global_position = target_x.global_position
 			x.scale = lerp(x.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)
 		if b:
 			b.global_position = target_b.global_position
 			b.scale = lerp(b.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)
+		
 		if target_a.has_overlapping_areas() and temp_a != null and target_a.global_position.distance_to(temp_a.global_position) < (target_a.get_child(0).shape.size.x * 0.7):
 			var tween = create_tween()
 			tween.set_trans(Tween.TRANS_BACK)
 			tween.set_ease(Tween.EASE_OUT)
 			tween.tween_property(temp_a, "global_position", target_a.global_position, 0.1)
 			a = temp_a # **这行就是之前说的 用于存储吸附动画结束前的吸附物
+			update_label()
 			
 		if target_b.has_overlapping_areas() and temp_b != null and target_b.global_position.distance_to(temp_b.global_position) < (target_b.get_child(0).shape.size.x * 0.7):
 			var tween = create_tween()
@@ -76,6 +77,7 @@ func _process(delta: float) -> void:
 			tween.set_ease(Tween.EASE_OUT)
 			tween.tween_property(temp_b, "global_position", target_b.global_position, 0.1)
 			b = temp_b
+			update_label()
 		
 		if target_x.has_overlapping_areas() and temp_x != null and target_x.global_position.distance_to(temp_x.global_position) < (target_x.get_child(0).shape.size.x * 0.7):
 			var tween = create_tween()
@@ -83,6 +85,7 @@ func _process(delta: float) -> void:
 			tween.set_ease(Tween.EASE_OUT)
 			tween.tween_property(temp_x, "global_position", target_x.global_position, 0.1)
 			x = temp_x
+			update_label()
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
@@ -92,6 +95,13 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			else:
 				if is_dragging:
 					is_dragging = false
+
+func update_label() -> void:
+	if x and a:
+		value = a.get_value() * x.get_value() + (b.get_value() if b else 0)
+	elif b:
+		value = b.get_value()
+	label.text = str(value)
 
 
 func get_value() -> float:
@@ -103,24 +113,13 @@ func _on_a_area_entered(area: Area2D) -> void:
 	if area.is_in_group("NumberArea") and a == null and area.is_dragging:
 		temp_a = area
 
-func _on_a_area_exited(area: Area2D) -> void:
-	if area == a:
-		a = null
-
 func _on_x_area_entered(area: Area2D) -> void:
 	if area.is_in_group("NumberArea") and x == null and area.is_dragging:
 		temp_x = area
-
-func _on_x_area_exited(area: Area2D) -> void:
-	if area == x:
-		x = null
 
 func _on_b_area_entered(area: Area2D) -> void:
 	if area.is_in_group("NumberArea") and b == null and area.is_dragging:
 		temp_b = area
 
-func _on_b_area_exited(area: Area2D) -> void:
-	if area == b:
-		b = null
 
 #endregion

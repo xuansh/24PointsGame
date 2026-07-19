@@ -28,6 +28,7 @@ const LevelSelection = preload("res://Scene/scn/LevelSelection/LevelSelection.ts
 func _process(delta: float) -> void:
 	var process = []
 	#var loaded_status = ResourceLoader.load_threaded_get_status()
+	#print(current_dragging)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
