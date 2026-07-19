@@ -37,27 +37,31 @@ func _process(delta: float) -> void:
 		if GAMEMANAGER.current_dragging == self:
 			global_position = lerp(global_position, get_global_mouse_position(), 20 * delta)
 			self.scale = lerp(self.scale, GAMEMANAGER.MAX_PRESS_SCALE, 0.5)
-			if a:
-				a.global_position = target_a.global_position
-				a.scale = lerp(a.scale, GAMEMANAGER.MAX_PRESS_SCALE, 0.5)
-			if x:
-				x.global_position = target_x.global_position
-				x.scale = lerp(x.scale, GAMEMANAGER.MAX_PRESS_SCALE, 0.5)
-			if b:
-				b.global_position = target_b.global_position
-				b.scale = lerp(b.scale, GAMEMANAGER.MAX_PRESS_SCALE, 0.5)
+			# 统一处理所有子方块
+			var children = [a, x, b]
+			var targets = [target_a, target_x, target_b]
+			for i in range(3):
+				var child = children[i]
+				var target = targets[i]
+				if child:
+					child.global_position = target.global_position
+					child.scale = lerp(child.scale, GAMEMANAGER.MAX_PRESS_SCALE, 0.5)
 		if GAMEMANAGER.current_dragging == a:
 			a = null
+			update_label()
 		if GAMEMANAGER.current_dragging == x:
 			x = null
+			update_label()
 		if GAMEMANAGER.current_dragging == b:
 			b = null
+			update_label()
 	else:
 		self.scale = lerp(self.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)
 		if a:
 			a.global_position = target_a.global_position
 			a.scale = lerp(a.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)
 		if x:
+			x.global_position = target_x.global_position
 			x.scale = lerp(x.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)
 		if b:
 			b.global_position = target_b.global_position
