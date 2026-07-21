@@ -2,6 +2,8 @@
 
 [ext_resource type="Shader" uid="uid://blh3mvn8utuvu" path="res://Shaders/Block.gdshader" id="1_0yy1k"]
 [ext_resource type="Script" uid="uid://fdcbxsii681p" path="res://Scene/Block/FunctionBlock.gd" id="1_1hs6t"]
+[ext_resource type="FontFile" uid="uid://bdptysj6ngk46" path="res://Fonts/Frick0.3-Regular-3.otf" id="3_max8e"]
+[ext_resource type="Shader" uid="uid://dvjx50ipbvvol" path="res://Shaders/FunctionBlock_function.gdshader" id="4_0dh0w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0dh0w"]
 shader = ExtResource("1_0yy1k")
@@ -32,8 +34,8 @@ colors = PackedColorArray(1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_1k6te"]
 gradient = SubResource("Gradient_1hs6t")
-width = 200
-height = 280
+width = 314
+height = 344
 fill_from = Vector2(0.71304345, 0.3630435)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kldih"]
@@ -53,11 +55,16 @@ colors = PackedColorArray(1, 1, 1, 0)
 gradient = SubResource("Gradient_0yy1k")
 fill_from = Vector2(0.54130435, 0.37391305)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1hs6t"]
-shader = ExtResource("1_0yy1k")
-shader_parameter/border_pixels = 0.0
-shader_parameter/bg_color = Color(0.31433848, 0.0011927763, 0.5700112, 1)
-shader_parameter/border_color = Color(0, 0, 0, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kby77"]
+shader = ExtResource("4_0dh0w")
+shader_parameter/bg_color = Color(0.2323333, 0, 0.41, 1)
+shader_parameter/curve_color = Color(0.6138268, 0.29805166, 1, 1)
+shader_parameter/point_color = Color(0, 1, 0, 1)
+shader_parameter/a = 1.0
+shader_parameter/b = 0.0
+shader_parameter/line_width = 0.05000000074506
+shader_parameter/point_x = 0.0
+shader_parameter/point_size = 0.05
 
 [sub_resource type="Gradient" id="Gradient_max8e"]
 offsets = PackedFloat32Array(1)
@@ -65,14 +72,15 @@ colors = PackedColorArray(1, 1, 1, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ow6qw"]
 gradient = SubResource("Gradient_max8e")
-width = 144
-height = 60
+width = 254
+height = 142
 
 [node name="FunctionBlock" type="Area2D" unique_id=678922914 groups=["FunctionArea"]]
 script = ExtResource("1_1hs6t")
 BlockType = "Function"
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=949553189]
+visible = false
 z_index = -1
 material = SubResource("ShaderMaterial_0dh0w")
 position = Vector2(5.000001, 5)
@@ -89,7 +97,7 @@ scale = Vector2(1, 1.0142857)
 texture = SubResource("GradientTexture2D_1k6te")
 
 [node name="X" type="Area2D" parent="X_sprite" unique_id=793049194 groups=["OperandArea"]]
-position = Vector2(40, -0.9859153)
+position = Vector2(80, 37.46479)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="X_sprite/X" unique_id=641383099]
 position = Vector2(0, 2.3841858e-07)
@@ -100,7 +108,7 @@ material = SubResource("ShaderMaterial_max8e")
 texture = SubResource("GradientTexture2D_pymvc")
 
 [node name="B" type="Area2D" parent="X_sprite" unique_id=775704339 groups=["OperandArea"]]
-position = Vector2(40, 70.98591)
+position = Vector2(80, 103.521126)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="X_sprite/B" unique_id=582845286]
 position = Vector2(0, 2.3841858e-07)
@@ -111,7 +119,7 @@ material = SubResource("ShaderMaterial_max8e")
 texture = SubResource("GradientTexture2D_pymvc")
 
 [node name="A" type="Area2D" parent="X_sprite" unique_id=1964020159 groups=["OperandArea"]]
-position = Vector2(-40, -0.9859153)
+position = Vector2(-69, 103.521126)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="X_sprite/A" unique_id=1257983239]
 position = Vector2(0, 2.3841858e-07)
@@ -121,16 +129,41 @@ shape = SubResource("RectangleShape2D_kldih")
 material = SubResource("ShaderMaterial_max8e")
 texture = SubResource("GradientTexture2D_pymvc")
 
+[node name="Label" type="Label" parent="X_sprite" unique_id=201469003]
+offset_left = -37.0
+offset_top = 80.84508
+offset_right = 16.0
+offset_bottom = 138.8451
+pivot_offset = Vector2(27, 22.676056)
+theme_override_colors/font_color = Color(0.8901961, 0.9372549, 0.83137256, 1)
+theme_override_fonts/font = ExtResource("3_max8e")
+theme_override_font_sizes/font_size = 64
+text = "x"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Label2" type="Label" parent="X_sprite" unique_id=507021657]
+offset_left = 16.0
+offset_top = 84.78873
+offset_right = 43.0
+offset_bottom = 129.78873
+theme_override_colors/font_color = Color(0.8901961, 0.9372549, 0.83137256, 1)
+theme_override_fonts/font = ExtResource("3_max8e")
+theme_override_font_sizes/font_size = 50
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="Y_sprite" type="Sprite2D" parent="." unique_id=1508834301]
-material = SubResource("ShaderMaterial_1hs6t")
-position = Vector2(0, -71)
+material = SubResource("ShaderMaterial_kby77")
+position = Vector2(0, -74)
 texture = SubResource("GradientTexture2D_ow6qw")
 
 [node name="Label" type="Label" parent="." unique_id=1272870278]
-offset_left = -84.0
-offset_top = -125.0
-offset_right = -44.0
-offset_bottom = -85.0
+offset_left = -147.0
+offset_top = 52.0
+offset_right = -107.0
+offset_bottom = 92.0
 text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1

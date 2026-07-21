@@ -6,9 +6,11 @@ class_name FunctionBlock
 @onready var target_x : Area2D = $X_sprite/X
 @onready var target_b : Area2D = $X_sprite/B
 @onready var label: Label = $Label
+@onready var y_sprite: Sprite2D = $Y_sprite
 
 @export var value : float
 
+var Y_mat : ShaderMaterial = null
 var a : NumberBlock = null
 var x : NumberBlock = null
 var b : NumberBlock = null
@@ -17,6 +19,7 @@ var temp_x : NumberBlock = null
 var temp_b : NumberBlock = null
 
 func __init(num_a : NumberBlock, num_b : NumberBlock, _pos : Vector2):
+	Y_mat = y_sprite.material as ShaderMaterial
 	self.global_position = _pos
 	if num_a and num_b:
 		self.a = num_a
@@ -29,6 +32,8 @@ func __init(num_a : NumberBlock, num_b : NumberBlock, _pos : Vector2):
 		b.is_dragable = false
 		GAMEMANAGER.NumberBlockContainer.add_child(num_a)
 		GAMEMANAGER.NumberBlockContainer.add_child(num_b)
+		setter_function_a(a.get_value())
+		setter_function_b(b.get_value())
 		update_label()
 	
 
@@ -125,5 +130,14 @@ func _on_b_area_entered(area: Area2D) -> void:
 	if area.is_in_group("NumberArea") and b == null and area.is_dragging:
 		temp_b = area
 
+#endregion
+
+#region setter
+
+func setter_function_a(a : float):
+	Y_mat.set_shader_parameter("a", a)
+
+func setter_function_b(b : float):
+	Y_mat.set_shader_parameter("b", b)
 
 #endregion
