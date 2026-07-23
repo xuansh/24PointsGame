@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://rjg3mgnl8821" path="res://Scene/scn/Welcome/welcome_screen.gd" id="1_wqw80"]
 [ext_resource type="FontFile" uid="uid://51j4iinsif4s" path="res://Fonts/DenkOne-Regular.ttf" id="2_wqw80"]
 [ext_resource type="Shader" uid="uid://bygssbchhesv6" path="res://Shaders/Welcome/WelcomeScreen_number.gdshader" id="3_er1ri"]
+[ext_resource type="Script" uid="uid://cq6f3tc8xqtwv" path="res://Scene/scn/Welcome/24_animation.gd" id="4_10bhm"]
+[ext_resource type="Script" uid="uid://cj5sg82p5xti0" path="res://Scene/scn/Welcome/POINT_animation.gd" id="4_gkaho"]
 [ext_resource type="Shader" uid="uid://blh3mvn8utuvu" path="res://Shaders/Block.gdshader" id="4_pmejh"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kldih"]
@@ -121,7 +123,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="24" type="RichTextLabel" parent="LabelContainer" unique_id=661378799]
+[node name="24" type="Control" parent="LabelContainer" unique_id=621622619]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -295.0
+offset_right = 14.0
+offset_bottom = -255.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(20, 20)
+script = ExtResource("4_10bhm")
+
+[node name="24" type="RichTextLabel" parent="LabelContainer/24" unique_id=661378799]
 material = SubResource("ShaderMaterial_kldih")
 layout_mode = 1
 anchors_preset = 8
@@ -129,12 +147,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -118.0
-offset_top = -391.0
-offset_right = 105.0
-offset_bottom = -139.0
+offset_left = -111.5
+offset_top = -138.0
+offset_right = 111.5
+offset_bottom = 114.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 32
 theme_override_fonts/normal_font = ExtResource("2_wqw80")
 theme_override_font_sizes/normal_font_size = 200
 bbcode_enabled = true
@@ -171,6 +191,8 @@ offset_bottom = -163.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.13264503
+script = ExtResource("4_gkaho")
+delay_time = 0.1
 
 [node name="Shadow" type="Sprite2D" parent="LabelContainer/POINT/CHAR-P" unique_id=2123545595]
 z_index = -1
@@ -210,6 +232,8 @@ offset_bottom = -163.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.1972222
+script = ExtResource("4_gkaho")
+delay_time = 0.2
 
 [node name="Shadow" type="Sprite2D" parent="LabelContainer/POINT/CHAR-O" unique_id=487953800]
 z_index = -1
@@ -249,6 +273,8 @@ offset_bottom = -163.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.06632251
+script = ExtResource("4_gkaho")
+delay_time = 0.3
 
 [node name="Shadow" type="Sprite2D" parent="LabelContainer/POINT/CHAR-I" unique_id=343951847]
 z_index = -1
@@ -288,6 +314,8 @@ offset_bottom = -163.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 0.06632251
+script = ExtResource("4_gkaho")
+delay_time = 0.4
 
 [node name="Shadow" type="Sprite2D" parent="LabelContainer/POINT/CHAR-N" unique_id=650158188]
 z_index = -1
@@ -327,6 +355,8 @@ offset_bottom = -164.0
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.20943952
+script = ExtResource("4_gkaho")
+delay_time = 0.5
 
 [node name="Shadow" type="Sprite2D" parent="LabelContainer/POINT/CHAR-T" unique_id=638572221]
 z_index = -1
