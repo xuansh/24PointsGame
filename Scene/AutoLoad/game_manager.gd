@@ -8,6 +8,7 @@ var block_in_mouse_area : Array[Block]
 var level_id : int
 var is_completed : bool = false
 
+var AllBlockContainers : Array[Node2D] = []
 var NumberBlockContainer : Node2D = null
 var OperatorBlockContainer : Node2D = null
 var TransformBlockContainer : Node2D = null
@@ -24,6 +25,7 @@ const TRANSFORM_BLOCK = preload("uid://bhgipd07tg5dr")
 const FUNCTION_BLOCK = preload("uid://dk5xsi8llo1xe")
 
 const LevelSelection = preload("res://Scene/scn/LevelSelection/LevelSelection.tscn")
+
 
 func _process(delta: float) -> void:
 	var process = []
@@ -93,15 +95,28 @@ func detect_top_block() -> void:
 			max_z_index = stack_block.z_index
 			on_top_block = stack_block
 
-func spawn_a_NumberBlock(value : float, BlockType : String, WHO : Block = null) -> void:
+func spawn_a_NumberBlock(value : float, BlockType : String, target_pos : Vector2) -> NumberBlock:
 	var block : NumberBlock = NUMBER_BLOCK.instantiate()
-	block.__init(value, Vector2(WHO.position.x + 117, WHO.position.y + 190))
+	block.__init(value, target_pos)
 	NumberBlockContainer.add_child(block)
+	return block
 
 #func destory_a_Block(dest_block : Block):
 	#dest_block._on_quene_free()
 	#dest_block.queue_free()
-	
+
 
 func change_to_level_selection_scene():
 	get_tree().change_scene_to_packed(LevelSelection)
+
+
+func print_all_block_position():
+	AllBlockContainers = []
+	AllBlockContainers.append(NumberBlockContainer)
+	AllBlockContainers.append(OperatorBlockContainer)
+	AllBlockContainers.append(TransformBlockContainer)
+	AllBlockContainers.append(ConditionBlockContainer)
+	AllBlockContainers.append(FunctionBlockContainer)
+	for cont in AllBlockContainers:
+		for block in cont.get_children():
+			print(block.name + str(block.global_position))

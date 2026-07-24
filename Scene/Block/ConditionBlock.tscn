@@ -54,7 +54,7 @@ colors = PackedColorArray(0, 0, 0, 0)
 gradient = SubResource("Gradient_1xru5")
 fill_from = Vector2(0.51282054, 0.20940171)
 
-[node name="Area2D" type="Area2D" unique_id=1520528625 groups=["ConditionArea"]]
+[node name="ConditionBlock" type="Area2D" unique_id=1520528625 groups=["ConditionArea"]]
 script = ExtResource("1_07irj")
 BlockType = "Condition"
 

@@ -6,4 +6,3 @@ NumberBlock,4,"(100,-300)",
 NumberBlock,7,"(200,-300)",
 NumberBlock,7,"(300,-300)",
 TransformBlock,"(-300,80)"
-FunctionBlock,1,1,"(-100, 100)"

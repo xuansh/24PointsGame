@@ -34,8 +34,8 @@ func _process(delta: float) -> void:
 		if GAMEMANAGER.current_dragging == operator_block:
 			operator_block = null
 			update_transform_color(Color(0.078, 0.16, 0.051, 1.0))
-			
-	
+
+
 	else:
 		self.scale = lerp(self.scale, GAMEMANAGER.MIN_PRESS_SCALE, 0.5)
 		if operator_block:
@@ -54,7 +54,7 @@ func _process(delta: float) -> void:
 			operator_block = temp_operator_block
 			if operator_block.able_to_output_num():
 				update_transform_color(Color(0.569, 1.0, 0.427, 1.0))
-		
+
 
 func update_transform_color(color : Color):
 	var mat = transform_button.material as ShaderMaterial
@@ -86,6 +86,6 @@ func _on_button_button_up() -> void:
 		if operator_block.BlockType == 'Operator':
 			if operator_block.able_to_output_num():
 				if !is_nan(operator_block.get_value()):
-					GAMEMANAGER.spawn_a_NumberBlock(operator_block.get_value(), "Number", self)
+					GAMEMANAGER.spawn_a_NumberBlock(operator_block.get_value(), "Number", Vector2(self.position.x + 117, self.position.y + 190))
 					operator_block._queue_free_two_input()
 					update_transform_color(Color(0.078, 0.16, 0.051, 1.0))

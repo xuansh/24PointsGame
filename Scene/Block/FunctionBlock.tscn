@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://fdcbxsii681p" path="res://Scene/Block/FunctionBlock.gd" id="1_1hs6t"]
 [ext_resource type="FontFile" uid="uid://bdptysj6ngk46" path="res://Fonts/Frick0.3-Regular-3.otf" id="3_max8e"]
 [ext_resource type="Shader" uid="uid://dvjx50ipbvvol" path="res://Shaders/FunctionBlock_function.gdshader" id="4_0dh0w"]
+[ext_resource type="Texture2D" uid="uid://bwxkp347bhrcl" path="res://Tres/a_normal_texture_preset.tres" id="5_kby77"]
+[ext_resource type="FontFile" uid="uid://51j4iinsif4s" path="res://Fonts/DenkOne-Regular.ttf" id="6_8cs6n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0dh0w"]
 shader = ExtResource("1_0yy1k")
@@ -20,7 +22,7 @@ gradient = SubResource("Gradient_xrsuq")
 fill_from = Vector2(0.3653846, 0.63247865)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1k6te"]
-size = Vector2(200, 281.25)
+size = Vector2(314, 346.75)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0yy1k"]
 shader = ExtResource("1_0yy1k")
@@ -64,7 +66,7 @@ shader_parameter/a = 1.0
 shader_parameter/b = 0.0
 shader_parameter/line_width = 0.05000000074506
 shader_parameter/point_x = 0.0
-shader_parameter/point_size = 0.05
+shader_parameter/point_size = 0.05000000167648
 
 [sub_resource type="Gradient" id="Gradient_max8e"]
 offsets = PackedFloat32Array(1)
@@ -74,6 +76,28 @@ colors = PackedColorArray(1, 1, 1, 0)
 gradient = SubResource("Gradient_max8e")
 width = 254
 height = 142
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8cs6n"]
+shader = ExtResource("1_0yy1k")
+shader_parameter/border_pixels = 5.0
+shader_parameter/bg_color = Color(0.6862745, 0.003921569, 0.9254902, 1)
+shader_parameter/border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2ku1e"]
+shader = ExtResource("1_0yy1k")
+shader_parameter/border_pixels = 5.0
+shader_parameter/bg_color = Color(0.23137255, 0, 0.4117647, 1)
+shader_parameter/border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Gradient" id="Gradient_8cs6n"]
+offsets = PackedFloat32Array(0.29216868)
+colors = PackedColorArray(0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mrsct"]
+gradient = SubResource("Gradient_8cs6n")
+width = 48
+height = 20
+fill_from = Vector2(0.25, 0.15)
 
 [node name="FunctionBlock" type="Area2D" unique_id=678922914 groups=["FunctionArea"]]
 script = ExtResource("1_1hs6t")
@@ -159,17 +183,55 @@ material = SubResource("ShaderMaterial_kby77")
 position = Vector2(0, -74)
 texture = SubResource("GradientTexture2D_ow6qw")
 
+[node name="TextureButton" type="TextureButton" parent="." unique_id=988441247]
+z_index = -1
+material = SubResource("ShaderMaterial_8cs6n")
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -170.0
+offset_top = -153.0
+offset_right = -106.0
+offset_bottom = -89.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(32, 32)
+texture_normal = ExtResource("5_kby77")
+
+[node name="Output_sprite" type="Sprite2D" parent="." unique_id=1411011185]
+z_index = -1
+material = SubResource("ShaderMaterial_2ku1e")
+position = Vector2(-101, -174)
+texture = SubResource("GradientTexture2D_mrsct")
+
+[node name="Marker2D" type="Marker2D" parent="Output_sprite" unique_id=728122091]
+position = Vector2(0, 35)
+
 [node name="Label" type="Label" parent="." unique_id=1272870278]
-offset_left = -147.0
-offset_top = 52.0
-offset_right = -107.0
-offset_bottom = 92.0
-text = "0"
+offset_left = -145.0
+offset_top = -174.0
+offset_right = -85.0
+offset_bottom = -113.0
+theme_override_colors/font_outline_color = Color(0.12539974, 0.0002011384, 0.23893896, 1)
+theme_override_constants/outline_size = 8
+theme_override_fonts/font = ExtResource("6_8cs6n")
+theme_override_font_sizes/font_size = 32
+text = "0.0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Press_here" type="Label" parent="." unique_id=1941895233]
+offset_left = -469.0
+offset_top = -137.0
+offset_right = -196.0
+offset_bottom = -114.0
+text = "press here to get Y NumberBlock ->"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="area_entered" from="X_sprite/X" to="." method="_on_x_area_entered"]
 [connection signal="area_exited" from="X_sprite/X" to="." method="_on_x_area_exited"]
 [connection signal="area_entered" from="X_sprite/B" to="." method="_on_b_area_entered"]
 [connection signal="area_exited" from="X_sprite/B" to="." method="_on_b_area_exited"]
+[connection signal="button_down" from="TextureButton" to="." method="_on_texture_button_button_down"]

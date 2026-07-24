@@ -68,7 +68,7 @@ shader_parameter/border_color = Color(0.06666667, 0.06666667, 0.06666667, 1)
 gradient = SubResource("Gradient_8x3vv")
 fill_from = Vector2(1, 0)
 
-[node name="Area2D" type="Area2D" unique_id=2103194165 groups=["OperatorArea"]]
+[node name="OperatorBlock" type="Area2D" unique_id=2103194165 groups=["OperatorArea"]]
 monitoring = false
 script = ExtResource("1_elnie")
 BlockType = "Operator"

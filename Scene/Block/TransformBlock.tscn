@@ -70,7 +70,7 @@ colors = PackedColorArray(1, 1, 1, 0)
 gradient = SubResource("Gradient_ufdj0")
 fill_from = Vector2(0.4636752, 0.48290598)
 
-[node name="Area2D" type="Area2D" unique_id=1918372112 groups=["TransformArea"]]
+[node name="TransformBlock" type="Area2D" unique_id=1918372112 groups=["TransformArea"]]
 script = ExtResource("1_jnaro")
 BlockType = "Transform"
 

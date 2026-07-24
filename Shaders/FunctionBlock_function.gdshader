@@ -141,22 +141,7 @@ void fragment() {
 
 
 		if(dist < size){
-
-			float alpha =
-				1.0 -
-				smoothstep(
-					0.0,
-					size,
-					dist
-				);
-
-
-			COLOR =
-				mix(
-					COLOR,
-					point_color,
-					alpha
-				);
+			COLOR = point_color;
 		}
 	}
 }
