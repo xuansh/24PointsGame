@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://d4ee3dmnx8ypa"]
+
+[ext_resource type="Shader" uid="uid://blh3mvn8utuvu" path="res://Shaders/Block.gdshader" id="1_xcmga"]
+[ext_resource type="Script" uid="uid://bturmooj0mnmy" path="res://Scene/Component/button.gd" id="2_d0qgt"]
+[ext_resource type="FontFile" uid="uid://51j4iinsif4s" path="res://Fonts/DenkOne-Regular.ttf" id="3_13hko"]
+[ext_resource type="StyleBox" uid="uid://bwkgfccpsls47" path="res://Tres/BTN/dark_btn.tres" id="4_d0qgt"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3imjh"]
+shader = ExtResource("1_xcmga")
+shader_parameter/border_pixels = 5.0
+shader_parameter/bg_color = Color(0.9596898, 0.62239665, 0.7368035, 1)
+shader_parameter/border_color = Color(0, 0, 0, 1)
+
+[node name="Button" type="TextureButton" unique_id=833299221]
+material = SubResource("ShaderMaterial_3imjh")
+custom_minimum_size = Vector2(232, 109)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -960.0
+offset_top = -540.0
+offset_right = -728.0
+offset_bottom = -431.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(116, 55)
+offset_transform_enabled = true
+script = ExtResource("2_d0qgt")
+
+[node name="Panel" type="Panel" parent="." unique_id=1675204561]
+layout_mode = 0
+offset_right = 232.0
+offset_bottom = 108.0
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("4_d0qgt")
+
+[node name="Label" type="Label" parent="." unique_id=1302946330]
+layout_mode = 0
+offset_right = 232.0
+offset_bottom = 109.0
+offset_transform_position = Vector2(7.075, 0)
+theme_override_fonts/font = ExtResource("3_13hko")
+theme_override_font_sizes/font_size = 49
+text = "TEXT "
+horizontal_alignment = 1
+vertical_alignment = 1

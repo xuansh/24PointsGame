@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://fdcbxsii681p" path="res://Scene/Block/FunctionBlock.gd" id="1_1hs6t"]
 [ext_resource type="FontFile" uid="uid://bdptysj6ngk46" path="res://Fonts/Frick0.3-Regular-3.otf" id="3_max8e"]
 [ext_resource type="Shader" uid="uid://dvjx50ipbvvol" path="res://Shaders/FunctionBlock_function.gdshader" id="4_0dh0w"]
-[ext_resource type="Texture2D" uid="uid://bwxkp347bhrcl" path="res://Tres/a_normal_texture_preset.tres" id="5_kby77"]
 [ext_resource type="FontFile" uid="uid://51j4iinsif4s" path="res://Fonts/DenkOne-Regular.ttf" id="6_8cs6n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0dh0w"]
@@ -83,18 +82,26 @@ shader_parameter/border_pixels = 5.0
 shader_parameter/bg_color = Color(0.6862745, 0.003921569, 0.9254902, 1)
 shader_parameter/border_color = Color(0, 0, 0, 1)
 
+[sub_resource type="Gradient" id="Gradient_8cs6n"]
+offsets = PackedFloat32Array(0.29216868)
+colors = PackedColorArray(0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_2ku1e"]
+gradient = SubResource("Gradient_8cs6n")
+fill_from = Vector2(0.25, 0.15)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ku1e"]
 shader = ExtResource("1_0yy1k")
 shader_parameter/border_pixels = 5.0
 shader_parameter/bg_color = Color(0.23137255, 0, 0.4117647, 1)
 shader_parameter/border_color = Color(0, 0, 0, 1)
 
-[sub_resource type="Gradient" id="Gradient_8cs6n"]
+[sub_resource type="Gradient" id="Gradient_mrsct"]
 offsets = PackedFloat32Array(0.29216868)
 colors = PackedColorArray(0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_mrsct"]
-gradient = SubResource("Gradient_8cs6n")
+gradient = SubResource("Gradient_mrsct")
 width = 48
 height = 20
 fill_from = Vector2(0.25, 0.15)
@@ -198,7 +205,7 @@ offset_bottom = -89.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(32, 32)
-texture_normal = ExtResource("5_kby77")
+texture_normal = SubResource("GradientTexture2D_2ku1e")
 
 [node name="Output_sprite" type="Sprite2D" parent="." unique_id=1411011185]
 z_index = -1

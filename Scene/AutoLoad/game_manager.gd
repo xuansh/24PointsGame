@@ -8,6 +8,11 @@ var block_in_mouse_area : Array[Block]
 var level_id : int
 var is_completed : bool = false
 
+var mouse_speed : float = 0.0
+var is_calculate_mouse_speed : bool = true
+var last_pos : Vector2
+
+
 var AllBlockContainers : Array[Node2D] = []
 var NumberBlockContainer : Node2D = null
 var OperatorBlockContainer : Node2D = null
@@ -26,6 +31,10 @@ const FUNCTION_BLOCK = preload("uid://dk5xsi8llo1xe")
 
 const LevelSelection = preload("res://Scene/scn/LevelSelection/LevelSelection.tscn")
 
+
+func _ready() -> void:
+	last_pos = get_viewport().get_mouse_position()
+	
 
 func _process(delta: float) -> void:
 	var process = []
@@ -48,6 +57,12 @@ func _input(event: InputEvent) -> void:
 					current_dragging.is_dragging = false
 					current_dragging = null
 				block_in_mouse_area.clear()
+		if is_calculate_mouse_speed:
+			var now_pos = event.position
+			var delta_pos = now_pos - last_pos
+			var speed_frame = delta_pos.length()
+			last_pos = now_pos
+			#print(speed_frame)
 
 func bring_to_front() -> void:
 	if current_dragging:
@@ -109,6 +124,10 @@ func spawn_a_NumberBlock(value : float, BlockType : String, target_pos : Vector2
 func change_to_level_selection_scene():
 	get_tree().change_scene_to_packed(LevelSelection)
 
+
+func get_mouse_speed():
+	is_calculate_mouse_speed = true
+	await get_tree().process_frame
 
 func print_all_block_position():
 	AllBlockContainers = []
