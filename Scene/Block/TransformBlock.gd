@@ -4,12 +4,14 @@ class_name TransformBlock
 
 var operator_block : OperatorBlock = null
 var temp_operator_block : Area2D = null
+var number_block_move_tween : Tween
 
 @export var root : Node2D = null
 
 @onready var target_operator_block : Area2D = $Sprite2D/OperatorBlock
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 @onready var transform_button: Button = $Button
+@onready var marker_2d: Marker2D = $Button/Marker2D
 
 func _ready() -> void:
 	pass
@@ -86,6 +88,12 @@ func _on_button_button_up() -> void:
 		if operator_block.BlockType == 'Operator':
 			if operator_block.able_to_output_num():
 				if !is_nan(operator_block.get_value()):
-					GAMEMANAGER.spawn_a_NumberBlock(operator_block.get_value(), "Number", Vector2(self.position.x + 117, self.position.y + 190))
+					var block = GAMEMANAGER.spawn_a_NumberBlock(operator_block.get_value(), "Number", marker_2d.global_position)
+					var offset_y = 70
+					var tween_time = 0.4
+					block.z_index = self.z_index - 1
+					number_block_move_tween = get_tree().create_tween().set_parallel(true)
+					number_block_move_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CIRC)
+					number_block_move_tween.tween_property(block, "global_position:y", block.global_position.y + offset_y, tween_time)
 					operator_block._queue_free_two_input()
 					update_transform_color(Color(0.078, 0.16, 0.051, 1.0))

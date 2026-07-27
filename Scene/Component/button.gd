@@ -27,14 +27,17 @@ var tween_scale_ratio : float = 0.6
 func _ready() -> void:
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
-	
+
 	(func():
 		label.text = btn_text
 		origin_label_color = label.get_theme_color("font_color")
 		label.add_theme_color_override("font_color", exit_label_color)
 		panel.add_theme_stylebox_override("panel", exit_btn)
 	).call_deferred()
-	
+
+	if btn_text.is_valid_int():
+		pressed.connect(load_level)
+
 	print(panel)
 
 func _on_mouse_entered() -> void:
@@ -68,3 +71,6 @@ func _on_mouse_exited() -> void:
 	back_tween.tween_property(self, "rotation_degrees", tween_origin_rotation_degrees, tween_rotation_recovery_time)
 	back_tween.tween_property(self, "scale:x", tween_origin_scale, tween_scale_time_x)
 	back_tween.parallel().tween_property(self, "scale:y", tween_origin_scale, tween_scale_time_y)
+
+func load_level():
+	MAPINSTANTIATE.load_level(int(btn_text))

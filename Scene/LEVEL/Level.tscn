@@ -8,14 +8,39 @@
 [ext_resource type="Shader" uid="uid://dmqw306ngjr5w" path="res://Shaders/bg.gdshader" id="6_fdw5n"]
 [ext_resource type="Script" uid="uid://duvk7t1jg0h10" path="res://Scene/LEVEL/Container/function_block_container.gd" id="6_yjdbb"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xfpj2"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5my81"]
 shader = ExtResource("6_fdw5n")
 shader_parameter/bg_color = Color(0.34, 0.34, 0.34, 1)
-shader_parameter/grid_color = Color(1, 1, 1, 0.035)
+shader_parameter/grid_color = Color(1, 1, 1, 0.26666668)
 shader_parameter/grid_size = 64.0
-shader_parameter/line_width = 6.0
+shader_parameter/line_width = 1.0
 
 [node name="Game" type="Node2D" unique_id=743338457]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1569252990]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=373355504]
+material = SubResource("ShaderMaterial_5my81")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer" unique_id=216183185]
+visible = false
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.54901963, 0.6509804, 0.40392157, 1)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=693566276]
 script = ExtResource("1_xfpj2")
@@ -36,17 +61,3 @@ script = ExtResource("5_5my81")
 
 [node name="FunctionBlockContainer" type="Node2D" parent="World" unique_id=416723268]
 script = ExtResource("6_yjdbb")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1077564784]
-layer = -1
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=967417286]
-z_index = 2
-material = SubResource("ShaderMaterial_xfpj2")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.34901962, 0.3372549, 0.32156864, 1)

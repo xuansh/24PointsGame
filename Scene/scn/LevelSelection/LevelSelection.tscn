@@ -5,6 +5,8 @@
 [ext_resource type="FontFile" uid="uid://51j4iinsif4s" path="res://Fonts/DenkOne-Regular.ttf" id="2_f2nhq"]
 [ext_resource type="StyleBox" uid="uid://bwkgfccpsls47" path="res://Tres/BTN/dark_btn.tres" id="3_lfyn8"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3imjh"]
+
 [node name="LevelSelection" type="Control" unique_id=1641298793]
 layout_mode = 3
 anchors_preset = 8
@@ -27,6 +29,7 @@ offset_top = -446.0
 offset_right = 803.0
 offset_bottom = 438.0
 mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_3imjh")
 
 [node name="Label" type="Label" parent="Panel" unique_id=681280303]
 layout_mode = 1

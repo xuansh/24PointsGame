@@ -20,5 +20,6 @@ func _ready() -> void:
 			b.exit_label_color = exit_label_color
 			b.enter_btn = enter_btn
 			b.exit_btn = exit_btn
+			
 			b.btn_text = filename_noextension
 			grid_container.add_child(b)

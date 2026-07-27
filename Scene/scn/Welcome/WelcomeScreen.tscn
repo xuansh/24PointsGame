@@ -2,14 +2,32 @@
 
 [ext_resource type="Script" uid="uid://rjg3mgnl8821" path="res://Scene/scn/Welcome/welcome_screen.gd" id="1_wqw80"]
 [ext_resource type="PackedScene" uid="uid://d4ee3dmnx8ypa" path="res://Scene/Component/button.tscn" id="2_2hvfp"]
+[ext_resource type="Shader" uid="uid://bearc1qtn04rp" path="res://Shaders/pseudo splatter.gdshader" id="2_8h4ge"]
 [ext_resource type="FontFile" uid="uid://51j4iinsif4s" path="res://Fonts/DenkOne-Regular.ttf" id="2_wqw80"]
 [ext_resource type="StyleBox" uid="uid://cr6pmqtee6vmh" path="res://Tres/BTN/light_btn.tres" id="3_52sjj"]
 [ext_resource type="Shader" uid="uid://bygssbchhesv6" path="res://Shaders/Welcome/WelcomeScreen_number.gdshader" id="3_er1ri"]
+[ext_resource type="Texture2D" uid="uid://cbnqy1er1oi0o" path="res://Textures/截图 2026-07-27 23-25-48.png" id="3_xlamq"]
 [ext_resource type="StyleBox" uid="uid://bwkgfccpsls47" path="res://Tres/BTN/dark_btn.tres" id="4_3imjh"]
 [ext_resource type="Script" uid="uid://cq6f3tc8xqtwv" path="res://Scene/scn/Welcome/24_animation.gd" id="4_10bhm"]
 [ext_resource type="Script" uid="uid://cj5sg82p5xti0" path="res://Scene/scn/Welcome/POINT_animation.gd" id="4_gkaho"]
 [ext_resource type="Shader" uid="uid://blh3mvn8utuvu" path="res://Shaders/Block.gdshader" id="4_pmejh"]
 [ext_resource type="StyleBox" uid="uid://dw4kestkjacls" path="res://Tres/BTN/quit_btn.tres" id="5_3imjh"]
+[ext_resource type="FontFile" uid="uid://dvigsu7s1tvmw" path="res://Fonts/Bahiana-Regular.ttf" id="10_mncjh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3imjh"]
+shader = ExtResource("2_8h4ge")
+shader_parameter/g_random_seed = 0.0
+shader_parameter/g_grid_size = Vector2(16, 9)
+shader_parameter/g_cell_offset = Vector2(0, 0)
+shader_parameter/g_speed = Vector2(0.1, -0.1)
+shader_parameter/g_draw_size_min = 0.1
+shader_parameter/g_draw_size_max = 0.4
+shader_parameter/tex_draw = ExtResource("3_xlamq")
+shader_parameter/g_color_a = Color(1, 1, 1, 0)
+shader_parameter/g_color_b = Color(1, 1, 1, 1)
+shader_parameter/g_rot_global_speed = 1.0
+shader_parameter/g_rot_min_speed = 0.1
+shader_parameter/g_rot_max_speed = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kldih"]
 render_priority = 0
@@ -98,6 +116,29 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_wqw80")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1079064415]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=725114662]
+material = SubResource("ShaderMaterial_3imjh")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.36094868, 0.36094868, 0.36094865, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer" unique_id=781373589]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5470833, 0.65, 0.403, 1)
+
 [node name="PLAY_BTN" parent="." unique_id=833299221 instance=ExtResource("2_2hvfp")]
 layout_mode = 1
 offset_left = -112.0
@@ -163,7 +204,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 32
-theme_override_fonts/normal_font = ExtResource("2_wqw80")
+theme_override_fonts/normal_font = ExtResource("10_mncjh")
 theme_override_font_sizes/normal_font_size = 200
 bbcode_enabled = true
 text = "[color=#E6CD10]2[/color][color=red]4[/color]"

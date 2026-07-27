@@ -108,6 +108,9 @@ text = "Trans"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Marker2D" type="Marker2D" parent="Button" unique_id=505838225]
+position = Vector2(20, 20)
+
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=588804708]
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=562035217]
