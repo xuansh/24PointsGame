@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dtfdcp4su1kw5"]
+
+[ext_resource type="Shader" uid="uid://blh3mvn8utuvu" path="res://Shaders/Block.gdshader" id="1_crno2"]
+[ext_resource type="Texture2D" uid="uid://bwxkp347bhrcl" path="res://Tres/a_normal_texture_preset.tres" id="1_uixut"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kldih"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bw8uv"]
+shader = ExtResource("1_crno2")
+shader_parameter/border_pixels = 5.0
+shader_parameter/bg_color = Color(0.581033, 0.58103293, 0.5810329, 1)
+shader_parameter/border_color = Color(0, 0, 0, 1)
+
+[node name="ConveyorBlock" type="Area2D" unique_id=1028266639]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=931943873]
+shape = SubResource("RectangleShape2D_kldih")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1019125700]
+material = SubResource("ShaderMaterial_bw8uv")
+texture = ExtResource("1_uixut")
