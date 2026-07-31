@@ -89,7 +89,7 @@ func _on_button_button_up() -> void:
 			if operator_block.able_to_output_num():
 				if !is_nan(operator_block.get_value()):
 					var block = GAMEMANAGER.spawn_a_NumberBlock(operator_block.get_value(), "Number", marker_2d.global_position)
-					var offset_y = 70
+					var offset_y = 80
 					var tween_time = 0.4
 					block.z_index = self.z_index - 1
 					number_block_move_tween = get_tree().create_tween().set_parallel(true)
