@@ -17,7 +17,10 @@ general/updates_per_second=100
 
 config/name="24PointGame"
 run/main_scene="uid://c5ndcdlfhb8qn"
+run/enable_alt_space_menu=true
 config/features=PackedStringArray("4.7", "Forward Plus")
+run/low_processor_mode=true
+boot_splash/bg_color=Color(0.36282963, 0.36282942, 0.36282936, 1)
 config/icon="res://icon.svg"
 
 [autoload]
@@ -30,7 +33,6 @@ MAPINSTANTIATE="*res://Scene/AutoLoad/map_instantiate.gd"
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [global_group]
 
