@@ -2,10 +2,11 @@ extends Control
 
 @export var setting_container : Control
 @export var setting_btn: TextureButton
+@onready var color_rect: ColorRect = $CanvasLayer/ColorRect
 
 func _ready() -> void:
 	setting_container.root_btn = setting_btn
-
+	
 func _on_quit_btn_pressed() -> void:
 	get_tree().quit()
 

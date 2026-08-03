@@ -142,13 +142,38 @@ func _on_b_area_entered(area: Area2D) -> void:
 	if area.is_in_group("NumberArea") and b == null and area.is_dragging:
 		temp_b = area
 
+func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if event.pressed:
+				_on_texture_button_button_down()
+
+#endregion
+
+#region setter
+
+func setter_function_a(a : float):
+	Y_mat.set_shader_parameter("a", a)
+
+func setter_function_b(b : float):
+	Y_mat.set_shader_parameter("b", b)
+
+#endregion
+
+#region getter
+
+func get_value() -> float:
+	return value
+
+#endregion
+
 func _on_texture_button_button_down() -> void:
 	GAMEMANAGER.print_all_block_position()
 	
 	if texture_btn_tween and texture_btn_tween.is_running():
 		return
 	texture_btn_tween = get_tree().create_tween().set_parallel(true)
-	var target_offset_x : float = 5.0
+	var target_offset_x : float = 10.0
 	var origin_x = texture_button.position.x
 	var tween_time : float = 0.2
 	texture_btn_tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
@@ -178,23 +203,3 @@ func _on_texture_button_button_down() -> void:
 
 	#NOTICE BACK
 	texture_btn_tween.chain().tween_property(texture_button, "position:x", origin_x, tween_time)
-
-
-#endregion
-
-#region setter
-
-func setter_function_a(a : float):
-	Y_mat.set_shader_parameter("a", a)
-
-func setter_function_b(b : float):
-	Y_mat.set_shader_parameter("b", b)
-
-#endregion
-
-#region getter
-
-func get_value() -> float:
-	return value
-
-#endregion

@@ -90,6 +90,9 @@ colors = PackedColorArray(0, 0, 0, 0)
 gradient = SubResource("Gradient_8cs6n")
 fill_from = Vector2(0.25, 0.15)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ow6qw"]
+size = Vector2(63, 82)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ku1e"]
 shader = ExtResource("1_0yy1k")
 shader_parameter/border_pixels = 5.0
@@ -198,14 +201,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -170.0
+offset_left = -178.0
 offset_top = -153.0
-offset_right = -106.0
+offset_right = -114.0
 offset_bottom = -89.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(32, 32)
+mouse_filter = 2
 texture_normal = SubResource("GradientTexture2D_2ku1e")
+
+[node name="Area2D" type="Area2D" parent="TextureButton" unique_id=1575189744]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TextureButton/Area2D" unique_id=48261303]
+position = Vector2(8, 32)
+shape = SubResource("RectangleShape2D_ow6qw")
 
 [node name="Output_sprite" type="Sprite2D" parent="." unique_id=1411011185]
 z_index = -1
@@ -230,10 +240,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Press_here" type="Label" parent="." unique_id=1941895233]
-offset_left = -469.0
-offset_top = -137.0
-offset_right = -196.0
-offset_bottom = -114.0
+offset_left = -470.0
+offset_top = -135.0
+offset_right = -197.0
+offset_bottom = -112.0
 text = "press here to get Y NumberBlock ->"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
@@ -241,4 +251,4 @@ text = "press here to get Y NumberBlock ->"
 [connection signal="area_exited" from="X_sprite/X" to="." method="_on_x_area_exited"]
 [connection signal="area_entered" from="X_sprite/B" to="." method="_on_b_area_entered"]
 [connection signal="area_exited" from="X_sprite/B" to="." method="_on_b_area_exited"]
-[connection signal="button_down" from="TextureButton" to="." method="_on_texture_button_button_down"]
+[connection signal="input_event" from="TextureButton/Area2D" to="." method="_on_area_2d_input_event"]

@@ -7,10 +7,14 @@ extends Control
 
 var setting_tween : Tween
 var off_setting_tween : Tween
+var bg_tween : Tween
+var off_bg_tween : Tween
 var stylebox : StyleBoxFlat
+var bg_stylebox : StyleBoxFlat
 
 func _ready() -> void:
 	stylebox = panel.get_theme_stylebox("panel").duplicate()
+	bg_stylebox = bg_panel.get_theme_stylebox("panel").duplicate()
 
 func _on_that_btn_pressed_u_know():
 	var tween_corner_radius_target_friend = 100
@@ -53,6 +57,58 @@ func _on_that_btn_pressed_u_know():
 		func(val): set_panel_expand_margins(stylebox, "Bottom", val),
 		stylebox.expand_margin_bottom,
 		800,
+		tween_expand_margins_time
+	)
+	
+	bg_tween = get_tree().create_tween()
+	bg_tween.set_parallel(true)
+	bg_panel.add_theme_stylebox_override("panel", bg_stylebox)
+	bg_tween.tween_method(
+		func(val):	set_panel_corner_radius(bg_stylebox, "Top Right", val),
+		bg_stylebox.corner_radius_top_right,
+		tween_corner_radius_target_friend,
+		tween_corner_radius_time
+	)
+	
+	bg_tween.tween_method(
+		func(val):	set_panel_corner_radius(bg_stylebox, "Bottom Right", val),
+		bg_stylebox.corner_radius_bottom_right,
+		tween_corner_radius_target_nfriend,
+		tween_corner_radius_time
+	)
+	
+	bg_tween.tween_method(
+		func(val):	set_panel_corner_radius(bg_stylebox, "Bottom Left", val),
+		bg_stylebox.corner_radius_bottom_left,
+		tween_corner_radius_target_friend,
+		tween_corner_radius_time
+	)
+	
+	bg_tween.tween_method(
+		func(val): set_panel_expand_margins(bg_stylebox, "Right", val),
+		bg_stylebox.expand_margin_right,
+		1220,
+		tween_expand_margins_time
+	)
+	
+	bg_tween.tween_method(
+		func(val): set_panel_expand_margins(bg_stylebox, "Bottom", val),
+		bg_stylebox.expand_margin_bottom,
+		820,
+		tween_expand_margins_time
+	)
+	
+	bg_tween.tween_method(
+		func(val): set_panel_expand_margins(bg_stylebox, "Left", val),
+		bg_stylebox.expand_margin_bottom,
+		10,
+		tween_expand_margins_time
+	)
+	
+	bg_tween.tween_method(
+		func(val): set_panel_expand_margins(bg_stylebox, "Top", val),
+		bg_stylebox.expand_margin_bottom,
+		10,
 		tween_expand_margins_time
 	)
 

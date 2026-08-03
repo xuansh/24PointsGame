@@ -131,6 +131,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset_ratio = Vector2(4, 0)
 size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0.36094868, 0.36094868, 0.36094865, 1)
@@ -145,6 +146,7 @@ grow_vertical = 2
 color = Color(0.2509804, 0.4627451, 0.23529412, 1)
 
 [node name="PLAY_BTN" parent="." unique_id=833299221 instance=ExtResource("2_2hvfp")]
+z_index = -999
 layout_mode = 1
 offset_left = -112.0
 offset_top = 55.5
@@ -157,6 +159,7 @@ enter_label_color = Color(0.32156864, 0.5176471, 0.6627451, 1)
 exit_label_color = Color(1, 1, 1, 1)
 
 [node name="QUIT_BTN" parent="." unique_id=1893993478 instance=ExtResource("2_2hvfp")]
+z_index = -999
 layout_mode = 1
 offset_left = -112.0
 offset_top = 188.5
@@ -197,6 +200,7 @@ texture = ExtResource("9_ync2g")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=924158081]
 
 [node name="LabelContainer" type="Control" parent="." unique_id=734281929]
+z_index = -999
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
