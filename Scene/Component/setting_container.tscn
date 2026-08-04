@@ -3,6 +3,16 @@
 [ext_resource type="StyleBox" uid="uid://m1dogc8pwod3" path="res://Tres/PANEL/setting_panel.tres" id="1_7r02w"]
 [ext_resource type="Script" uid="uid://sgq1qwofobht" path="res://Scene/Component/setting_container.gd" id="1_bivba"]
 [ext_resource type="StyleBox" uid="uid://k5n6jc4w5kfj" path="res://Tres/PANEL/bg_setting_panel.tres" id="2_bivba"]
+[ext_resource type="PackedScene" uid="uid://d4ee3dmnx8ypa" path="res://Scene/Component/button.tscn" id="4_mltn1"]
+[ext_resource type="Shader" uid="uid://blh3mvn8utuvu" path="res://Shaders/Block.gdshader" id="5_ll2f2"]
+[ext_resource type="StyleBox" uid="uid://8gv8lhjuutfn" path="res://Tres/BTN/setting_close_btn.tres" id="6_3cme1"]
+[ext_resource type="Texture2D" uid="uid://caitdp5dfww05" path="res://Textures/关闭-小_close-small.png" id="7_3cme1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dpmyw"]
+shader = ExtResource("5_ll2f2")
+shader_parameter/border_pixels = 5.0
+shader_parameter/bg_color = Color(0.9596898, 0.62239665, 0.7368035, 1)
+shader_parameter/border_color = Color(0, 0, 0, 1)
 
 [node name="SettingContainer" type="Control" unique_id=598388891]
 layout_mode = 3
@@ -29,20 +39,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("1_7r02w")
 
-[node name="Button" type="Button" parent="." unique_id=1422697451]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -838.0
-offset_top = -420.0
-offset_right = -738.0
-offset_bottom = -320.0
-grow_horizontal = 2
-grow_vertical = 2
-
 [node name="Bg_Panel" type="Panel" parent="." unique_id=644878505]
 z_index = -1
 layout_mode = 1
@@ -59,4 +55,31 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("2_bivba")
 
+[node name="Button" parent="." unique_id=833299221 instance=ExtResource("4_mltn1")]
+material = SubResource("ShaderMaterial_dpmyw")
+custom_minimum_size = Vector2(-1, -1)
+layout_mode = 1
+offset_left = -914.0
+offset_top = -498.0
+offset_right = -814.0
+offset_bottom = -398.0
+pivot_offset = Vector2(50, 50)
+
+[node name="Panel" parent="Button" index="0" unique_id=1675204561]
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_styles/panel = ExtResource("6_3cme1")
+
+[node name="Label" parent="Button" index="1" unique_id=1302946330]
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Button" unique_id=39557653]
+modulate = Color(0.65, 0.24049999, 0.24049999, 0.4392157)
+position = Vector2(40, 40)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("7_3cme1")
+offset = Vector2(10, 10)
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+
+[editable path="Button"]

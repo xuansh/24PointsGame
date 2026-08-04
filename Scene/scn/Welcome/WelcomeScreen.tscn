@@ -8,6 +8,7 @@
 [ext_resource type="Shader" uid="uid://bygssbchhesv6" path="res://Shaders/Welcome/WelcomeScreen_number.gdshader" id="3_er1ri"]
 [ext_resource type="Texture2D" uid="uid://cbnqy1er1oi0o" path="res://Textures/截图 2026-07-27 23-25-48.png" id="3_xlamq"]
 [ext_resource type="StyleBox" uid="uid://bwkgfccpsls47" path="res://Tres/BTN/dark_btn.tres" id="4_3imjh"]
+[ext_resource type="Shader" uid="uid://cow5vsihaijcs" path="res://Shaders/blur.gdshader" id="4_7ouy4"]
 [ext_resource type="Script" uid="uid://cq6f3tc8xqtwv" path="res://Scene/scn/Welcome/24_animation.gd" id="4_10bhm"]
 [ext_resource type="Script" uid="uid://cj5sg82p5xti0" path="res://Scene/scn/Welcome/POINT_animation.gd" id="4_gkaho"]
 [ext_resource type="Shader" uid="uid://blh3mvn8utuvu" path="res://Shaders/Block.gdshader" id="4_pmejh"]
@@ -31,6 +32,10 @@ shader_parameter/g_color_b = Color(1, 1, 1, 1)
 shader_parameter/g_rot_global_speed = 1.0
 shader_parameter/g_rot_min_speed = 0.1
 shader_parameter/g_rot_max_speed = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ow6qw"]
+shader = ExtResource("4_7ouy4")
+shader_parameter/lod = 2.042000096995
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kldih"]
 render_priority = 0
@@ -198,6 +203,22 @@ scale = Vector2(0.31, 0.31)
 texture = ExtResource("9_ync2g")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=924158081]
+
+[node name="BlurBack" type="ColorRect" parent="." unique_id=252268256]
+visible = false
+z_index = -1
+material = SubResource("ShaderMaterial_ow6qw")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="LabelContainer" type="Control" parent="." unique_id=734281929]
 z_index = -999
@@ -467,12 +488,15 @@ text = "T"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SettingContainer" parent="." unique_id=598388891 instance=ExtResource("16_kuwuv")]
+[node name="SettingContainer" parent="." unique_id=598388891 node_paths=PackedStringArray("root", "root_btn") instance=ExtResource("16_kuwuv")]
 visible = false
 layout_mode = 1
+root = NodePath("..")
+root_btn = NodePath("../SETTING_BTN")
 
 [connection signal="pressed" from="PLAY_BTN" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QUIT_BTN" to="." method="_on_quit_btn_pressed"]
 [connection signal="pressed" from="SETTING_BTN" to="." method="_on_setting_btn_pressed"]
 
 [editable path="SETTING_BTN"]
+[editable path="SettingContainer"]

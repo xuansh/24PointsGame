@@ -1,5 +1,6 @@
 extends Control
 
+@export var root : Control
 @export var root_btn : Control
 
 @onready var panel: Panel = $Panel
@@ -100,26 +101,29 @@ func _on_that_btn_pressed_u_know():
 	
 	bg_tween.tween_method(
 		func(val): set_panel_expand_margins(bg_stylebox, "Left", val),
-		bg_stylebox.expand_margin_bottom,
+		bg_stylebox.expand_margin_left,
 		10,
 		tween_expand_margins_time
 	)
 	
 	bg_tween.tween_method(
 		func(val): set_panel_expand_margins(bg_stylebox, "Top", val),
-		bg_stylebox.expand_margin_bottom,
+		bg_stylebox.expand_margin_top,
 		10,
 		tween_expand_margins_time
 	)
 
 
 func _on_button_pressed() -> void:
+	root._on_pause_menu_shown()
 	off_setting_tween = get_tree().create_tween()
+	off_bg_tween = get_tree().create_tween()
 	var tween_corner_radius_TR : int = 300
 	var tween_corner_radius_BR : int = 450
 	var tween_corner_radius_BL : int = 300
 	var tween_corner_radius_time = 0.3
 	var tween_expand_margins_time = 0.15
+	
 	off_setting_tween.set_parallel(true)
 	panel.add_theme_stylebox_override("panel", stylebox)
 	off_setting_tween.tween_method(
@@ -153,6 +157,57 @@ func _on_button_pressed() -> void:
 	off_setting_tween.tween_method(
 		func(val): set_panel_expand_margins(stylebox, "Bottom", val),
 		stylebox.expand_margin_bottom,
+		0,
+		tween_expand_margins_time
+	)
+
+	off_bg_tween.set_parallel(true)
+	bg_panel.add_theme_stylebox_override("panel", bg_stylebox)
+	off_bg_tween.tween_method(
+		func(val):	set_panel_corner_radius(bg_stylebox, "Top Right", val),
+		bg_stylebox.corner_radius_top_right,
+		tween_corner_radius_TR,
+		tween_corner_radius_time
+	)
+	
+	off_bg_tween.tween_method(
+		func(val):	set_panel_corner_radius(bg_stylebox, "Bottom Right", val),
+		bg_stylebox.corner_radius_bottom_right,
+		tween_corner_radius_BR,
+		tween_corner_radius_time
+	)
+	
+	off_bg_tween.tween_method(
+		func(val):	set_panel_corner_radius(bg_stylebox, "Bottom Left", val),
+		bg_stylebox.corner_radius_bottom_left,
+		tween_corner_radius_BL,
+		tween_corner_radius_time
+	)
+	
+	off_bg_tween.tween_method(
+		func(val): set_panel_expand_margins(bg_stylebox, "Right", val),
+		bg_stylebox.expand_margin_right,
+		0,
+		tween_expand_margins_time
+	)
+	
+	off_bg_tween.tween_method(
+		func(val): set_panel_expand_margins(bg_stylebox, "Bottom", val),
+		bg_stylebox.expand_margin_bottom,
+		0,
+		tween_expand_margins_time
+	)
+	
+	off_bg_tween.tween_method(
+		func(val): set_panel_expand_margins(bg_stylebox, "Left", val),
+		bg_stylebox.expand_margin_left,
+		0,
+		tween_expand_margins_time
+	)
+	
+	off_bg_tween.tween_method(
+		func(val): set_panel_expand_margins(bg_stylebox, "Top", val),
+		bg_stylebox.expand_margin_top,
 		0,
 		tween_expand_margins_time
 	)
