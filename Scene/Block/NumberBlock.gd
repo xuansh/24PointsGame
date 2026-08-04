@@ -42,8 +42,6 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			else:
 				if is_dragging:
 					is_dragging = false
-					print_rich("[color=yellow]NB is releasing[/color]")
-					
 
 func update_value_label():
 	if get_value() == int(get_value()):

@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://cj5sg82p5xti0" path="res://Scene/scn/Welcome/POINT_animation.gd" id="4_gkaho"]
 [ext_resource type="Shader" uid="uid://blh3mvn8utuvu" path="res://Shaders/Block.gdshader" id="4_pmejh"]
 [ext_resource type="StyleBox" uid="uid://dw4kestkjacls" path="res://Tres/BTN/quit_btn.tres" id="5_3imjh"]
+[ext_resource type="StyleBox" uid="uid://bkrcup05ukokk" path="res://Tres/BTN/setting_home_btn.tres" id="6_7ouy4"]
 [ext_resource type="StyleBox" uid="uid://m1dogc8pwod3" path="res://Tres/PANEL/setting_panel.tres" id="8_ync2g"]
 [ext_resource type="Texture2D" uid="uid://d4a314jmhnlqx" path="res://Textures/设置_setting.png" id="9_ync2g"]
 [ext_resource type="FontFile" uid="uid://dvigsu7s1tvmw" path="res://Fonts/Bahiana-Regular.ttf" id="10_mncjh"]
@@ -176,7 +177,6 @@ enter_label_color = Color(1, 1, 1, 1)
 exit_label_color = Color(1, 1, 1, 1)
 
 [node name="SETTING_BTN" parent="." unique_id=1762175832 instance=ExtResource("2_2hvfp")]
-custom_minimum_size = Vector2(-1, -1)
 layout_mode = 1
 offset_left = -938.0
 offset_top = -520.0
@@ -190,6 +190,7 @@ exit_btn = ExtResource("8_ync2g")
 layout_mode = 1
 offset_right = 100.0
 offset_bottom = 100.0
+theme_override_styles/panel = ExtResource("6_7ouy4")
 metadata/_edit_lock_ = true
 
 [node name="Label" parent="SETTING_BTN" index="1" unique_id=1302946330]
@@ -500,3 +501,5 @@ root_btn = NodePath("../SETTING_BTN")
 
 [editable path="SETTING_BTN"]
 [editable path="SettingContainer"]
+[editable path="SettingContainer/CloseButton"]
+[editable path="SettingContainer/MenuButton"]

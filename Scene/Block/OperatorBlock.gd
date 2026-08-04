@@ -17,12 +17,7 @@ var is_frangible : bool = false
 @onready var output_rich_text_label: RichTextLabel = $OutputRichTextLabel
 @onready var audio_stream_player_2d: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
-func _ready() -> void:
-	print("ready")
-	pass
-
 func __init(_op_type : String, _position : Vector2, _is_frangible : bool):
-	print("__init")
 	self.op_type = _op_type
 	self.position = _position
 	self.is_frangible = _is_frangible

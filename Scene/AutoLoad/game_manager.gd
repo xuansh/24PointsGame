@@ -34,7 +34,7 @@ const LevelSelection = preload("res://Scene/scn/LevelSelection/LevelSelection.ts
 
 func _ready() -> void:
 	last_pos = get_viewport().get_mouse_position()
-	
+
 
 func _process(delta: float) -> void:
 	var process = []
