@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://d4a314jmhnlqx" path="res://Textures/设置_setting.png" id="9_ync2g"]
 [ext_resource type="FontFile" uid="uid://dvigsu7s1tvmw" path="res://Fonts/Bahiana-Regular.ttf" id="10_mncjh"]
 [ext_resource type="PackedScene" uid="uid://b23vwdx0d3hx" path="res://Scene/Component/setting_container.tscn" id="16_kuwuv"]
+[ext_resource type="PackedScene" uid="uid://bx16mv5li33al" path="res://Scene/scn/LevelSelection/LevelSelection.tscn" id="19_nh2eu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3imjh"]
 shader = ExtResource("2_8h4ge")
@@ -177,6 +178,7 @@ enter_label_color = Color(1, 1, 1, 1)
 exit_label_color = Color(1, 1, 1, 1)
 
 [node name="SETTING_BTN" parent="." unique_id=1762175832 instance=ExtResource("2_2hvfp")]
+custom_minimum_size = Vector2(-1, -1)
 layout_mode = 1
 offset_left = -938.0
 offset_top = -520.0
@@ -495,6 +497,10 @@ layout_mode = 1
 root = NodePath("..")
 root_btn = NodePath("../SETTING_BTN")
 
+[node name="LevelSelection" parent="." unique_id=1641298793 instance=ExtResource("19_nh2eu")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="PLAY_BTN" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="QUIT_BTN" to="." method="_on_quit_btn_pressed"]
 [connection signal="pressed" from="SETTING_BTN" to="." method="_on_setting_btn_pressed"]
@@ -502,4 +508,4 @@ root_btn = NodePath("../SETTING_BTN")
 [editable path="SETTING_BTN"]
 [editable path="SettingContainer"]
 [editable path="SettingContainer/CloseButton"]
-[editable path="SettingContainer/MenuButton"]
+[editable path="SettingContainer/HomeButton"]

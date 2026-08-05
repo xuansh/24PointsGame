@@ -21,6 +21,10 @@ var ConditionBlockContainer : Node2D = null
 var FunctionBlockContainer : Node2D = null
 var MainCamera : Camera2D = null
 
+var current_scene : Node = null:
+	get:
+		return get_tree().current_scene
+
 const MAX_PRESS_SCALE = Vector2(1.2, 1.2)
 const MIN_PRESS_SCALE = Vector2(1.0, 1.0)
 const NUMBER_BLOCK = preload("uid://cxqvbxwc4eu0y")
@@ -35,11 +39,11 @@ const LevelSelection = preload("res://Scene/scn/LevelSelection/LevelSelection.ts
 func _ready() -> void:
 	last_pos = get_viewport().get_mouse_position()
 
-
 func _process(delta: float) -> void:
 	var process = []
 	#var loaded_status = ResourceLoader.load_threaded_get_status()
 	#print(current_dragging)
+
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:

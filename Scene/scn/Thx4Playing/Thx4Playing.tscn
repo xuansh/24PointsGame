@@ -48,7 +48,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("1_of4yi")
 theme_override_font_sizes/font_size = 48
-text = "Level"
+text = "Home"
 
 [node name="Exit" type="Button" parent="." unique_id=736492864]
 layout_mode = 1

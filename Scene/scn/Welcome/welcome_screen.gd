@@ -4,6 +4,7 @@ extends Control
 @export var setting_btn: TextureButton
 @onready var color_rect: ColorRect = $CanvasLayer/ColorRect
 @onready var blur_back: ColorRect = $BlurBack
+@onready var level_selection: Control = $LevelSelection
 
 func _ready() -> void:
 	setting_container.root_btn = setting_btn
@@ -13,7 +14,8 @@ func _on_quit_btn_pressed() -> void:
 
 
 func _on_play_button_pressed() -> void:
-	GAMEMANAGER.change_to_level_selection_scene()
+	level_selection.visible = true
+	blur_back.visible = true
 
 
 func _on_setting_btn_pressed() -> void:

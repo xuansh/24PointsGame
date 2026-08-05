@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 			#await get_tree().process_frame
 
 func _on_level_pressed() -> void:
-	scn_path = "res://Scene/scn/LevelSelection/LevelSelection.tscn"
+	scn_path = "res://Scene/scn/Welcome/WelcomeScreen.tscn"
 	ResourceLoader.load_threaded_request(scn_path)
 
 

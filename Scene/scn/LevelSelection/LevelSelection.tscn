@@ -4,8 +4,7 @@
 [ext_resource type="StyleBox" uid="uid://cr6pmqtee6vmh" path="res://Tres/BTN/light_btn.tres" id="2_88evp"]
 [ext_resource type="FontFile" uid="uid://51j4iinsif4s" path="res://Fonts/DenkOne-Regular.ttf" id="2_f2nhq"]
 [ext_resource type="StyleBox" uid="uid://bwkgfccpsls47" path="res://Tres/BTN/dark_btn.tres" id="3_lfyn8"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3imjh"]
+[ext_resource type="StyleBox" uid="uid://xkbk4med5lqp" path="res://Tres/PANEL/level_selection_panel.tres" id="4_lfyn8"]
 
 [node name="LevelSelection" type="Control" unique_id=1641298793]
 layout_mode = 3
@@ -29,7 +28,7 @@ offset_top = -446.0
 offset_right = 803.0
 offset_bottom = 438.0
 mouse_filter = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_3imjh")
+theme_override_styles/panel = ExtResource("4_lfyn8")
 
 [node name="Label" type="Label" parent="Panel" unique_id=681280303]
 layout_mode = 1
@@ -39,11 +38,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -207.0
-offset_top = -352.0
+offset_top = -332.0
 offset_right = 207.0
-offset_bottom = -195.0
+offset_bottom = -175.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.14901961, 0.24705882, 0.14117648, 1)
 theme_override_fonts/font = ExtResource("2_f2nhq")
 theme_override_font_sizes/font_size = 80
 text = "LEVEL"

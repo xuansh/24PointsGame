@@ -1,12 +1,18 @@
 [gd_scene format=3 uid="uid://duxbvplv6d4r7"]
 
+[ext_resource type="Script" uid="uid://dlr3bypkrynlb" path="res://Scene/LEVEL/level.gd" id="1_5my81"]
 [ext_resource type="Script" uid="uid://dt67i73s3lguj" path="res://Scene/LEVEL/main_camera.gd" id="1_xfpj2"]
 [ext_resource type="Script" uid="uid://bm2ewmr4ae6vd" path="res://Scene/LEVEL/Container/operator_block_container.gd" id="2_xfpj2"]
 [ext_resource type="Script" uid="uid://dxitjg1n2n2jc" path="res://Scene/LEVEL/Container/number_block_container.gd" id="3_fdw5n"]
 [ext_resource type="Script" uid="uid://cs86i1xphtbug" path="res://Scene/LEVEL/Container/transform_block_container.gd" id="4_yjdbb"]
 [ext_resource type="Script" uid="uid://dp0k4wqeaj13i" path="res://Scene/LEVEL/Container/condition_block_contain.gd" id="5_5my81"]
+[ext_resource type="StyleBox" uid="uid://dig2obkahudf8" path="res://Tres/BTN/setting_btn.tres" id="5_ek7l4"]
 [ext_resource type="Shader" uid="uid://dmqw306ngjr5w" path="res://Shaders/bg.gdshader" id="6_fdw5n"]
 [ext_resource type="Script" uid="uid://duvk7t1jg0h10" path="res://Scene/LEVEL/Container/function_block_container.gd" id="6_yjdbb"]
+[ext_resource type="PackedScene" uid="uid://d4ee3dmnx8ypa" path="res://Scene/Component/button.tscn" id="9_ek7l4"]
+[ext_resource type="Texture2D" uid="uid://d4a314jmhnlqx" path="res://Textures/设置_setting.png" id="12_yjdhb"]
+[ext_resource type="Shader" uid="uid://cow5vsihaijcs" path="res://Shaders/blur.gdshader" id="13_5paao"]
+[ext_resource type="PackedScene" uid="uid://b23vwdx0d3hx" path="res://Scene/Component/setting_container.tscn" id="14_qkhe7"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5my81"]
 shader = ExtResource("6_fdw5n")
@@ -15,7 +21,14 @@ shader_parameter/grid_color = Color(1, 1, 1, 0.26666668)
 shader_parameter/grid_size = 64.0
 shader_parameter/line_width = 1.0
 
-[node name="Game" type="Node2D" unique_id=743338457]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ko01"]
+shader = ExtResource("13_5paao")
+shader_parameter/lod = 2.042000096995
+
+[node name="Game" type="Control" unique_id=1933134189]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5my81")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1569252990]
 layer = -1
@@ -42,6 +55,58 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.54901963, 0.6509804, 0.40392157, 1)
 
+[node name="CanvasLayerTop" type="CanvasLayer" parent="." unique_id=1273431192]
+
+[node name="SETTING_BTN" parent="CanvasLayerTop" unique_id=833299221 instance=ExtResource("9_ek7l4")]
+custom_minimum_size = Vector2(-1, -1)
+offset_left = -938.0
+offset_top = -520.0
+offset_right = -838.0
+offset_bottom = -420.0
+pivot_offset = Vector2(50, 50)
+enter_btn = ExtResource("5_ek7l4")
+exit_btn = ExtResource("5_ek7l4")
+
+[node name="Panel" parent="CanvasLayerTop/SETTING_BTN" index="0" unique_id=1675204561]
+layout_mode = 1
+offset_right = 100.0
+offset_bottom = 100.0
+theme_override_styles/panel = ExtResource("5_ek7l4")
+metadata/_edit_lock_ = true
+
+[node name="Label" parent="CanvasLayerTop/SETTING_BTN" index="1" unique_id=1302946330]
+visible = false
+offset_left = -32.0
+offset_right = 200.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayerTop/SETTING_BTN" unique_id=1228200868]
+position = Vector2(48, 48)
+scale = Vector2(0.31, 0.31)
+texture = ExtResource("12_yjdhb")
+
+[node name="BlurBack" type="ColorRect" parent="CanvasLayerTop" unique_id=2086535342]
+visible = false
+z_index = -1
+y_sort_enabled = true
+material = SubResource("ShaderMaterial_4ko01")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="SettingContainer" parent="CanvasLayerTop" unique_id=598388891 node_paths=PackedStringArray("root", "root_btn") instance=ExtResource("14_qkhe7")]
+visible = false
+z_index = 6
+z_as_relative = false
+root = NodePath("../..")
+root_btn = NodePath("../SETTING_BTN")
+
 [node name="Camera2D" type="Camera2D" parent="." unique_id=693566276]
 script = ExtResource("1_xfpj2")
 
@@ -61,3 +126,10 @@ script = ExtResource("5_5my81")
 
 [node name="FunctionBlockContainer" type="Node2D" parent="World" unique_id=416723268]
 script = ExtResource("6_yjdbb")
+
+[connection signal="pressed" from="CanvasLayerTop/SETTING_BTN" to="." method="_on_setting_btn_pressed"]
+
+[editable path="CanvasLayerTop/SETTING_BTN"]
+[editable path="CanvasLayerTop/SettingContainer"]
+[editable path="CanvasLayerTop/SettingContainer/CloseButton"]
+[editable path="CanvasLayerTop/SettingContainer/HomeButton"]

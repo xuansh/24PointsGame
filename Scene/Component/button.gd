@@ -70,7 +70,6 @@ func _on_mouse_entered() -> void:
 	if (spawn_tween and spawn_tween.is_running()) or (destroy_tween and destroy_tween.is_running()) or (self.scale.x < 1.0):
 		return
 
-	print("enter")
 	panel.add_theme_stylebox_override("panel", enter_btn)
 	label.add_theme_color_override("font_color", enter_label_color)
 
@@ -90,7 +89,6 @@ func _on_mouse_exited() -> void:
 	if (spawn_tween and spawn_tween.is_running()) or (destroy_tween and destroy_tween.is_running()) or (self.scale.x < 1.0):
 		return
 
-	print("exited")
 	panel.add_theme_stylebox_override("panel", exit_btn)
 	label.add_theme_color_override("font_color", origin_label_color)
 

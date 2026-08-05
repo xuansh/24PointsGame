@@ -8,6 +8,8 @@ extends Control
 @onready var close_button: TextureButton = $CloseButton
 @onready var home_button: TextureButton = $HomeButton
 
+const WELCOME_SCREEN_PATH = "res://Scene/scn/Welcome/WelcomeScreen.tscn"
+
 var setting_tween : Tween
 var off_setting_tween : Tween
 var bg_tween : Tween
@@ -17,47 +19,14 @@ var destory_tween : Tween
 var stylebox : StyleBoxFlat
 var bg_stylebox : StyleBoxFlat
 
+var open_config = {}
+var close_config = {}
 
 func _ready() -> void:
 	stylebox = panel.get_theme_stylebox("panel").duplicate()
 	bg_stylebox = bg_panel.get_theme_stylebox("panel").duplicate()
 
-func _on_that_btn_pressed_u_know():
-	var config = {
-		"panel_stylebox": stylebox,
-		"bg_stylebox": bg_stylebox,
-		"corner_radius": {
-			"top_right": 100,
-			"bottom_right": 1000,
-			"bottom_left": 100,
-			"top_left": null  # null 表示保持不变
-		},
-		"expand_margins": {
-			"right": 1200,
-			"bottom": 800,
-			"left": null,
-			"top": null
-		},
-		"bg_expand_margins": {
-			"right": 1220,
-			"bottom": 820,
-			"left": 10,
-			"top": 10
-		},
-		"duration": 0.15,
-		"expand_duration": 0.2
-	}
-
-	animate_panel_open(config)
-	set_component_spawn(close_button)
-	set_component_spawn(home_button)
-
-func _on_button_pressed() -> void:
-	root._on_pause_menu_shown()
-	set_component_destory(close_button)
-	set_component_destory(home_button)
-
-	var config = {
+	close_config = {
 		"panel_stylebox": stylebox,
 		"bg_stylebox": bg_stylebox,
 		"corner_radius": {
@@ -82,10 +51,57 @@ func _on_button_pressed() -> void:
 		"expand_duration": 0.15
 	}
 
-	animate_panel_close(config)
+	open_config = {
+		"panel_stylebox": stylebox,
+		"bg_stylebox": bg_stylebox,
+		"corner_radius": {
+			"top_right": 100,
+			"bottom_right": 1000,
+			"bottom_left": 100,
+			"top_left": null  # null 表示保持不变
+		},
+		"expand_margins": {
+			"right": 1200,
+			"bottom": 800,
+			"left": null,
+			"top": null
+		},
+		"bg_expand_margins": {
+			"right": 1220,
+			"bottom": 820,
+			"left": 10,
+			"top": 10
+		},
+		"duration": 0.15,
+		"expand_duration": 0.2
+	}
+
+	home_button.pressed.connect(_on_home_button_pressed)
+	close_button.pressed.connect(_on_close_button_pressed)
+
+func _on_that_btn_pressed_u_know():
+	animate_panel_open(open_config)
+	set_component_spawn(close_button)
+	set_component_spawn(home_button)
+
+func _on_close_button_pressed() -> void:
+	root._on_pause_menu_shown()
+	set_component_destory(close_button)
+	set_component_destory(home_button)
+
+	animate_panel_close(close_config)
 	await get_tree().create_timer(0.3).timeout
 	self.visible = false
 	root_btn.visible = true
+
+func _on_home_button_pressed() -> void:
+	root._on_pause_menu_shown()
+	set_component_destory(close_button)
+	set_component_destory(home_button)
+
+	animate_panel_close(close_config)
+	await get_tree().create_timer(0.3).timeout
+	print(get_tree().change_scene_to_file(WELCOME_SCREEN_PATH))
 
 func animate_panel_open(config: Dictionary) -> void:
 	# 主面板动画
